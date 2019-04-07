@@ -1,0 +1,9 @@
+.basics-card {
+    max-width: 300px;
+    height: 400px;
+  }
+
+.basics-header-image {
+    background-image: url('../../../assets/images/flower-avatar.jpg');
+    background-size: cover;
+ }

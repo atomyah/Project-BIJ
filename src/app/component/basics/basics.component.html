@@ -1,0 +1,28 @@
+<!--コンテンツヘッダーを挿入-->
+<app-contents-header></app-contents-header>
+<!--コンテンツヘッダーのクラス"contents-container"の定義はすべてcontents-header.cssにある-->
+
+
+<!--childコンポーネントのサマリをclass/basicschidren.tsにJson形式でデータ化。-->
+<!--それをBASICSDATAとしてエキスポートしbasics.component.tsにてbasicsdata = BASICSDATA;でオブジェクト化した-->
+<!--表示はmaterial2のmat-cardを利用している-->  
+  <div style="display:inline-flex; margin: 2px;" *ngFor="let basics of basicsdata">
+  <mat-card class="basics-card">
+      <mat-card-header>
+          <div mat-card-avatar class="basics-header-image"></div>
+          <mat-card-title>{{ basics.title }}</mat-card-title>
+          <mat-card-subtitle>{{ basics.date }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+      <p>
+        <img src="{{ basics.picture }}" width="150px">
+        {{ basics.feature }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button routerLink="{{ basics.url }}" mat-button color="primary">続きを読む</button>
+      </mat-card-actions>
+  </mat-card>
+  </div>
+  <br /> <br /> <br /> <br />
+  

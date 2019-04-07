@@ -1,0 +1,25 @@
+/* このCSSでコンテンツを自動で枠内で折り返す。height: initial !important;とword-wrap: break-word !important;とwhite-space: pre-wrap !important; */
+.mat-toolbar-row.mat-toolbar-row-word-wrap {
+    height: initial !important;
+    margin: 2px;
+    padding-bottom: 5px;
+  }
+  .mat-toolbar-row-word-wrap .mat-line {
+    word-wrap: break-word !important; 
+    white-space: pre-wrap !important;
+    font-size: 0.8em;
+    color: wheat;
+  }
+
+  .fill-remaining-space {
+    /* このCSSでフレックスに空白を埋める. */
+    flex: 1 1 auto;
+  }
+
+
+  #footer{
+    text-align: right;
+    color:white;
+    font-size: 0.7em;
+    font-family: 'Courier New', Courier, monospace;
+}
