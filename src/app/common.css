@@ -22,9 +22,19 @@
   color:black;
   font-family: "游ゴシック", "YuGothic", "メイリオ", meiryo, sans-serif;
   font-weight: 500;
-  font-size: 140%;
+  font-size: 120%;
 }
 
+.myContainerMain h2{
+  color:black;
+  font-family: "游ゴシック", "YuGothic", "メイリオ", meiryo, sans-serif;
+  font-weight: 500;
+  font-size: 120%;
+}
+
+a {
+  text-decoration: none;
+}
 
 .myRed {
   color: red;

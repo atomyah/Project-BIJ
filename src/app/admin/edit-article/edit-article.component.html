@@ -1,0 +1,81 @@
+<body class="myContainerMain">
+    <div>
+        <h1>Admin Page</h1>
+        <h5> - 記事編集</h5>
+        <div style="align-items: flex-end"><a routerLink="/admin/list">リストページへ</a></div>
+    </div>
+    
+  <!-- article form -->
+<div class="yokonarabi" *ngFor="let item of articles | async"><!--重要！この*ngFor文を<form>の前に持ってきて、-->
+  <form [formGroup]="editForm" (ngSubmit)="updateData(item)"><!--updateData(item)としないと、itemに中身が入らない！-->   
+      <div>
+         <mat-form-field>
+            <mat-label>id</mat-label>
+            <input matInput placeholder="id" formControlName="id" [(ngModel)]="item.id">
+          </mat-form-field>
+      </div>      
+      <div>
+        <mat-form-field>
+           <mat-label>num</mat-label>
+             <input matInput placeholder="num" formControlName="num" [(ngModel)]="item.num">
+       </mat-form-field>
+      </div>
+      <div>
+       <mat-form-field>
+           <mat-label>title</mat-label>
+             <input matInput placeholder="title" formControlName="title" [(ngModel)]="item.title">
+       </mat-form-field>
+      </div>
+      <div>
+       <mat-form-field>
+           <mat-label>title_origin</mat-label>
+             <input matInput placeholder="title_origin" formControlName="title_origin" [(ngModel)]="item.title_origin">
+       </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+           <mat-label>date</mat-label>
+             <input matInput placeholder="date" formControlName="date" [(ngModel)]="item.date">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+            <mat-label>content</mat-label>
+              <textarea class="textarea" matInput cdkTextareaAutosize cdkAutosizeMaxRows="100" cdkAutosizeMinRows="10" width="100%" placeholder="content" formControlName="content" [(ngModel)]="item.content"></textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>author</mat-label>
+            <input matInput placeholder="author" formControlName="author" [(ngModel)]="item.author">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>author_prof</mat-label>
+            <textarea class="full-width" matInput cdkTextareaAutosize cdkAutosizeMaxRows="5" cdkAutosizeMinRows="3" placeholder="author_prof" formControlName="author_prof" [(ngModel)]="item.author_prof"></textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>pictpath</mat-label>
+            <input matInput placeholder="pictpath" formControlName="pictpath" [(ngModel)]="item.pictpath">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>feature</mat-label>
+            <input matInput placeholder="feature" formControlName="feature" [(ngModel)]="item.feature">
+        </mat-form-field>
+      </div>
+
+             <br />
+    <div class="yokonarabi">
+        <button type="submit" mat-flat-button color="accent"  [disabled]="!editForm.valid">update</button>
+    </div>
+  </form>
+  </div>
+
+<br />
+<p></p>
+</body>

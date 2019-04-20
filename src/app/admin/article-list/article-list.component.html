@@ -1,0 +1,36 @@
+<h1>Admin Page</h1>
+<h5>リストー更新・削除</h5>
+<div style="align-items: flex-end"><a routerLink="/admin">追加ページへ</a></div>
+
+<table class="table table-hover">
+    <thead>
+      <th>id</th>
+      <th>num</th>
+      <th>title</th>
+      <th>title_origin</th>
+      <th>date</th>
+      <th>content</th>
+      <th>author</th>
+      <th>author_prof</th>
+      <th>pictpath</th>
+      <th>feature</th>
+      <th>edit</th>
+      <th><font color="red">delete?</font></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let article of articles | async">
+        <td>{{article.id}}</td>
+        <td>{{article.num}}</td>
+        <td>{{article.title}}</td>
+        <td>{{article.title_origin}}</td>
+        <td>{{article.date}}</td>
+        <td>{{article.content}}</td>
+        <td>{{article.author}}</td>
+        <td>{{article.author_prof}}</td>
+        <td>{{article.pictpath}}</td>
+        <td>{{article.feature}}</td>
+        <td><button class="playbutton" (click)="goEdit(article)"><img src="../../../assets/images/edit.png" /></button></td>
+        <td><button class="playbutton" (click)="onDelete(article)"><img src="../../../assets/images/trash.png" /></button></td>
+      </tr>
+    </tbody>
+  </table>

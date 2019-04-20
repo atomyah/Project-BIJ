@@ -15,6 +15,7 @@ import { AngularFireModule } from '@angular/fire';  // 追加
 import { AngularFirestoreModule } from '@angular/fire/firestore'; // 追加
 import { AngularFireAuthModule } from '@angular/fire/auth'; // 追加
 
+
 //Material2モジュールのインポート
 import {
   MatButtonModule,
@@ -29,6 +30,7 @@ import {
   MatSidenavModule,
   MatSliderModule,
   MatSnackBarModule,
+  MatSelectModule,
   MatToolbarModule,
 } from '@angular/material';
 
@@ -47,6 +49,13 @@ import { HomeComponent } from './component/home/home.component';
 import { BenzohistoryComponent } from './component/basics/benzohistory/benzohistory.component';
 import { BenzowordsComponent } from './component/basics/benzowords/benzowords.component';
 import { ContentsHeaderComponent } from './component/contents-header/contents-header.component';
+import { PatientsTopComponent } from './component/patients/patients-top/patients-top.component';
+import { PatientsAriticlesComponent } from './component/patients/patients-ariticles/patients-ariticles.component';
+import { SafePipe } from './service/safe.pipe';
+import { ArticleListComponent } from './admin/article-list/article-list.component';
+import { ArticleManagerComponent } from './admin/article-manager/article-manager.component';
+//import { ArticleService } from "./service/ArticleService";
+import { EditArticleComponent } from './admin/edit-article/edit-article.component';
 
 //アプリで使用するモジュール定義
 @NgModule({
@@ -69,6 +78,7 @@ import { ContentsHeaderComponent } from './component/contents-header/contents-he
     MatSliderModule,
     MatSnackBarModule,
     MatSidenavModule,
+    MatSelectModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     //ルーターの定義
@@ -89,10 +99,17 @@ import { ContentsHeaderComponent } from './component/contents-header/contents-he
     BenzohistoryComponent,
     BenzowordsComponent,
     ContentsHeaderComponent,
+    PatientsTopComponent,
+    PatientsAriticlesComponent,
+    SafePipe,
+    ArticleListComponent,
+    ArticleManagerComponent,
+    EditArticleComponent,
   ],
 
   // DIするサービス 
   providers: [
+  //  ArticleService,
   ],
 
     // 初めに呼び出すコンポーネント

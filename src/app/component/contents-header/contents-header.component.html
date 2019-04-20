@@ -8,12 +8,20 @@
       </button>
       <mat-menu #childrenMenu="matMenu">
          <!--バーガーメニューを表示する場合(*ngIf=…）はrouter.urlが/basics, /patients, /doctors, mediasの場合-->
-         <ng-container *ngIf="router.url === '/basics' || router.url === '/basics/benzowords' || router.url === '/basics/benzolist' || router.url === '/basics/benzohistory'">
+         <ng-container *ngIf="route.url === '/basics' || route.url === '/basics/benzowords' || route.url === '/basics/benzolist' || route.url === '/basics/benzohistory'">
           <!--ベンゾ一般知識のページの場合のバーガーメニュー-->
           <button mat-menu-item routerLink="{{ item.url }}" *ngFor="let item of basicsdata">{{ item.title }}</button>
          </ng-container>
+          <!--バーガーメニューを表示する場合(*ngIf=…）はrouter.urlが/patients-top, /patients-article/numの場合-->
+          <ng-container *ngIf="route.url === '/patients-top' || route.url === '/patients-article/1'">
+            <!--患者（被害者の方）へのページの場合のバーガーメニュー-->
+          <button mat-menu-item routerLink="/patients-article/{{ item.num }}" *ngFor="let item of patientsarticles | async">{{ item.title }}</button>
+          </ng-container>  
       </mat-menu>
       <h1 class="contents-app-name">{{ title }}</h1>
     </mat-toolbar>
+    <li *ngFor="let item of patientsarticles">
+      {{item.title}}
+    </li>
   </div>
 

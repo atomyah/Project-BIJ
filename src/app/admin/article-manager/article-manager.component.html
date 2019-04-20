@@ -1,0 +1,57 @@
+<body class="myContainerMain">
+    <div>
+        <h1>Admin Page</h1>
+        <h2> - 記事追加</h2>
+        <div style="align-items: flex-end"><a routerLink="/admin/list">リストページへ</a></div>
+    </div>
+
+  <!-- article form -->
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">       
+    <div class="yokonarabi">
+        <mat-form-field>
+           <mat-label>num</mat-label>
+             <input matInput placeholder="num" formControlName="num">
+       </mat-form-field>
+       <mat-form-field>
+           <mat-label>title</mat-label>
+             <input matInput placeholder="title" formControlName="title">
+       </mat-form-field>
+       <mat-form-field>
+           <mat-label>title_origin</mat-label>
+             <input matInput placeholder="title_origin" formControlName="title_origin">
+       </mat-form-field>
+        <mat-form-field>
+           <mat-label>date</mat-label>
+             <input matInput placeholder="date" formControlName="date">
+        </mat-form-field>
+    </div>
+        <mat-form-field>
+            <mat-label>content</mat-label>
+              <textarea class="textarea" matInput cdkTextareaAutosize cdkAutosizeMaxRows="100" cdkAutosizeMinRows="10" width="100%" placeholder="content" formControlName="content"></textarea>
+        </mat-form-field>
+    <div class="yokonarabi">
+        <mat-form-field>
+          <mat-label>author</mat-label>
+            <input matInput placeholder="author" formControlName="author">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>author_prof</mat-label>
+            <textarea class="full-width" matInput cdkTextareaAutosize cdkAutosizeMaxRows="5" cdkAutosizeMinRows="3" placeholder="author_prof" formControlName="author_prof"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>pictpath</mat-label>
+            <input matInput placeholder="pictpath" formControlName="pictpath">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>feature</mat-label>
+            <input matInput placeholder="feature" formControlName="feature">
+        </mat-form-field>
+    </div>
+             <br />
+    <div class="yokonarabi">
+        <button type="submit" mat-flat-button color="accent"  [disabled]="!articleForm.valid">add comment</button>
+    </div>
+</form>
+<p></p>
+<br />
+</body>

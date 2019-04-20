@@ -29,6 +29,10 @@ export class RootComponent {
       await this.router.navigate(["/basics"]);
     }
 
+    async goPatients() {
+      await this.router.navigate(["/patients-top"]);
+    }
+
 //トップページへ戻る
     async goHome() {
      await this.router.navigate(['/']);

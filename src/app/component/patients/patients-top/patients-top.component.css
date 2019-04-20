@@ -1,0 +1,28 @@
+.toppage-card {
+    max-width: 330px;
+    height: 500px;
+  }
+
+.toppage-header-image {
+    background-image: url('../../../../assets/images/flower-avatar.jpg');
+    background-size: cover;
+ }
+
+
+/* 文字列折り返し用CSS。複数行には対応できない */
+/* https://dev.classmethod.jp/ria/string-replace-css-and-jquery/ */
+ .textOverflow {
+  overflow: hidden;
+  border: 0px;
+  padding: 10px;
+  width: 280px;
+  background:white;
+  line-height: 1.0;
+  white-space: nowrap;
+}
+
+ .textOverflow {
+  text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis; /* Safari */
+  -o-text-overflow: ellipsis; /* Opera */
+}

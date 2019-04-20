@@ -10,7 +10,7 @@
   <mat-card class="basics-card">
       <mat-card-header>
           <div mat-card-avatar class="basics-header-image"></div>
-          <mat-card-title>{{ basics.title }}</mat-card-title>
+          <mat-card-title><a routerLink="{{ basics.url }}">{{ basics.title }}</a></mat-card-title>
           <mat-card-subtitle>{{ basics.date }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>

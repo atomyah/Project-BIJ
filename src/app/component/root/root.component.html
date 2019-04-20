@@ -41,17 +41,17 @@
         </button>
 
         <button mat-menu-item
-            (click)="search()">
+            (click)="goPatients()">
             <span>患者(被害者)の方へ</span>
         </button>
 
         <button mat-menu-item
-            (click)="favorite()">
+            (click)="goPatients()">
             <span>ドクターの方へ</span>
         </button>
 
         <button mat-menu-item
-            (click)="setting()">
+            (click)="goPatients()">
              <span>メディアの方へ</span>
         </button>
     </mat-menu>
@@ -66,7 +66,7 @@
                 <button mat-button (click)="goHome()"><mat-icon>home</mat-icon></button>
                 <button mat-button (click)="goIntroduction()">ベンゾジアゼピン概略</button>
                 <button mat-button (click)="goBasics()">ベンゾ一般知識</button>
-                <button mat-button>患者(被害者)の方へ</button>
+                <button mat-button (click)="goPatients()">患者(被害者)の方へ</button>
                 <button mat-button>ドクターの方へ</button>
                 <button mat-button>メディアの方へ</button>
               </div>
