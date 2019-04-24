@@ -1,35 +1,36 @@
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Component, OnInit } from '@angular/core';
+import { Input, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, DoCheck, OnChanges, OnDestroy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Article } from '../../service/article';
 import { Observable } from 'rxjs';
 import { map } from "rxjs/operators"; // 追加
+//import { ValueSharedService } from '../../service/value-shared.service';
 
 @Component({
   selector: 'app-article-list',
   templateUrl: './article-list.component.html',
-  styleUrls: ['./article-list.component.css']
+  styleUrls: ['../../common.css','./article-list.component.css']
 })
-export class ArticleListComponent implements OnInit {
+export class ArticleListComponent implements OnInit, OnChanges {
   articlesRef: AngularFirestoreCollection<Article>;
   articles: Observable<Article[]>;
 
-  constructor(private firestore: AngularFirestore, public router: Router) {
-    this.articlesRef = this.firestore.collection<Article>('patientsarticles');
-    this.articles = this.articlesRef.snapshotChanges().pipe
-    (map(actions => {
-      return actions.map(action => {
-        const data = action.payload.doc.data() as Article;
-        const id = action.payload.doc.id;
-        const num = action.payload.doc.data().num;
-        return { id,num,  ...data };
-        });
-      }));   
-   }
-  
+  //親コンポーネントから受け取るプロパティ
+  @Input() collectionNameValue: string;
+  //admin-topのセレクトボタンの切り替えでコレクション名を獲得するため、Firestoreへの接続はコードｈ
+  //すべてngOnInit()からngOnChanges()へ移した。すなわち作業の最初の作業は必ずセレクトボタンの切り替え
+  //から始めるということ。
+
+  constructor(
+    private firestore: AngularFirestore, 
+    private router: Router,
+    ) {}
+
 
   ngOnInit() {
+    console.log("@@@ngOnInit");
   }
+
 
  // 選んだ記事のnumをURLに持って記事編集画面に飛ぶ
  // idだとどうしてもデータを持ち出してくれない。admin/edit-article/" + article.id 
@@ -49,6 +50,47 @@ export class ArticleListComponent implements OnInit {
         console.log('削除完了');
       });
     } 
+  }
+
+
+   //以降はイベント履歴の記録用
+   ngOnChanges() {
+    console.log("@@@ngOnChanges");
+    console.log("■■■" + this.collectionNameValue); 
+    this.articlesRef = this.firestore.collection<Article>(this.collectionNameValue);//親コンポーネントadmin-topから受け取ったプロパティcollectionNameValue
+    this.articles = this.articlesRef.snapshotChanges().pipe
+    (map(actions => {
+      return actions.map(action => {
+        const data = action.payload.doc.data() as Article;
+        const id = action.payload.doc.id;
+        const num = action.payload.doc.data().num;
+        return { id,num,  ...data };
+        });
+      })); 
+  }
+
+  ngDoCheck() {
+    console.log("@@@ngDoCheck");
+  }
+
+  ngAfterContentInit() {
+    console.log("@@@ngAfterContentInit");
+  }
+
+  ngAfterContentChecked() {
+    console.log("@@@ngAfterContentChecked");
+  }
+
+  ngAfterViewInit() {
+    console.log("@@@ngAfterViewInit");
+  }
+
+  ngAfterViewChecked() {
+    console.log("@@@ngAfterViewChecked");
+  }
+
+  ngOnDestroy() {
+    console.log("@@@ngOnDestroy");
   }
 
 }

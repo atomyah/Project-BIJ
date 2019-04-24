@@ -53,9 +53,9 @@ import { PatientsTopComponent } from './component/patients/patients-top/patients
 import { PatientsAriticlesComponent } from './component/patients/patients-ariticles/patients-ariticles.component';
 import { SafePipe } from './service/safe.pipe';
 import { ArticleListComponent } from './admin/article-list/article-list.component';
-import { ArticleManagerComponent } from './admin/article-manager/article-manager.component';
-//import { ArticleService } from "./service/ArticleService";
 import { EditArticleComponent } from './admin/edit-article/edit-article.component';
+import { AddArticleComponent } from './admin/add-article/add-article.component';
+import { AdminTopComponent } from './admin/admin-top/admin-top.component';
 
 //アプリで使用するモジュール定義
 @NgModule({
@@ -103,13 +103,13 @@ import { EditArticleComponent } from './admin/edit-article/edit-article.componen
     PatientsAriticlesComponent,
     SafePipe,
     ArticleListComponent,
-    ArticleManagerComponent,
     EditArticleComponent,
+    AddArticleComponent,
+    AdminTopComponent,
   ],
 
   // DIするサービス 
   providers: [
-  //  ArticleService,
   ],
 
     // 初めに呼び出すコンポーネント

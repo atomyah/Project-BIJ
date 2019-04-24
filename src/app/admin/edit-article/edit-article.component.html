@@ -2,22 +2,22 @@
     <div>
         <h1>Admin Page</h1>
         <h5> - 記事編集</h5>
-        <div style="align-items: flex-end"><a routerLink="/admin/list">リストページへ</a></div>
+        <div style="align-items: flex-end"><a routerLink="/admin">topページへ</a></div>
     </div>
     
   <!-- article form -->
-<div class="yokonarabi" *ngFor="let item of articles | async"><!--重要！この*ngFor文を<form>の前に持ってきて、-->
+<div class="haba" *ngFor="let item of articles | async"><!--重要！この*ngFor文を<form>の前に持ってきて、-->
   <form [formGroup]="editForm" (ngSubmit)="updateData(item)"><!--updateData(item)としないと、itemに中身が入らない！-->   
       <div>
          <mat-form-field>
             <mat-label>id</mat-label>
-            <input matInput placeholder="id" formControlName="id" [(ngModel)]="item.id">
+            <input matInput placeholder="id" formControlName="id" [(ngModel)]="item.id" readonly>
           </mat-form-field>
       </div>      
       <div>
         <mat-form-field>
            <mat-label>num</mat-label>
-             <input matInput placeholder="num" formControlName="num" [(ngModel)]="item.num">
+             <input matInput placeholder="num" formControlName="num" [(ngModel)]="item.num" readonly>
        </mat-form-field>
       </div>
       <div>

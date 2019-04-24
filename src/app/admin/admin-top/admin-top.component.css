@@ -1,0 +1,11 @@
+.yokonarabi {
+    display: inline-block;
+    margin: 20px;
+  }
+
+.box {
+    border: gray solid 2px;
+    padding: 1em;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}

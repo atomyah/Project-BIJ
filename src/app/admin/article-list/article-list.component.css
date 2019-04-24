@@ -1,9 +1,13 @@
-/* 内容を途中で切るCSS */
+/* 文字列折り返し用CSS。複数行には対応できない */
+/* https://dev.classmethod.jp/ria/string-replace-css-and-jquery/ */
 table td {
-    max-width: 300px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+	overflow: hidden;
+	border: 0px;
+	padding: 10px;
+	max-width: 280px;
+	background:white;
+	line-height: 1.0;
+	white-space: nowrap;
 }
 
 /* 画像をボタンにするCSS */

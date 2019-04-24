@@ -13,8 +13,10 @@ import { BenzowordsComponent } from './component/basics/benzowords/benzowords.co
 import { PatientsTopComponent } from './component/patients/patients-top/patients-top.component';
 import { PatientsAriticlesComponent } from './component/patients/patients-ariticles/patients-ariticles.component';
 import { ArticleListComponent } from './admin/article-list/article-list.component';
-import { ArticleManagerComponent } from './admin/article-manager/article-manager.component';
 import { EditArticleComponent } from './admin/edit-article/edit-article.component';
+import { AddArticleComponent } from './admin/add-article/add-article.component';
+import { AdminTopComponent } from './admin/admin-top/admin-top.component';
+
 
 //urlパスと表示するコンポーネントの関連づけ
 export const AppRoutes: Routes = [
@@ -28,6 +30,7 @@ export const AppRoutes: Routes = [
     {path: "patients-top", component: PatientsTopComponent},
     {path: "patients-article/:num", component: PatientsAriticlesComponent},
     {path: "admin/list", component: ArticleListComponent },
-    {path: "admin", component: ArticleManagerComponent},
     {path: "admin/edit-article/:num", component: EditArticleComponent},
+    {path: "admin/add-article", component: AddArticleComponent},
+    {path: "admin", component: AdminTopComponent},
 ];

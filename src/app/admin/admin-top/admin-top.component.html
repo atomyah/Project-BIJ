@@ -1,0 +1,37 @@
+<body class="myContainerMain">
+    <div>
+        <h1>Admin Page</h1>
+        <h2> - アドミントップページ</h2>
+    </div>
+
+
+
+  <div class="box">
+    <h5>コレクションの選択</h5>
+  <form [formGroup]="collectionNameForm">
+    <div class="yokonarabi">
+    <mat-form-field>
+        <mat-label>Select an option</mat-label>
+        <mat-select [(value)]="selected" formControlName="collectionName"> <!--ひょ～[formControlName]をformControlNameにしたらうまくいった…-->
+          <mat-option value="patientsarticles">Patients</mat-option>
+          <mat-option value="doctorsarticles">Doctors</mat-option>
+          <mat-option value="mediasarticles">Medias</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="yokonarabi">
+      <p>You selected: {{selected}}</p>
+      <button mat-flat-button color="accent" (click)=toggleChild()>チャイルドコンポーネント切替（リスト⇔追加）</button>
+    </div>
+  </form>
+  </div>
+
+
+  <ng-container *ngIf="!add_flag">
+    <app-article-list [collectionNameValue]="collectionName.value"></app-article-list>
+  </ng-container>
+  <ng-container *ngIf="add_flag">
+      <app-add-article [collectionNameValue]="collectionName.value"></app-add-article>
+  </ng-container>
+
+</body>

@@ -16,6 +16,8 @@
       <p [innerHTML]="item.content | safe: 'html'"></p><!--CSSを効かせるときサニタイズ解除必要-->
       著者：<span [innerHTML]="item.author"></span>
       <p [innerHTML]="item.author_prof | safe: 'html'"></p>
+      <br />
+      <br />
 
     </mat-card-content>
   </mat-card>

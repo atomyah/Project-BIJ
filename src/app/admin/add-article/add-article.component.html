@@ -1,13 +1,11 @@
 <body class="myContainerMain">
     <div>
-        <h1>Admin Page</h1>
         <h2> - 記事追加</h2>
-        <div style="align-items: flex-end"><a routerLink="/admin/list">リストページへ</a></div>
     </div>
-
+    <p>選択中のコレクション：{{ collectionNameValue }}</p>
   <!-- article form -->
+<div class="haba">
   <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">       
-    <div class="yokonarabi">
         <mat-form-field>
            <mat-label>num</mat-label>
              <input matInput placeholder="num" formControlName="num">
@@ -24,12 +22,10 @@
            <mat-label>date</mat-label>
              <input matInput placeholder="date" formControlName="date">
         </mat-form-field>
-    </div>
         <mat-form-field>
             <mat-label>content</mat-label>
               <textarea class="textarea" matInput cdkTextareaAutosize cdkAutosizeMaxRows="100" cdkAutosizeMinRows="10" width="100%" placeholder="content" formControlName="content"></textarea>
-        </mat-form-field>
-    <div class="yokonarabi">
+        </mat-form-field> 
         <mat-form-field>
           <mat-label>author</mat-label>
             <input matInput placeholder="author" formControlName="author">
@@ -46,12 +42,11 @@
           <mat-label>feature</mat-label>
             <input matInput placeholder="feature" formControlName="feature">
         </mat-form-field>
-    </div>
+
              <br />
-    <div class="yokonarabi">
         <button type="submit" mat-flat-button color="accent"  [disabled]="!articleForm.valid">add comment</button>
-    </div>
-</form>
+  </form>
+</div>
 <p></p>
 <br />
 </body>

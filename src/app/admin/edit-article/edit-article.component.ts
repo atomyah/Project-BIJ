@@ -5,13 +5,12 @@ import { Article } from '../../service/article';
 import { map } from "rxjs/operators"; // 追加
 import { FormBuilder,FormControl,FormGroup,Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-//import { ArticleService } from 'src/app/service/ArticleService';
 
 
 @Component({
   selector: 'app-edit-article',
   templateUrl: './edit-article.component.html',
-  styleUrls: ['./edit-article.component.css']
+  styleUrls: ['../../common.css', './edit-article.component.css']
 })
 export class EditArticleComponent implements OnInit {
   
@@ -86,8 +85,8 @@ get feature() {
 
 
 // 選んだ記事のnumをURLに持って記事編集画面に飛ぶ
- // idだとどうしてもデータを持ち出してくれない。admin/edit-article/" + article.id 
- // numで持ち出して編集フォーム記事へ。そしてidを使って特定された記事をupdateということになる
+ // 注意！！idだとどうしてもデータを持ち出さしてくれない。admin/edit-article/" + article.id が無理。
+ // numで持ち出して編集フォーム記事のvalueへ貼りつけ。そしてidを使って特定された記事をupdateということになる
 updateData(item: Article) {
   console.log('item.idはね、' + item.id);
   this.firestore
