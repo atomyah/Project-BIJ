@@ -1,10 +1,11 @@
 /*複数のコンポーネントで共通利用*/
 .myContainerMain {
   color:black;
-  line-height: 170%;
+  line-height: 150%;
   font-size: 100%;
   font-weight: 500;
-  font-family: "游ゴシック", "YuGothic", "メイリオ", meiryo, sans-serif;
+  font-display: auto;
+  font-family: verdana, -apple-system, BlinkMacSystemFont, "Helvetica Neue", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
   width: 100%;
   margin: 5px;
   padding: 5px;

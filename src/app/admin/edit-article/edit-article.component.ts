@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Article } from '../../service/article';
@@ -12,20 +12,51 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './edit-article.component.html',
   styleUrls: ['../../common.css', './edit-article.component.css']
 })
-export class EditArticleComponent implements OnInit {
-  
+export class EditArticleComponent implements OnInit {  
   articlesRef: AngularFirestoreCollection<Article>;
   articles: Observable<Article[]>;
+
+  //親コンポーネントから受け取るプロパティ
+  // @Input() collectionNameValue: string;
+  //admin-topのセレクトボタンの切り替えでコレクション名を獲得するため、Firestoreへの接続はコードｈ
+  //すべてngOnInit()からngOnChanges()へ移した。すなわち作業の最初の作業は必ずセレクトボタンの切り替え
+  //から始めるということ。  
 
     //フォームグループ
     editForm: FormGroup;
 
     articlenum: string; // articleのid番号をarticleid変数に格納
 
-  constructor(private firestore: AngularFirestore, private fb: FormBuilder, private router: ActivatedRoute) {
-    this.articlenum = this.router.snapshot.paramMap.get('num');
-    console.log('numは、' + this.articlenum);
-    this.articlesRef = this.firestore.collection<Article>('patientsarticles', ref => ref.where('num', '==', this.articlenum));
+    collectionName: string;
+    // コレクション名（patientsarticles, doctorsarticles, mediasarticlesのどれか）
+    // article-listのgoEdit()から'admin/edit-article/1/doctorsarticles'というURLで渡されてくる.
+    /*
+        Article(article.ts)インターフェースの内容
+          export interface Article {
+                collectionName?: string; // 追加
+                id?: string; // 追加
+                num: string;
+                title: string;
+                title_origin: string;
+                date: string;
+                content: string;
+                author: string;
+                author_prof: string;
+                pictpath: string;
+                feature: string;
+          }
+    */
+
+  constructor(
+    private firestore: AngularFirestore, 
+    private fb: FormBuilder, 
+    private router: ActivatedRoute
+    ) {
+    this.articlenum = this.router.snapshot.paramMap.get('num'); // 記事number取得
+    this.collectionName = this.router.snapshot.paramMap.get('collectionName'); // コレクション名取得
+    console.log('■■■■■■numは、' + this.articlenum);
+    console.log('■■■■■■collectionNameは、' + this.collectionName);
+    this.articlesRef = this.firestore.collection<Article>(this.collectionName, ref => ref.where('num', '==', this.articlenum));
     this.articles = this.articlesRef.snapshotChanges().pipe
     (map(actions => {
       return actions.map(action => {
@@ -90,7 +121,7 @@ get feature() {
 updateData(item: Article) {
   console.log('item.idはね、' + item.id);
   this.firestore
-  .collection('patientsarticles')
+  .collection(this.collectionName)
   .doc(item.id)
   .update({
     num: item.num,

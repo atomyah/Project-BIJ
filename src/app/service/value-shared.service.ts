@@ -6,10 +6,11 @@ import { Injectable } from '@angular/core';
 export class ValueSharedService {
   // 受け渡しを行うプロパティ
   public currentTitle = '';
-//  public currentCollectionName: string; // collectionNameを入れるvalue. admin-topのセレクトフォームから渡ってくる。
+  public currentCollectionNameValue: string = ''; // collectionNameを入れるvalue. patient, doctors, mediasのcollectonName変数から渡ってくる。
 
   // basicsdataはベンゾ一般知識でのみ使用するデータオブジェクト. 他のコンポーネントでは使用しない
   public basicsdata = null;
+
 
   constructor() { }
 

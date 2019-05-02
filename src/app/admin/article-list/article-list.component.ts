@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Article } from '../../service/article';
 import { Observable } from 'rxjs';
 import { map } from "rxjs/operators"; // 追加
-//import { ValueSharedService } from '../../service/value-shared.service';
 
 @Component({
   selector: 'app-article-list',
@@ -17,10 +16,11 @@ export class ArticleListComponent implements OnInit, OnChanges {
 
   //親コンポーネントから受け取るプロパティ
   @Input() collectionNameValue: string;
-  //admin-topのセレクトボタンの切り替えでコレクション名を獲得するため、Firestoreへの接続はコードｈ
+  //admin-topのセレクトボタンの切り替えでコレクション名を獲得するため、Firestoreへの接続はコードは
   //すべてngOnInit()からngOnChanges()へ移した。すなわち作業の最初の作業は必ずセレクトボタンの切り替え
   //から始めるということ。
 
+  
   constructor(
     private firestore: AngularFirestore, 
     private router: Router,
@@ -36,7 +36,9 @@ export class ArticleListComponent implements OnInit, OnChanges {
  // idだとどうしてもデータを持ち出してくれない。admin/edit-article/" + article.id 
  // numで持ち出して編集フォーム記事へ。そしてidを使って特定された記事をupdateということになる
   async goEdit(article: Article) {
-    await this.router.navigate(["admin/edit-article/" + article.num]);
+    console.log("■■■■■■" + this.collectionNameValue);
+    await this.router.navigate(["admin/edit-article/" + article.num + '/' + this.collectionNameValue]);
+    console.log("■■■■■■" + "admin/edit-article/" + article.num + '/' + this.collectionNameValue);
   }
 
   // 記事を削除する
@@ -52,8 +54,6 @@ export class ArticleListComponent implements OnInit, OnChanges {
     } 
   }
 
-
-   //以降はイベント履歴の記録用
    ngOnChanges() {
     console.log("@@@ngOnChanges");
     console.log("■■■" + this.collectionNameValue); 
@@ -69,6 +69,7 @@ export class ArticleListComponent implements OnInit, OnChanges {
       })); 
   }
 
+     //以降はイベント履歴の記録用
   ngDoCheck() {
     console.log("@@@ngDoCheck");
   }

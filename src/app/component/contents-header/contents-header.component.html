@@ -15,13 +15,20 @@
           <!--バーガーメニューを表示する場合(*ngIf=…）はrouter.urlが/patients-top, /patients-article/:numの場合-->         
             <div *ngIf="route.url === '/patients-top' || route.url.includes('/patients-article')">
               <!--患者（被害者の方）へのページの場合のバーガーメニュー-->
-              <button mat-menu-item *ngFor="let item of patientsarticles | async" (click)="goAnother(item)">{{ item.title }}</button>
-            </div>         
+              <button mat-menu-item *ngFor="let item of patientsarticles | async" (click)="goPatAnother(item)">{{ item.title }}</button>
+            </div> 
+          <!--バーガーメニューを表示する場合(*ngIf=…）はrouter.urlが/doctors-top, /doctors-article/:numの場合-->         
+            <div *ngIf="route.url === '/doctors-top' || route.url.includes('/doctors-article')">
+              <!--ドクターの方へのページの場合のバーガーメニュー-->
+              <button mat-menu-item *ngFor="let item of doctorsarticles | async" (click)="goDocAnother(item)">{{ item.title }}</button>
+            </div>
+          <!--バーガーメニューを表示する場合(*ngIf=…）はrouter.urlが/medias-top, /medias-article/:numの場合-->         
+            <div *ngIf="route.url === '/medias-top' || route.url.includes('/medias-article')">
+              <!--ドクターの方へのページの場合のバーガーメニュー-->
+              <button mat-menu-item *ngFor="let item of mediasarticles | async" (click)="goMedAnother(item)">{{ item.title }}</button>
+            </div>               
       </mat-menu>
       <h1 class="contents-app-name">{{ title }}</h1>
     </mat-toolbar>
-    <li *ngFor="let item of patientsarticles">
-      {{item.title}}
-    </li>
   </div>
 

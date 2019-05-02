@@ -1,10 +1,8 @@
-export interface Article {
-    collectionName?: string; // 追加
-    id?: string; // 追加
+export interface DoctorsArticles {
     num: string;
     title: string;
     title_origin: string;
-    date: string;
+    date: Date;
     content: string;
     author: string;
     author_prof: string;

@@ -2,7 +2,7 @@ import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit,
 import { FormBuilder,FormControl,FormGroup,Validators } from '@angular/forms';
 import {Title} from "@angular/platform-browser";
 import {Router} from "@angular/router";
-import { ValueSharedService } from '../../service/value-shared.service';
+import { AuthService } from  '../../service/auth.service';
 
 @Component({
   selector: 'app-admin-top',
@@ -18,6 +18,7 @@ AfterViewChecked, OnDestroy {
     private router: Router, 
     private title: Title, 
     private fb: FormBuilder,
+    private authService: AuthService
     ) { }
 
   //フォームグループ
@@ -25,7 +26,7 @@ AfterViewChecked, OnDestroy {
 
  
   ngOnInit() {
-    this.title.setTitle('アドミンページ①')
+    this.title.setTitle('管理者ページ')
 
     // フォームコントロール作成
     this.collectionNameForm = this.fb.group({

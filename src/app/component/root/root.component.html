@@ -46,12 +46,12 @@
         </button>
 
         <button mat-menu-item
-            (click)="goPatients()">
+            (click)="goDoctors()">
             <span>ドクターの方へ</span>
         </button>
 
         <button mat-menu-item
-            (click)="goPatients()">
+            (click)="goMedias()">
              <span>メディアの方へ</span>
         </button>
     </mat-menu>
@@ -67,8 +67,8 @@
                 <button mat-button (click)="goIntroduction()">ベンゾジアゼピン概略</button>
                 <button mat-button (click)="goBasics()">ベンゾ一般知識</button>
                 <button mat-button (click)="goPatients()">患者(被害者)の方へ</button>
-                <button mat-button>ドクターの方へ</button>
-                <button mat-button>メディアの方へ</button>
+                <button mat-button (click)="goDoctors()">ドクターの方へ</button>
+                <button mat-button (click)="goMedias()">メディアの方へ</button>
               </div>
    </mat-toolbar-row>
 </mat-toolbar>

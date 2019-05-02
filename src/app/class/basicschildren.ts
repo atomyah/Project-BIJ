@@ -10,7 +10,7 @@ export const BASICSDATA: Basics[] = [
         date: "2018-06-10",
         url: "/basics/benzolist",
         picture: "../../assets/images/Benzodiazepine200px.jpg",
-        feature: "ベンゾジアゼピン系薬剤一覧 抗不安薬・睡眠薬等価換算表 ※ 等価量の数字が小さいほど力価が強い 薬 効 一般名 主な商品名 作用 時間 分類 半減期 (時間) [活性代謝物] 等価量（経口） ..."
+        feature: "ベンゾジアゼピン系薬剤一覧 抗不安薬・睡眠薬等価換算表 ※ 日本では34種類のベンゾジアゼピン系薬剤が処方可能となっている。（米国ではわずか4種類）そのため自分がベンゾを飲んでいるのかわかりにくい場合が多いと思います。ぜひ自分の常用薬をチェックしてみてください ..."
     },
     {
         id: 2,
@@ -18,7 +18,7 @@ export const BASICSDATA: Basics[] = [
         date: "2019-03-26",
         url: "/basics/benzohistory",
         picture: "../../assets/images/ValiumAd-benzohistory.jpg",
-        feature: "ベンゾジアゼピンの歴史 原文サイト： A BRIEF HISTORY OF BENZODIAZEPINES ベンゾ ..."          
+        feature: "ベンゾジアゼピン系薬は、製薬業界でトップクラスの売上を誇る処方薬です。 Xanaxとしても知られているアルプラゾラム（訳注：ソラナックスのこと）は、業界で最も売れている錠剤のひとつです。米国だけで、現在ベンゾジアゼピンの処方箋は9400万件であり、これは約3人にひとりが処方されている ..."          
     },
     {
         id: 3,

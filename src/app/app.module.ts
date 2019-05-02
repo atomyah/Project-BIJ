@@ -56,6 +56,11 @@ import { ArticleListComponent } from './admin/article-list/article-list.componen
 import { EditArticleComponent } from './admin/edit-article/edit-article.component';
 import { AddArticleComponent } from './admin/add-article/add-article.component';
 import { AdminTopComponent } from './admin/admin-top/admin-top.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { DoctorsTopComponent } from './component/doctors/doctors-top/doctors-top.component';
+import { DoctorsArticlesComponent } from './component/doctors/doctors-articles/doctors-articles.component';
+import { MediasTopComponent } from './component/medias/medias-top/medias-top.component';
+import { MediasArticlesComponent } from './component/medias/medias-articles/medias-articles.component';
 
 //アプリで使用するモジュール定義
 @NgModule({
@@ -106,6 +111,11 @@ import { AdminTopComponent } from './admin/admin-top/admin-top.component';
     EditArticleComponent,
     AddArticleComponent,
     AdminTopComponent,
+    AdminLoginComponent,
+    DoctorsTopComponent,
+    DoctorsArticlesComponent,
+    MediasTopComponent,
+    MediasArticlesComponent,
   ],
 
   // DIするサービス 
