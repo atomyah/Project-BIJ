@@ -17,8 +17,19 @@
       著者：<span [innerHTML]="item.author"></span>
       <p [innerHTML]="item.author_prof | safe: 'html'"></p>
       <br />
+   <!--id="TwitterSharebutton"はツイッターシェアボタンのためのid. introduction.component.ts参照 -->
+   <table border="0">
+      <tbody>
+        <th></th><th style="width:100%;"></th><th></th>
+        <tr>
+          <td id="beforeTwitterSharebutton"></td>
+          <!--ここにTwitterボタン.<td>タグもintroduction.component.ts内のスクリプトで作ります-->
+        </tr>
+      </tbody>
+    </table>
       <br />
-
+      <br />
+      <br />
     </mat-card-content>
   </mat-card>
   </div>

@@ -15,12 +15,14 @@ export class BenzohistoryComponent implements OnInit {
   title: string;
 
   // コンストラクタでValueSharedServiceを呼び出す
-  constructor(public router: Router, private valueSharedService: ValueSharedService) { }
+  constructor(public router: Router, private valueSharedService: ValueSharedService) {   
+   }
 
   ngOnInit() {
     this.title = 'ベンゾジアゼピンの歴史';
     this.valueSharedService.currentTitle = this.title;
     this.valueSharedService.basicsdata = this.basicsdata;
   }
+
 
 }

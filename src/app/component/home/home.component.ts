@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {MatCardModule} from '@angular/material/card';
 // ValueSharedServiceをインポート
 import { ValueSharedService } from '../../service/value-shared.service';
 
