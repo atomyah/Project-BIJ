@@ -21,7 +21,7 @@ export class MediasArticlesComponent implements OnInit, AfterViewInit {
   currentURL: string; // Twitterシェアボタン設置に使用
   articlenum: string; // articleのid番号をarticleid変数に格納
 
-  constructor(public router: ActivatedRoute, private valueSharedService: ValueSharedService, private db: AngularFirestore) {
+  constructor(private route: Router, public router: ActivatedRoute, private valueSharedService: ValueSharedService, private db: AngularFirestore) {
     this.articlenum = this.router.snapshot.paramMap.get('num');
     this.mediasarticlesRef = this.db.collection<MediasArticles>('mediasarticles', ref =>  // where検索文
     ref.where('num', '==', this.articlenum));

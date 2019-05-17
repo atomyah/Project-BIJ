@@ -1,0 +1,41 @@
+.post-box {
+    border: gray solid 2px;
+    padding: 1em;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 600px;
+}
+
+.haba {
+    width: 100%;
+  }
+    
+    
+mat-form-field {
+    width: 100%;
+}
+
+.user-box {
+    border: 0px;
+    width: 600px;
+    min-height: 100px;
+    padding: 10px;
+    word-break: break-all;
+    border-radius: 20px;
+    background-color: aliceblue;
+  }
+
+  .admin-box {
+    border: 0px;
+    width: 600px;
+    min-height: 100px;
+    padding: 10px;
+    word-break: break-all;
+    border-radius: 20px;
+    background-color: cornsilk;
+    margin: 0 auto;
+  }
+
+.pre-wrap {
+    white-space: pre-wrap;
+}

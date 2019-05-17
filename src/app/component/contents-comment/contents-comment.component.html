@@ -1,0 +1,43 @@
+  <!--簡単なやり方だとInvalidPipeArgument: '[object Object]' for pipe 'AsyncPipe'というエラーで'| async'をつけない…-->
+    <!--簡単なやり方だとなぜか*ngIf="post.uid=''"が使えない…-->
+  <br>
+  <div style="display:inline-block; width: 90%" *ngFor="let post of posts | async">
+      <div *ngIf="post.uid !== ''">
+        <div class="user-box pre-wrap">
+        <p>名前：{{ post.userName }}</p>
+        <p>コメント：{{ post.message }}</p>
+        <p style="text-align:right; font-size: smaller">投稿No.{{ post.id }}</p>
+        <p style="text-align:right; font-size: smaller">投稿日時：{{ post.created }}</p>
+        <p style="text-align:right; font-size: smaller; visibility:hidden">UID: {{post.uid}}</p> <!--visiblity:hiddenを外せば表示される-->
+        </div>
+      </div>
+      <div *ngIf="post.uid == ''">
+          <div class="admin-box pre-wrap">
+          <p>名前：{{ post.userName }}</p>
+          <p>コメント：{{ post.message }}</p>
+          <p style="text-align:right; font-size: smaller">投稿No.{{ post.id }}</p>
+          <p style="text-align:right; font-size: smaller">投稿日時：{{ post.created }}</p>
+          <p style="text-align:right; font-size: smaller; visibility:hidden">UID: {{post.uid}}</p>
+          </div>
+        </div>
+      <br>
+  </div>
+  
+  <div class="post-box">
+     <form #f="ngForm" (ngSubmit)="addPost()" name="form">       
+        <mat-form-field>
+               <mat-label>名前</mat-label>
+                 <input matInput placeholder="ハンドルネーム" name="userName" required [(ngModel)]="userName">
+       </mat-form-field>
+       <br>
+       <mat-form-field>
+               <mat-label>コメント</mat-label>
+                 <textarea class="textarea" matInput cdkTextareaAutosize cdkAutosizeMaxRows="100" cdkAutosizeMinRows="10" width="100%" placeholder="コメント" name="message" required [(ngModel)]="message"></textarea>
+       </mat-form-field>
+            <button type="submit" mat-flat-button color="accent" [disabled]="!f.form.valid">投稿</button>
+            <hr>
+            書き込みする場合はまずサインインしてください。
+            <br>この作業で個人情報が漏れることはありません。
+            <button mat-flat-button color="primary" (click)="goToLink('login')">サインイン画面へ</button>
+    </form>
+  </div> 

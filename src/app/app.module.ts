@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';  // 追加
 import { AngularFireModule } from '@angular/fire';  // 追加
 import { AngularFirestoreModule } from '@angular/fire/firestore'; // 追加
 import { AngularFireAuthModule } from '@angular/fire/auth'; // 追加
+import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular'; // 追加.FirebaseUIのモジュール
 
 
 //Material2モジュールのインポート
@@ -61,6 +62,49 @@ import { DoctorsTopComponent } from './component/doctors/doctors-top/doctors-top
 import { DoctorsArticlesComponent } from './component/doctors/doctors-articles/doctors-articles.component';
 import { MediasTopComponent } from './component/medias/medias-top/medias-top.component';
 import { MediasArticlesComponent } from './component/medias/medias-articles/medias-articles.component';
+import { ContentsCommentComponent } from './component/contents-comment/contents-comment.component';
+import { LoginFirebaseUIComponent } from './component/login-firebase-ui/login-firebase-ui.component';
+
+
+// FirebaseUI初期化コード
+const firebaseUiAuthConfig: firebaseui.auth.Config = {
+  autoUpgradeAnonymousUsers: false, // 匿名認証ユーザー自動アップグレード
+  signInFlow: 'popup', // redirect or popup
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    {
+      scopes: [
+        'public_profile',
+        'email',
+        'user_likes',
+        'user_friends'
+      ],
+      customParameters: {
+        'auth_type': 'reauthenticate'
+      },
+      provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID
+    },
+
+    firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+  //  firebase.auth.GithubAuthProvider.PROVIDER_ID,
+    {
+      requireDisplayName: false,
+      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
+    },
+    firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+  //  firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+  ],
+
+  /*
+  tosUrl: 'http://localhost:6200/TOS', // 'Team Of Serviceのリンク先URL'
+  privacyPolicyUrl: 'プライバシーポリシーのURL',
+  signInSuccessUrl: 'http://localhost:6200/home',
+  credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM,
+  siteName: 'projectA', 
+  */
+
+};
+
 
 //アプリで使用するモジュール定義
 @NgModule({
@@ -90,8 +134,9 @@ import { MediasArticlesComponent } from './component/medias/medias-articles/medi
     RouterModule.forRoot(AppRoutes),
     //Firebaseの定義
     AngularFireModule.initializeApp(environment.firebase), // 追加
-    AngularFirestoreModule,  // 追加
-    AngularFireAuthModule,  // 追加
+    AngularFirestoreModule,  // 追加.Firestore用モジュール
+    AngularFireAuthModule,  // 追加.angularfireのAuth用モジュール
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),　// FirebaseUI用のモジュール
   ],
 
   // 作成したコンポーネント 
@@ -116,6 +161,8 @@ import { MediasArticlesComponent } from './component/medias/medias-articles/medi
     DoctorsArticlesComponent,
     MediasTopComponent,
     MediasArticlesComponent,
+    ContentsCommentComponent,
+    LoginFirebaseUIComponent,
   ],
 
   // DIするサービス 

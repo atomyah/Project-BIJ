@@ -34,4 +34,9 @@
   </mat-card>
   </div>
 
+  <!-- 減薬FAQのページにのみ、コメント機能(contents-comment.component)を埋め込む-->
+  <ng-container *ngIf="route.url === '/patients-article/7'">
+    <app-contents-comment></app-contents-comment>
+  </ng-container>
+
 </body>

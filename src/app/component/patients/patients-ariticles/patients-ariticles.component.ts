@@ -27,7 +27,7 @@ AfterViewChecked, OnDestroy {
 
 
   // 現在ユーザーが表示しているURLやそのパラメータを参照するにはActivatedRouteが必要
-  constructor(public router: ActivatedRoute, private valueSharedService: ValueSharedService, private db: AngularFirestore) {
+  constructor(private route: Router, public router: ActivatedRoute, private valueSharedService: ValueSharedService, private db: AngularFirestore) {
     this.articlenum = this.router.snapshot.paramMap.get('num');
     this.patientsarticlesRef = this.db.collection<PatientsArticles>('patientsarticles', ref =>  // where検索文
     ref.where('num', '==', this.articlenum));
@@ -76,7 +76,7 @@ AfterViewChecked, OnDestroy {
   div.parentNode.insertBefore(td, div.nextSibling);//ボタンを置きたい場所にtdタグを追加
   div.parentNode.insertBefore(element,div.nextSibling);//ボタンを置きたい場所にaタグを追加
   div.parentNode.insertBefore(script,div.nextSibling);//scriptタグを追加してJSを実行し、aタグをボタンに変身させる
-                      }, 3000);
+                      }, 8000);
 }
 
     //以降はイベント履歴の記録用
