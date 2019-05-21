@@ -16,12 +16,12 @@ import { AngularFirestoreModule } from '@angular/fire/firestore'; // 追加
 import { AngularFireAuthModule } from '@angular/fire/auth'; // 追加
 import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular'; // 追加.FirebaseUIのモジュール
 
-
 //Material2モジュールのインポート
 import {
   MatButtonModule,
   MatCardModule,
   MatDialogModule,
+  MAT_DIALOG_DEFAULT_OPTIONS,  // MatDialogに必要な記述
   MatExpansionModule,
   MatFormFieldModule,
   MatIconModule,
@@ -64,6 +64,7 @@ import { MediasTopComponent } from './component/medias/medias-top/medias-top.com
 import { MediasArticlesComponent } from './component/medias/medias-articles/medias-articles.component';
 import { ContentsCommentComponent } from './component/contents-comment/contents-comment.component';
 import { LoginFirebaseUIComponent } from './component/login-firebase-ui/login-firebase-ui.component';
+import { EditDialogComponent } from './component/contents-comment/edit-dialog/edit-dialog.component';
 
 
 // FirebaseUI初期化コード
@@ -163,11 +164,16 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MediasArticlesComponent,
     ContentsCommentComponent,
     LoginFirebaseUIComponent,
+    EditDialogComponent,
   ],
 
   // DIするサービス 
   providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}  // MatDialogに必要な記述
   ],
+
+  // MatDialogに必要な記述
+  entryComponents: [EditDialogComponent],
 
     // 初めに呼び出すコンポーネント
   bootstrap: [RootComponent]

@@ -9,6 +9,11 @@
         <p style="text-align:right; font-size: smaller">投稿No.{{ post.id }}</p>
         <p style="text-align:right; font-size: smaller">投稿日時：{{ post.created }}</p>
         <p style="text-align:right; font-size: smaller; visibility:hidden">UID: {{post.uid}}</p> <!--visiblity:hiddenを外せば表示される-->
+            <div *ngIf="(user | async) || {} as user">
+              <p *ngIf="user.uid == ''">
+                  <button mat-raised-button (click)="openDialog(post)">編集</button>
+              </p>
+            </div>
         </div>
       </div>
       <div *ngIf="post.uid == ''">
@@ -18,6 +23,11 @@
           <p style="text-align:right; font-size: smaller">投稿No.{{ post.id }}</p>
           <p style="text-align:right; font-size: smaller">投稿日時：{{ post.created }}</p>
           <p style="text-align:right; font-size: smaller; visibility:hidden">UID: {{post.uid}}</p>
+            <div *ngIf="(user | async) || {} as user">
+              <p *ngIf="user.uid == ''">
+                  <button mat-raised-button (click)="openDialog(post)">編集</button>
+              </p>
+            </div>
           </div>
         </div>
       <br>
@@ -36,8 +46,8 @@
        </mat-form-field>
             <button type="submit" mat-flat-button color="accent" [disabled]="!f.form.valid">投稿</button>
             <hr>
-            書き込みする場合はまずサインインしてください。
+            投稿する場合はまず最初にサインイン画面にてサインインしてください。
             <br>この作業で個人情報が漏れることはありません。
-            <button mat-flat-button color="primary" (click)="goToLink('login')">サインイン画面へ</button>
+            <button mat-flat-button color="primary" (click)="goToLink('login')">サインイン画面へ移動</button>
     </form>
   </div> 

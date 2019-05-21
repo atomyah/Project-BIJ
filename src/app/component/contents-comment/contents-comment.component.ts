@@ -8,6 +8,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import { formatDate } from '@angular/common'; // 現在日付獲得用
 import { map } from "rxjs/operators"; // 追加
+import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'app-contents-comment',
@@ -30,9 +32,10 @@ export class ContentsCommentComponent implements OnInit {
     private valueSharedService: ValueSharedService, 
     private db: AngularFirestore,
     private afAuth: AngularFireAuth,
-    @Inject(LOCALE_ID) private locale: string // 現在日付獲得用
+    @Inject(LOCALE_ID) private locale: string, // 現在日付獲得用
+    public dialog: MatDialog,
   ) { 
-      // uidを獲得するためにauthStateかsubscribeでuserのuidを取ってくる
+      // uidを獲得するためにauthStateからsubscribeでuserのuidを取ってくる
     // 参考：https://stackoverflow.com/questions/45829611/safest-way-to-get-user-id-in-angularfire2
       this.user = this.afAuth.authState;
       this.afAuth.authState.subscribe(user => {
@@ -49,6 +52,7 @@ export class ContentsCommentComponent implements OnInit {
   
   ngOnInit() {
     this.getPosts();
+    console.log('◆◆◆' + this.uid)
   }
 
 
@@ -100,6 +104,7 @@ export class ContentsCommentComponent implements OnInit {
       console.log('subscribeしたものは、' + this.posts.subscribe() );
   }
 
+
   deletePost(post: Post) {
     if (confirm("消しちゃうよ～?")) {
     this.postsCollection
@@ -111,8 +116,20 @@ export class ContentsCommentComponent implements OnInit {
     }
   }
 
+  // 別ウインドウでfirebaseui画面を開く
   goToLink(url: string){
     window.open(url, "_blank", "width=400,height=500");
+  }
+
+
+
+  // Mat-Dialogでedit-dialog.component（編集用モーダル）を開く
+  openDialog(post: Post) {
+    this.dialog.open(EditDialogComponent, {
+      width: '600px',
+      data: post,
+      disableClose: false
+    });
   }
 
 }
