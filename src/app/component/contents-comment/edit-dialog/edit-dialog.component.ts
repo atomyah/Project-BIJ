@@ -35,7 +35,7 @@ export class EditDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  updatePost(post:Post, message:string) {
+  updatePost(post:Post) {
     this.db
     .collection('commentsfaqs')
     .doc(post.id)   

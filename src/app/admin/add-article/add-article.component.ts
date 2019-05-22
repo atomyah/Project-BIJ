@@ -11,6 +11,7 @@ import { FormBuilder,FormControl,FormGroup,Validators } from '@angular/forms';
   styleUrls: ['../../common.css', './add-article.component.css']
 })
 export class AddArticleComponent implements OnInit {
+
   articlesRef: AngularFirestoreCollection<Article>;
   articles: Observable<Article[]>;
 
@@ -77,17 +78,7 @@ get feature() {
 }
 
 // データ追加メソッド
-    onSubmit(
-      num:string,
-      title:string,
-      title_origin:string,
-      date:string,
-      content:string,
-      author:string,
-      author_prof:string,
-      pictpath:string,
-      feature:string
-      ) {
+    onSubmit() {
         console.log("■■■" + this.collectionNameValue);       
       this.articlesRef.add({
         num: this.num.value,

@@ -13,12 +13,13 @@ export class AdminTopComponent implements OnChanges, OnInit,
 DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit,
 AfterViewChecked, OnDestroy {
   
+  selected = 'patientsarticles';
 
   constructor(
     private router: Router, 
     private title: Title, 
     private fb: FormBuilder,
-    private authService: AuthService
+    public authService: AuthService
     ) { }
 
   //フォームグループ

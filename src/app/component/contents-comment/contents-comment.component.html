@@ -2,7 +2,7 @@
     <!--簡単なやり方だとなぜか*ngIf="post.uid=''"が使えない…-->
   <br>
   <div style="display:inline-block; width: 90%" *ngFor="let post of posts | async">
-      <div *ngIf="post.uid !== ''">
+      <div *ngIf="post.uid !== 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
         <div class="user-box pre-wrap">
         <p>名前：{{ post.userName }}</p>
         <p>コメント：{{ post.message }}</p>
@@ -10,13 +10,13 @@
         <p style="text-align:right; font-size: smaller">投稿日時：{{ post.created }}</p>
         <p style="text-align:right; font-size: smaller; visibility:hidden">UID: {{post.uid}}</p> <!--visiblity:hiddenを外せば表示される-->
             <div *ngIf="(user | async) || {} as user">
-              <p *ngIf="user.uid == ''">
+              <p *ngIf="user.uid == 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
                   <button mat-raised-button (click)="openDialog(post)">編集</button>
               </p>
             </div>
         </div>
       </div>
-      <div *ngIf="post.uid == ''">
+      <div *ngIf="post.uid == 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
           <div class="admin-box pre-wrap">
           <p>名前：{{ post.userName }}</p>
           <p>コメント：{{ post.message }}</p>
@@ -24,7 +24,7 @@
           <p style="text-align:right; font-size: smaller">投稿日時：{{ post.created }}</p>
           <p style="text-align:right; font-size: smaller; visibility:hidden">UID: {{post.uid}}</p>
             <div *ngIf="(user | async) || {} as user">
-              <p *ngIf="user.uid == ''">
+              <p *ngIf="user.uid == 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
                   <button mat-raised-button (click)="openDialog(post)">編集</button>
               </p>
             </div>
