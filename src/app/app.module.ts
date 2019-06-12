@@ -19,6 +19,7 @@ import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular'; // 
 //Material2モジュールのインポート
 import {
   MatButtonModule,
+  MatBadgeModule,
   MatCardModule,
   MatDialogModule,
   MAT_DIALOG_DEFAULT_OPTIONS,  // MatDialogに必要な記述
@@ -63,7 +64,6 @@ import { DoctorsArticlesComponent } from './component/doctors/doctors-articles/d
 import { MediasTopComponent } from './component/medias/medias-top/medias-top.component';
 import { MediasArticlesComponent } from './component/medias/medias-articles/medias-articles.component';
 import { ContentsCommentComponent } from './component/contents-comment/contents-comment.component';
-import { LoginFirebaseUIComponent } from './component/login-firebase-ui/login-firebase-ui.component';
 import { EditDialogComponent } from './component/contents-comment/edit-dialog/edit-dialog.component';
 
 
@@ -72,8 +72,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   autoUpgradeAnonymousUsers: false, // 匿名認証ユーザー自動アップグレード
   signInFlow: 'popup', // redirect or popup
   signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-  /*
+  // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+  /*  
     {
       scopes: [
         'public_profile',
@@ -88,14 +88,15 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     },
   */
 
-    firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+  //  firebase.auth.TwitterAuthProvider.PROVIDER_ID,
   //  firebase.auth.GithubAuthProvider.PROVIDER_ID,
-    {
+   {
       requireDisplayName: false,
       provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
-    },
-    firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-  //  firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+   },
+ 
+  //  firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+  　firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
   ],
 
   /*
@@ -103,7 +104,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   privacyPolicyUrl: 'プライバシーポリシーのURL',
   signInSuccessUrl: 'http://localhost:6200/home',
   credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM,
-  siteName: 'projectA', 
+  siteName: 'benzoinfojapan', 
   */
 
 };
@@ -117,6 +118,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
+    MatBadgeModule,
     MatCardModule,
     MatExpansionModule,
     MatFormFieldModule,
@@ -165,7 +167,6 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MediasTopComponent,
     MediasArticlesComponent,
     ContentsCommentComponent,
-    LoginFirebaseUIComponent,
     EditDialogComponent,
   ],
 

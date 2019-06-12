@@ -22,8 +22,7 @@ import { AddArticleComponent } from './admin/add-article/add-article.component';
 import { AdminTopComponent } from './admin/admin-top/admin-top.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminGuard } from  './admin/admin.guard';
-import { LoginFirebaseUIComponent } from './component/login-firebase-ui/login-firebase-ui.component';　// 追加.FirebaseUI用
-
+import { ContentsCommentComponent } from './component/contents-comment/contents-comment.component';
 
 
 //urlパスと表示するコンポーネントの関連づけ
@@ -46,5 +45,5 @@ export const AppRoutes: Routes = [
     {path: "admin/add-article", component: AddArticleComponent, canActivate: [AdminGuard]},
     {path: "admin/admin-top", component: AdminTopComponent, canActivate: [AdminGuard]},    
     {path: "admin", component: AdminLoginComponent},
-    {path: "login", component: LoginFirebaseUIComponent}
+    {path: "forum", component: ContentsCommentComponent},
 ];

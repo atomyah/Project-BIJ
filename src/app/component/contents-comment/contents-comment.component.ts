@@ -17,6 +17,7 @@ import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
   styleUrls: ['../../common.css', './contents-comment.component.css']
 })
 export class ContentsCommentComponent implements OnInit {
+  title: string;
   message: string;
   userName: string;
   uid: string;
@@ -53,6 +54,8 @@ export class ContentsCommentComponent implements OnInit {
   ngOnInit() {
     this.getPosts();
     console.log('◆◆◆' + this.uid)
+    this.title = '質問フォーラム';
+    this.valueSharedService.currentTitle = this.title;
   }
 
 
@@ -116,12 +119,15 @@ export class ContentsCommentComponent implements OnInit {
     }
   }
 
-  // 別ウインドウでfirebaseui画面を開く
+  // 別ウインドウでfirebaseui画面を開く(やめた。2019/6/11)
   goToLink(url: string){
     window.open(url, "_blank", "width=400,height=500");
   }
 
-
+  // サインアウト
+  async logout() {
+    this.afAuth.auth.signOut();
+  }
 
   // Mat-Dialogでedit-dialog.component（編集用モーダル）を開く
   openDialog(post: Post) {

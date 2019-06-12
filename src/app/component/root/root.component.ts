@@ -44,6 +44,10 @@ export class RootComponent {
       await this.router.navigate(["/medias-top"]);
     }
 
+    async goForum() {
+      await this.router.navigate(["/forum"]);
+    }
+
 //トップページへ戻る
     async goHome() {
      await this.router.navigate(['/']);

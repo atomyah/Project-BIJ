@@ -7,7 +7,6 @@ import { DoctorsArticles } from './../../class/doctors';  // Doctorsデータタ
 import { MediasArticles } from './../../class/medias';  // Mediasデータタイプインターフェース
 import { Observable } from 'rxjs'; // 正式名称「Reactive Extensions for JavaScript」
 
-
 @Component({
   selector: 'app-contents-header',
   templateUrl: './contents-header.component.html',

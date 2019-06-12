@@ -1,5 +1,38 @@
   <!--簡単なやり方だとInvalidPipeArgument: '[object Object]' for pipe 'AsyncPipe'というエラーで'| async'をつけない…-->
     <!--簡単なやり方だとなぜか*ngIf="post.uid=''"が使えない…-->
+<!--コンテンツヘッダーを挿入-->
+<app-contents-header></app-contents-header>
+<!--コンテンツヘッダーのクラス"contents-container"の定義はすべてcontents-header.cssにある-->
+
+<mat-card class="introduction-card">
+    <mat-card-header>
+      <div mat-card-avatar class="introduction-header-image"></div>
+      <mat-card-title>{{ title }}</mat-card-title>
+      <mat-card-subtitle>benzoinfojapan</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content style="font-size:medium">
+    ご質問、ご意見はこちらでご自由にどうぞ。わたしでお答えできることはお答えしますし、分からない・答えられない事などはスルーさせていただきます。
+    患者（被害者）の方だけでなく、ドクター、メディアの方々のご質問、ご意見もご自由にどうぞ。<br>
+    以下の利用規約をかならずご覧の上ご利用なさってください。
+    <ul>
+      <li>
+        完全匿名性とします。利用者は本名を連想させないニックネームで書き込みを行ってください。そして基本的に同一のニックネームをお使いください。
+      </li>
+      <li>
+        宣伝、広告、告知、勧誘、有害サイトや商用サイトなどの投稿およびサイトへのリンク、などに当たる投稿は削除いたします。
+      </li>
+      <li>
+        個人情報はけして書き込まないように。また個人・団体を特定できる書き込みも記載しないようにしてください。
+      </li>
+      <li>
+        ここで投稿された情報の利用に関し、当サイトは一切の責任を放棄します。必ず自己責任で判断してください。
+      </li>
+      <li>
+        患者の方の個人的な服薬・減薬相談にはお答えできません。
+      </li>
+    </ul>
+</mat-card-content>
+</mat-card>
   <br>
   <div style="display:inline-block; width: 90%" *ngFor="let post of posts | async">
       <div *ngIf="post.uid !== 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
@@ -33,7 +66,8 @@
       <br>
   </div>
   
-  <div class="post-box">
+<div *ngIf="(user | async) || {} as user">  
+  <div *ngIf="user.uid; else notLoggedIn" class="post-box">
      <form #f="ngForm" (ngSubmit)="addPost()" name="form">       
         <mat-form-field>
                <mat-label>名前</mat-label>
@@ -45,9 +79,64 @@
                  <textarea class="textarea" matInput cdkTextareaAutosize cdkAutosizeMaxRows="100" cdkAutosizeMinRows="10" width="100%" placeholder="コメント" name="message" required [(ngModel)]="message"></textarea>
        </mat-form-field>
             <button type="submit" mat-flat-button color="accent" [disabled]="!f.form.valid">投稿</button>
-            <hr>
-            投稿する場合はまず最初にサインイン画面にてサインインしてください。
-            <br>この作業で個人情報が漏れることはありません。
-            <button mat-flat-button color="primary" (click)="goToLink('login')">サインイン画面へ移動</button>
     </form>
-  </div> 
+    <p>投稿が終わったらログアウトボタンをクリックしてログアウトしてください<img src="../../../assets/images/pointer.png"></p>
+      <button mat-flat-button color="warn" (click)="logout()">ログアウト</button>
+  </div>
+  <ng-template #notLoggedIn>
+      <!-- 認証されていない場合 -->
+    <div class="post-box">
+      <p style="margin: 0 auto;">書き込みする場合は下記いずれかの方法でサインイン（認証作業）してください。</p>
+      <firebase-ui>
+          (signInSuccessWithAuthResult)="successCallback($event)"
+          (signInFailure)="errorCallback($event)">
+      </firebase-ui>
+    </div>
+  </ng-template>
+</div>
+
+
+<br><br><hr><br>
+
+<mat-card class="introduction-card">
+    <mat-card-header>
+      <div mat-card-avatar class="introduction-header-image"></div>
+      <mat-card-title>投稿方法</mat-card-title>
+      <mat-card-subtitle>簡単な作業ですが投稿に必要なサインインの作業方法を説明します。<br></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content style="font-size:medium">
+    <ul>
+      <li>
+          「書き込みする場合は下記いずれかの方法でサインイン（認証作業）してください」とある下にボタンが二つあります。通常は赤いSign in with Emailボタンをクリックしてください。
+          <br><img src='../../../assets/images/Forum_button1.png' width="200px"><br><br>
+      </li>
+      <li>
+        このような小さな画面が開きますので、あなたのメールアドレスを入力。<br><img src='../../../assets/images/Forum_email1.png' width="300px">
+        <br><br>
+      </li>
+      <li>
+        NEXTボタンをクリックすると、パスワードの入力を求められます。最低6桁で英語と数字を含んだ任意のパスワードを入力。<br><img src='../../../assets/images/Forum_email2.png' width="300px">
+        <br><br>
+      </li>
+      <li>
+        SING INボタンをクリックすれば、投稿入力フォームが出現しますのでそのまま投稿してください。おわったら赤いログアウトボタンをクリックしてログアウト。
+        <br><img src='../../../assets/images/Forum_email3.png' width="300px">
+        <br><br>
+      </li>
+      <li>
+        一時的に使用する（投稿する）だけであればContinue as guestという白いボタンのをクリックするだけで投稿可能になります。この場合は何も入力する必要はありません。
+        <br><img src='../../../assets/images/Forum_button2.png' width="200px">
+        <br><br>
+      </li>
+    </ul>
+</mat-card-content>
+</mat-card>
+
+
+
+
+
+
+
+  <br />
+  <br />

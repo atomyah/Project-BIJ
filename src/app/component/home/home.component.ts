@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
 
   // ngOnInit()の中でいいのかわからないがValueSharedService.childTitleにこのページのタイトルを渡す。
   ngOnInit() {
-    this.title = 'このサイトの目的';
+    this.title = 'ホーム';
     this.valueSharedService.currentTitle = this.title;
   }
 

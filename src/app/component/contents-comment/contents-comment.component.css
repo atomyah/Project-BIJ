@@ -1,9 +1,8 @@
 .post-box {
     border: gray solid 2px;
     padding: 1em;
-    margin-top: 20px;
-    margin-bottom: 40px;
-    width: 600px;
+    margin: 20px;
+    width: 80%;
 }
 
 .haba {
@@ -17,9 +16,10 @@ mat-form-field {
 
 .user-box {
     border: 0px;
-    width: 600px;
+    width: 70%;
     min-height: 100px;
     padding: 10px;
+    margin:10px;
     word-break: break-all;
     border-radius: 20px;
     background-color: aliceblue;
@@ -27,15 +27,24 @@ mat-form-field {
 
   .admin-box {
     border: 0px;
-    width: 600px;
+    width: 70%;
     min-height: 100px;
     padding: 10px;
     word-break: break-all;
     border-radius: 20px;
     background-color: cornsilk;
-    margin: 0 auto;
+    margin: 0 auto;   /*  0 auto; → .admin-boxを中央寄せにしてる */
   }
 
 .pre-wrap {
-    white-space: pre-wrap;
+    white-space: pre-wrap; 
+}
+
+.introduction-card {
+  max-width: 80%; max-width: 1024px;
+}
+
+.introduction-header-image {
+  background-image: url('../../../assets/images/flower-avatar.jpg');
+  background-size: cover;
 }
