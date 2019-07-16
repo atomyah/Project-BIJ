@@ -9,7 +9,7 @@ admin.initializeApp();
 const request = rp.defaults({simple: false});
 
 const FIRESTORE_COLLECTION = 'commentsfaqs';
-const LINE_ACCESS_TOKEN = '';
+const LINE_ACCESS_TOKEN = 'TPLQOqDiwyeKswArXqLIo7G3nlGro1xOiXML6U5URZx';
 
 // functions にデプロイする関数
 // とあるコレクションにドキュメントを作成すると、LINEに通知します。

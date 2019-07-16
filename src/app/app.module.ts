@@ -15,6 +15,7 @@ import { AngularFireModule } from '@angular/fire';  // 追加
 import { AngularFirestoreModule } from '@angular/fire/firestore'; // 追加
 import { AngularFireAuthModule } from '@angular/fire/auth'; // 追加
 import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular'; // 追加.FirebaseUIのモジュール
+import { SeoService } from './service/seo.service'; //SEO対策
 
 //Material2モジュールのインポート
 import {
@@ -67,6 +68,7 @@ import { ContentsCommentComponent } from './component/contents-comment/contents-
 import { EditDialogComponent } from './component/contents-comment/edit-dialog/edit-dialog.component';
 
 
+
 // FirebaseUI初期化コード
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   autoUpgradeAnonymousUsers: false, // 匿名認証ユーザー自動アップグレード
@@ -90,10 +92,10 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 
   //  firebase.auth.TwitterAuthProvider.PROVIDER_ID,
   //  firebase.auth.GithubAuthProvider.PROVIDER_ID,
-   {
-      requireDisplayName: false,
-      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
-   },
+  // {
+  //    requireDisplayName: false,
+  //    provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
+  // },
  
   //  firebase.auth.PhoneAuthProvider.PROVIDER_ID,
   　firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
@@ -172,7 +174,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 
   // DIするサービス 
   providers: [
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}  // MatDialogに必要な記述
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},  // MatDialogに必要な記述
+    SeoService
   ],
 
   // MatDialogに必要な記述

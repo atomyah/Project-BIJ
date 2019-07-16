@@ -21,5 +21,13 @@
     text-align: right;
     color:white;
     font-size: 0.7em;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospaceYuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;   /* 真ん中らへんにもってくる */
 }

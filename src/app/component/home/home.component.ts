@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 // ValueSharedServiceをインポート
 import { ValueSharedService } from '../../service/value-shared.service';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

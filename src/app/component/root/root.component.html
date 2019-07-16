@@ -19,9 +19,10 @@
 
   <!--ヘッダータイトルとベンゾインフォジャパンの表示-->
   <!--1列のmat-toolbarで右寄りになってしまう文字列を適度な位置にする方法：class="fill-remaining-space"のCSSにはflex: 1 1 auto;とする-->
-  <h1>【最大薬害】睡眠薬・精神安定剤 処方量依存</h1>
+  <h1>ベンゾジアゼピン情報センター</h1>
+  <h2 style="font-size:medium; margin-left: 20px">睡眠薬の被害実態と安全な減薬のやり方</h2>  
   <span class="fill-remaining-space"></span>
-  <span style="font-size:small;">ベンゾインフォジャパン</span>
+  <img src="../../../assets/images/logo.png" width="180px">
 
   <!--3本線のバーガーメニュー-->
     <mat-menu #menu="matMenu">
@@ -57,7 +58,7 @@
 
         <button mat-menu-item
             (click)="goForum()">
-         <span matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">質問フォーラム</span>
+         <span>質問フォーラム</span>
     </button>
     </mat-menu>
   </mat-toolbar-row>
@@ -72,12 +73,18 @@
                 <button mat-button [matMenuTriggerFor]="summary">ベンゾジアゼピン概略</button>
                 <mat-menu #summary="matMenu">
                    <button mat-menu-item (click)="goIntroduction()">ベンゾジアゼピン概略</button>
-                   <button mat-menu-item (click)="goBasics()">ベンゾ一般知識</button>
+                   <button mat-menu-item [matMenuTriggerFor]="basics" (click)="goBasics()">ベンゾ一般知識</button>
                  </mat-menu>
+                 <mat-menu #basics="matMenu">
+                  <button mat-menu-item (click)="goDiazepam()">ジアゼパム換算表</button>
+                  <button mat-menu-item (click)="goHistory()">ベンゾジアゼピン歴史</button>
+                  <button mat-menu-item (click)="goWords()">用語集</button>
+                </mat-menu>
+                
                 <button mat-button (click)="goPatients()">患者(被害者)の方へ</button>
                 <button mat-button (click)="goDoctors()">ドクターの方へ</button>
                 <button mat-button (click)="goMedias()">メディアの方へ</button>
-                <button mat-button (click)="goForum()"><span matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">質問フォーラム</span></button>
+                <button mat-button (click)="goForum()"><span>質問フォーラム</span></button>
               </div>
    </mat-toolbar-row>
 </mat-toolbar>
@@ -96,11 +103,25 @@
 <!--フッター-->
 <mat-toolbar
     color="primary"
-    style="position:fixed;bottom:0;left:0;height:30px;width: 100%; max-width:1024px; z-index: 2; justify-content: center"
+    style="position:fixed;bottom:0;left:0;height:20px;width: 100%; max-width:1024px; z-index: 2; justify-content: center"
 >
-    <div id="footer">
-        <span>Copyright © benzoinfojapan</span>
-    </div>
+  <mat-toolbar-row>
+      <table border="0">
+          <tbody>    
+            <tr>
+              <td id="beforeTwitterSharebutton"></td>
+              <!--ここにTwitterボタン.<td>タグもintroduction.component.ts内のスクリプトで作ります-->
+              <td valign="top">
+                <span id="footer">
+                問い合わせはツイッターの方へご連絡ください
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    <span class="example-spacer"></span>
+    <span id="footer">Copyright © benzoinfojapan</span>
+  </mat-toolbar-row>
 </mat-toolbar>
 
 

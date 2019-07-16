@@ -3,6 +3,7 @@ import { BASICSDATA } from '../../../class/basicschildren';
 import { Router, ActivatedRoute } from '@angular/router';
 // ValueSharedServiceをインポート
 import { ValueSharedService } from '../../../service/value-shared.service';
+import {Meta, Title} from '@angular/platform-browser';
 
 
 @Component({
@@ -17,11 +18,24 @@ export class BenzolistComponent implements OnInit {
   currentURL: string;  
 
   // コンストラクタでValueSharedServiceを呼び出す
-  constructor(public router: Router, private valueSharedService: ValueSharedService) { 
+  constructor(public router: Router, private valueSharedService: ValueSharedService,private meta: Meta) { 
     // 現在のURLを取得（Twitterシェアボタン設置に使用）
     // this.currentURL = this.router.snapshot.url[0].path; // 'introduction'を返す
     this.currentURL = location.href; // 'http://localhost:4200/introduction'を返す
-    console.log('■■■■' + this.currentURL)  
+    console.log('■■■■' + this.currentURL)
+      // ［2］メタ情報を追加
+      this.meta.updateTag({
+        name: 'title',
+        content: 'ジアゼパム換算一覧表'
+      })
+      this.meta.updateTag({
+        name: 'description',
+        content: '睡眠薬、抗不安薬（ベンゾジアゼピン薬剤）すべてのジアゼパム換算一覧表です'
+      })
+      this.meta.updateTag({
+        name: 'keywords',
+        content: '睡眠薬,ジアゼパム換算'
+      })
   }
 
   ngOnInit() {
@@ -29,6 +43,7 @@ export class BenzolistComponent implements OnInit {
     this.valueSharedService.currentTitle = this.title;
     this.valueSharedService.basicsdata = this.basicsdata;
   }
+
 
   // twitterシェアボタンの置き方。以下の通りAfterViewInit()で後から
  // 以下のようなタグを作ってインサートする。

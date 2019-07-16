@@ -4,41 +4,35 @@
 <app-contents-header></app-contents-header>
 <!--コンテンツヘッダーのクラス"contents-container"の定義はすべてcontents-header.cssにある-->
 
-<mat-card class="introduction-card">
-    <mat-card-header>
-      <div mat-card-avatar class="introduction-header-image"></div>
-      <mat-card-title>{{ title }}</mat-card-title>
-      <mat-card-subtitle>benzoinfojapan</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content style="font-size:medium">
-    ご質問、ご意見はこちらでご自由にどうぞ。わたしでお答えできることはお答えしますし、分からない・答えられない事などはスルーさせていただきます。
-    患者（被害者）の方だけでなく、ドクター、メディアの方々のご質問、ご意見もご自由にどうぞ。<br>
+<div class="myContainerMain">
+      <h1>{{ title }}</h1>
+
+    ご質問、ご意見はこちらでご自由にどうぞ。わたしでお答えできることはお答えしますし、分からない・答えられない事などはそのように返答いたします。
+    パキシルなどSSRIの離脱で苦労なさっている方もいますが、わたしはベンゾジアゼピンのことしかわかりません。
     以下の利用規約をかならずご覧の上ご利用なさってください。
     <ul>
       <li>
-        完全匿名性とします。利用者は本名を連想させないニックネームで書き込みを行ってください。そして基本的に同一のニックネームをお使いください。
+        完全匿名性とします。そして同一のニックネームをお使いください（複数ニックネームを使用して別人を演じても認証作業によって同一人物とわかるようになっています）
       </li>
       <li>
-        宣伝、広告、告知、勧誘、有害サイトや商用サイトなどの投稿およびサイトへのリンク、などに当たる投稿は削除いたします。
+        宣伝、勧誘、商用サイトへのリンク、また反精神医療・薬物療法否定を訴える投稿は削除いたします。
       </li>
       <li>
-        個人情報はけして書き込まないように。また個人・団体を特定できる書き込みも記載しないようにしてください。
+        ここで投稿された情報の利用に関し当サイトは一切の責任を放棄します。必ず自己責任で判断してください。
       </li>
       <li>
-        ここで投稿された情報の利用に関し、当サイトは一切の責任を放棄します。必ず自己責任で判断してください。
-      </li>
-      <li>
-        患者の方の個人的な服薬・減薬相談にはお答えできません。
+        薬事法違反になるため個人的な服薬指示・減薬指導にはお答えできません。事例やわたしのアイデアを紹介してもあくまで参考です。<strong>必ず自己責任で判断してください</strong>。
       </li>
     </ul>
-</mat-card-content>
-</mat-card>
+</div>
   <br>
+<mat-card class="introduction-card">
+  <mat-card-content>
   <div style="display:inline-block; width: 90%" *ngFor="let post of posts | async">
       <div *ngIf="post.uid !== 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
         <div class="user-box pre-wrap">
         <p>名前：{{ post.userName }}</p>
-        <p>コメント：{{ post.message }}</p>
+        <p [innerHTML]="post.message | safe: 'html'"></p> <!--safe.pipe効かない…？？？-->
         <p style="text-align:right; font-size: smaller">投稿No.{{ post.id }}</p>
         <p style="text-align:right; font-size: smaller">投稿日時：{{ post.created }}</p>
         <p style="text-align:right; font-size: smaller; visibility:hidden">UID: {{post.uid}}</p> <!--visiblity:hiddenを外せば表示される-->
@@ -52,7 +46,7 @@
       <div *ngIf="post.uid == 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
           <div class="admin-box pre-wrap">
           <p>名前：{{ post.userName }}</p>
-          <p>コメント：{{ post.message }}</p>
+          <p [innerHTML]="post.message | safe: 'html'"></p> <!--safe.pipe効かない…？？？-->
           <p style="text-align:right; font-size: smaller">投稿No.{{ post.id }}</p>
           <p style="text-align:right; font-size: smaller">投稿日時：{{ post.created }}</p>
           <p style="text-align:right; font-size: smaller; visibility:hidden">UID: {{post.uid}}</p>
@@ -86,7 +80,8 @@
   <ng-template #notLoggedIn>
       <!-- 認証されていない場合 -->
     <div class="post-box">
-      <p style="margin: 0 auto;">書き込みする場合は下記いずれかの方法でサインイン（認証作業）してください。</p>
+      <p style="margin: 0 auto;">書き込みする場合はサインイン（認証作業）してください。下の白いボタン[Continue as guest]を
+      ワンクリックするだけで投稿可能となります。</p>
       <firebase-ui>
           (signInSuccessWithAuthResult)="successCallback($event)"
           (signInFailure)="errorCallback($event)">
@@ -94,7 +89,8 @@
     </div>
   </ng-template>
 </div>
-
+</mat-card-content>
+</mat-card>
 
 <br><br><hr><br>
 
@@ -102,12 +98,25 @@
     <mat-card-header>
       <div mat-card-avatar class="introduction-header-image"></div>
       <mat-card-title>投稿方法</mat-card-title>
-      <mat-card-subtitle>簡単な作業ですが投稿に必要なサインインの作業方法を説明します。<br></mat-card-subtitle>
+      <mat-card-subtitle>とても簡単な作業ですが投稿に必要なサインインの作業方法を説明します。
+        この作業は<strong>スパム投稿の防止と管理人の承認作業の省略</strong>のために導入しました。<br>
+      </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content style="font-size:medium">
     <ul>
       <li>
-          「書き込みする場合は下記いずれかの方法でサインイン（認証作業）してください」とある下にボタンが二つあります。通常は赤いSign in with Emailボタンをクリックしてください。
+        基本的にはContinue as guestという白いボタンをクリックするだけで投稿可能になります。何も入力する必要はありません。
+        ゲスト認証と呼ばれます。
+        <br><img src='../../../assets/images/Forum_button2.png' width="200px"><br>
+        クリック後、以下のように投稿入力フォームが出現しますのでそのまま投稿してください。<br>
+        <br><img src='../../../assets/images/Forum_email3.png' width="400px">
+        <br>入力し[投稿]ボタンをクリックですぐに反映されます。終りましたら赤い[ログアウト]ボタンをクリックしてログアウト。
+        <br><br>【おわり】
+        <br><br><br><br>
+      </li>
+<!--       
+      <li>
+          赤いSign in with Emailボタンはメールアドレスとパスワードで認証する方法です。本認証となります。メールアドレスが表示されることはありません。
           <br><img src='../../../assets/images/Forum_button1.png' width="200px"><br><br>
       </li>
       <li>
@@ -120,14 +129,16 @@
       </li>
       <li>
         SING INボタンをクリックすれば、投稿入力フォームが出現しますのでそのまま投稿してください。おわったら赤いログアウトボタンをクリックしてログアウト。
-        <br><img src='../../../assets/images/Forum_email3.png' width="300px">
-        <br><br>
+        <br><img src='../../../assets/images/Forum_email3.png' width="400px">
+        <br><br>【おわり】
+        <br><br><br><br>
       </li>
       <li>
-        一時的に使用する（投稿する）だけであればContinue as guestという白いボタンのをクリックするだけで投稿可能になります。この場合は何も入力する必要はありません。
-        <br><img src='../../../assets/images/Forum_button2.png' width="200px">
-        <br><br>
-      </li>
+        ゲスト認証と本認証に今のところ差はありませんので簡素なゲスト認証でかまいません。後に新しい機能追加の際その恩恵を受けたい場合、改めて本認証でログインすれば良いです。
+        （更新のお知らせメール配信機能など）  
+          <br><br>
+        </li>
+-->
     </ul>
 </mat-card-content>
 </mat-card>
