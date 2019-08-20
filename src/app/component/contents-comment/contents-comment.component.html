@@ -1,10 +1,8 @@
   <!--簡単なやり方だとInvalidPipeArgument: '[object Object]' for pipe 'AsyncPipe'というエラーで'| async'をつけない…-->
     <!--簡単なやり方だとなぜか*ngIf="post.uid=''"が使えない…-->
-<!--コンテンツヘッダーを挿入-->
-<app-contents-header></app-contents-header>
-<!--コンテンツヘッダーのクラス"contents-container"の定義はすべてcontents-header.cssにある-->
 
-<div class="myContainerMain">
+<body class="myContainerMain">
+<div>
       <h1>{{ title }}</h1>
 
     ご質問、ご意見はこちらでご自由にどうぞ。わたしでお答えできることはお答えしますし、分からない・答えられない事などはそのように返答いたします。
@@ -15,19 +13,20 @@
         完全匿名性とします。そして同一のニックネームをお使いください（複数ニックネームを使用して別人を演じても認証作業によって同一人物とわかるようになっています）
       </li>
       <li>
-        宣伝、勧誘、商用サイトへのリンク、また反精神医療・薬物療法否定を訴える投稿は削除いたします。
+        宣伝、勧誘、商用サイトへのリンク、また<span style="color:crimson">反精神医療・薬物療法否定・アンチドクターを訴える投稿は削除</span>いたします。
       </li>
       <li>
-        ここで投稿された情報の利用に関し当サイトは一切の責任を放棄します。必ず自己責任で判断してください。
+        ここで投稿された情報の利用に関し当サイトは一切の責任を放棄します。<span style="color:crimson">必ず自己責任で判断してください</span>。
       </li>
       <li>
-        薬事法違反になるため個人的な服薬指示・減薬指導にはお答えできません。事例やわたしのアイデアを紹介してもあくまで参考です。<strong>必ず自己責任で判断してください</strong>。
+        薬事法違反になるため<span style="text-decoration: underline">個人的な服薬指示・減薬指導にはお答えできません</span>。事例やわたしのアイデアを紹介してもあくまで参考です。<strong>必ず自己責任で判断してください</strong>。
       </li>
     </ul>
 </div>
   <br>
-<mat-card class="introduction-card">
-  <mat-card-content>
+
+  <a pageScroll href="#abc"><i class="material-icons">comment</i><span style="color:slateblue;text-decoration: underline;">投稿フォームへ</span></a>
+
   <div style="display:inline-block; width: 90%" *ngFor="let post of posts | async">
       <div *ngIf="post.uid !== 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
         <div class="user-box pre-wrap">
@@ -59,7 +58,10 @@
         </div>
       <br>
   </div>
-  
+
+<span id="abc" style="margin-bottom: 100px"></span>
+<i class="material-icons">comment</i>投稿フォーム
+
 <div *ngIf="(user | async) || {} as user">  
   <div *ngIf="user.uid; else notLoggedIn" class="post-box">
      <form #f="ngForm" (ngSubmit)="addPost()" name="form">       
@@ -89,8 +91,7 @@
     </div>
   </ng-template>
 </div>
-</mat-card-content>
-</mat-card>
+
 
 <br><br><hr><br>
 
@@ -114,40 +115,10 @@
         <br><br>【おわり】
         <br><br><br><br>
       </li>
-<!--       
-      <li>
-          赤いSign in with Emailボタンはメールアドレスとパスワードで認証する方法です。本認証となります。メールアドレスが表示されることはありません。
-          <br><img src='../../../assets/images/Forum_button1.png' width="200px"><br><br>
-      </li>
-      <li>
-        このような小さな画面が開きますので、あなたのメールアドレスを入力。<br><img src='../../../assets/images/Forum_email1.png' width="300px">
-        <br><br>
-      </li>
-      <li>
-        NEXTボタンをクリックすると、パスワードの入力を求められます。最低6桁で英語と数字を含んだ任意のパスワードを入力。<br><img src='../../../assets/images/Forum_email2.png' width="300px">
-        <br><br>
-      </li>
-      <li>
-        SING INボタンをクリックすれば、投稿入力フォームが出現しますのでそのまま投稿してください。おわったら赤いログアウトボタンをクリックしてログアウト。
-        <br><img src='../../../assets/images/Forum_email3.png' width="400px">
-        <br><br>【おわり】
-        <br><br><br><br>
-      </li>
-      <li>
-        ゲスト認証と本認証に今のところ差はありませんので簡素なゲスト認証でかまいません。後に新しい機能追加の際その恩恵を受けたい場合、改めて本認証でログインすれば良いです。
-        （更新のお知らせメール配信機能など）  
-          <br><br>
-        </li>
--->
     </ul>
 </mat-card-content>
 </mat-card>
 
-
-
-
-
-
-
   <br />
   <br />
+</body>

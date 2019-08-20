@@ -1,12 +1,10 @@
-<!--コンテンツヘッダーを挿入-->
-<app-contents-header></app-contents-header>
-<!--コンテンツヘッダーのクラス"contents-container"の定義はすべてcontents-header.cssにある-->
-
-
 <!--childコンポーネントのサマリをclass/basicschidren.tsにJson形式でデータ化。-->
 <!--それをBASICSDATAとしてエキスポートしbasics.component.tsにてbasicsdata = BASICSDATA;でオブジェクト化した-->
-<!--表示はmaterial2のmat-cardを利用している-->  
-  <div style="display:inline-flex; margin: 2px;" *ngFor="let basics of basicsdata">
+<!--表示はmaterial2のmat-cardを利用している--> 
+<body class="myContainerMain">
+  <h1>ベンゾ一般知識</h1>
+<div class="box-Container">
+  <div class="box" style="display:inline-flex; margin: 2px;" *ngFor="let basics of basicsdata">
   <mat-card class="basics-card">
       <mat-card-header>
           <div mat-card-avatar class="basics-header-image"></div>
@@ -24,5 +22,6 @@
       </mat-card-actions>
   </mat-card>
   </div>
+</div>
   <br /> <br /> <br /> <br />
-  
+</body>

@@ -7,3 +7,13 @@
     background-image: url('../../../assets/images/flower-avatar.jpg');
     background-size: cover;
  }
+
+ .box{
+  display: inline-block;
+  font-size: 1em;
+  margin:5px;
+}
+
+.boxContainer{
+  font-size: 0;
+}

@@ -1,12 +1,16 @@
-.introduction-card {
-    max-width: 80%; max-width: 1024px;
-  }
-  
-.introduction-header-image {
-    background-image: url('../../../assets/images/flower-avatar.jpg');
-    background-size: cover;
-}
-
 .dotted-box {
   border:2px dotted #FFCC66; padding:10px; margin:10px 5px; line-height:1.5; width: 80%;
 }
+
+
+.box{
+  display: inline-block;
+  font-size: 1em;
+  margin:5px;
+}
+
+.boxContainer{
+  font-size: 0;
+}
+
+.resizeimage img { width: 80%; }

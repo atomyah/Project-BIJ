@@ -120,9 +120,11 @@ export class ContentsCommentComponent implements OnInit {
   }
 
   // 別ウインドウでfirebaseui画面を開く(やめた。2019/6/11)
+  /*
   goToLink(url: string){
     window.open(url, "_blank", "width=400,height=500");
   }
+  */
 
   // サインアウト
   async logout() {
@@ -137,5 +139,6 @@ export class ContentsCommentComponent implements OnInit {
       disableClose: false
     });
   }
+
 
 }

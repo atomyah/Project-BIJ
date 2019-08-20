@@ -1,45 +1,29 @@
 <!--コンテンツヘッダーを挿入-->
-<app-contents-header></app-contents-header>
+
 <!--コンテンツヘッダーのクラス"contents-container"の定義はすべてcontents-header.cssにある-->
 
-
-<mat-card class="home-card">
-    <mat-card-header>
-      <mat-card-title>新着・更新情報</mat-card-title>
-      <mat-card-subtitle></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <div style="display: inline-block; margin: 20px">
-          <div style="margin: 5px" matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">ドクター向け<a routerLink="doctors-article/16">論文：「ベンゾジアゼピンと甲状腺症状」</a>をアップしました。</div>
-          <div style="margin: 5px" matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">ドクター向け<a routerLink="doctors-article/15">「わかりやすいニューロン、ベンゾ、回復概論」</a>をアップしました。</div>          
-          <div style="margin: 5px" matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">ドクター向け<a routerLink="doctors-article/14">論文：「ベンゾ離脱、グルタミン酸受容体、およびLTP」</a>をアップしました。</div>
-          <div style="margin: 5px" matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">ドクター向け<a routerLink="doctors-article/13">論文：「どのようにしてベンゾがHPA AXIS障害を引き起こすか」</a>をアップしました。</div>
-          <div style="margin: 5px" matBadge="更" matBadgeColor="primary" matBadgePosition="above before" matBadgeOverlap="true"><a routerLink="introduction">「ベンゾジアゼピン概略」</a>のページを更新しました。(最新のINCBデータと台湾の情報を追加しました)</div>
-          <div style="margin: 5px" matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">ヘラルドトリビューン記事：<a routerLink="medias-article/8">「蔓延する薬害 ― それはオピオイドではない」</a>をアップしました。</div>
+<body class="myContainerMain">
+  <h2>新着・更新情報</h2>
+        <div style="display: inline-block; margin: 10px;">
+          <div style="margin: 2px" matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">ドクター向け<a routerLink="doctors-article/17">「ベンゾ誘発有機性脳症候群」</a>をアップしました。</div>          
+          <div style="margin: 2px" matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">ドクター向け<a routerLink="doctors-article/16">論文：「ベンゾジアゼピンと甲状腺症状」</a>をアップしました。</div>
+          <div style="margin: 2px" matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">ドクター向け<a routerLink="doctors-article/15">「わかりやすいニューロン、ベンゾ、回復概論」</a>をアップしました。</div>          
+          <div style="margin: 2px" matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">ドクター向け<a routerLink="doctors-article/14">論文：「ベンゾ離脱、グルタミン酸受容体、およびLTP」</a>をアップしました。</div>
+          <div style="margin: 2px" matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">ドクター向け<a routerLink="doctors-article/13">論文：「どのようにしてベンゾがHPA AXIS障害を引き起こすか」</a>をアップしました。</div>
+          <div style="margin: 2px" matBadge="更" matBadgeColor="primary" matBadgePosition="above before" matBadgeOverlap="true"><a routerLink="introduction">「ベンゾジアゼピン概略」</a>のページを更新しました。(最新のINCBデータと台湾の情報を追加しました)</div>
         </div>
-    </mat-card-content>
-</mat-card> 
+<br>
 
-<mat-card class="home-card">
-  <mat-card-header>
-    <mat-card-title>米国被害者の声／NBCニュース</mat-card-title>
-    <mat-card-subtitle></mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-<mat-card class="home-card">
-    <mat-card-header>
-      <mat-card-title></mat-card-title>
-      <mat-card-subtitle></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <div style="display: inline-block; margin: 5px">
+    <h2>米国被害者の声／NBCニュース</h2>
+    <div class="boxcontainer">
+      <div class="box">
         <iframe width="426" height="240" src="https://www.youtube.com/embed/JZN5n4HBrcc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <br>
         出典：<a href="https://benzoinfo.com">Benzodiazepine Information Coallition</a>
         <br>
         字幕：ベンゾインフォジャパン
       </div>
-      <div style="display: inline-block;">
+      <div class="box">
           <iframe width="426" height="240" src="https://www.youtube.com/embed/Ml3QazDtE70" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <br>
           出典：<a href="https://www.woodtv.com/news/xanax-withdrawal-i-was-fighting-for-my-life/">NBC - target8</a>
@@ -47,21 +31,17 @@
           字幕：ベンゾインフォジャパン
           <br>
       </div>
+    </div>
       <div>
        <span style="color:#804000;">訳注：Klonopin(クロノピン)：クロナゼパム、リボトリール、ランドセン。Xanax(ザナックス)：アルプラゾラム、ソラナックス。</span>
       </div>
-    </mat-card-content>
-</mat-card> 
 
 
-<mat-card class="home-card">
-  <mat-card-header>
-    <div mat-card-avatar class="home-header-image"></div>
-    <mat-card-title>このサイトの目的</mat-card-title>
-    <mat-card-subtitle>ベンゾインフォジャパン</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p style="font-size:medium;">
+<br>
+
+    <div class="myContainerMain">
+    <h2>このサイトの目的</h2>
+    <p>
       睡眠薬、抗不安薬のほとんどはベンゾジゼアピン系薬剤に分類されます。ベンゾジアゼピンは決められた処方用量を守って飲み続けても重篤な障害を引き起こします。日本だけでなく世界中で蔓延処方され約10人にひとりが服用し、
       1ヶ月連用すると約半数が依存形成されます。急にやめると離脱症状が生じ重症の場合は生き地獄と言っていいほどの苦痛で
       自死に至ったり、何年もの間苦痛に耐えた後、後遺症が一生残る場合もあります。<br /> 
@@ -75,8 +55,8 @@
      <br>このサイトはわたしの実体験をもとに、米国NPO団体<a href="https://www.benzoinfo.com">ベンゾジアゼピンインフォメーションコーリション（以下BIC)</a>の記事および<a href="http://www.benzobuddies.org/forum/index.php">ベンゾバディ</a>という世界最大の
               ベンゾ情報交換フォーラムの投稿を中心に、情報提供・啓蒙を目的に作成しました。引用・転載フリーですが、かならず「出典：<a href="https://benzoinfojapan.org">ベンゾインフォジャパン</a>」を追記してください（BICの記事には著作権があります。許可をいただいて翻訳しています）。
     </p>
-  </mat-card-content>
-</mat-card>
+    </div>
+
 
           
       <mat-accordion class="myContainerMain">
@@ -135,5 +115,5 @@
   <br />
   <br />
   <br />
-  <br />
+</body>
            

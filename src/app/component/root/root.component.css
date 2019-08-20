@@ -31,3 +31,13 @@
 .example-spacer {
   flex: 1 1 auto;   /* 真ん中らへんにもってくる */
 }
+
+.box{
+  display: flex;
+  font-size: 1em;
+  margin:5px;
+}
+
+.boxContainer{
+  font-size: 0;
+}

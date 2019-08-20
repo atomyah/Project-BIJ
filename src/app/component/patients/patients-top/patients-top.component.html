@@ -1,10 +1,9 @@
-<!--コンテンツヘッダーを挿入-->
-<app-contents-header></app-contents-header>
-<!--コンテンツヘッダーのクラス"contents-container"の定義はすべてcontents-header.cssにある-->
-
-<!--表示はmaterial2のmat-cardを利用している-->  
-<div style="display:inline-flex; margin: 2px;" *ngFor="let item of patientsarticles | async">
-    <mat-card class="toppage-card">
+<!--表示はmaterial2のmat-cardを利用している--> 
+<body class="myContainerMain">
+    <h1>患者(被害者)のみなさまへ</h1>
+  <div class="box-Container"> 
+    <div style="display:inline-flex; margin: 2px;" *ngFor="let item of patientsarticles | async">
+      <mat-card class="toppage-card">
         <mat-card-header>
             <div mat-card-avatar class="toppage-header-image"></div>
             <mat-card-title><a routerLink="/patients-article/{{ item.num }}">{{ item.title }}</a></mat-card-title>
@@ -15,10 +14,11 @@
           <img src="{{ item.pictpath }}" width="150px" style="float:left;margin-right:10px;margin-bottom:10px">
           {{ item.feature }}
         </p>
-      </mat-card-content>
-      <mat-card-actions>
+        </mat-card-content>
+        <mat-card-actions>
           <a routerLink="/patients-article/{{ item.num }}"><button mat-button>続きを読む</button></a>
         </mat-card-actions>
-    </mat-card>
+      </mat-card>
     </div>
+  </div>
     <br /> <br /> <br /> <br />

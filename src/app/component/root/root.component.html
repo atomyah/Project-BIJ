@@ -6,7 +6,6 @@
 >
     <!--上のbox-shadowはmat-toolbarの下に影をつけている。-->
 
-
 <!--ヘッダ１段目のtoolbar-row-->
 <!--mat-toolbar-row-word-wrapのCSSはroot.component.cssを参照。コンテンツを自動で枠内で折り返す-->
   <mat-toolbar-row class="mat-toolbar-row-word-wrap"
@@ -20,9 +19,15 @@
   <!--ヘッダータイトルとベンゾインフォジャパンの表示-->
   <!--1列のmat-toolbarで右寄りになってしまう文字列を適度な位置にする方法：class="fill-remaining-space"のCSSにはflex: 1 1 auto;とする-->
   <h1>ベンゾジアゼピン情報センター</h1>
-  <h2 style="font-size:medium; margin-left: 20px">睡眠薬の被害実態と安全な減薬のやり方</h2>  
-  <span class="fill-remaining-space"></span>
-  <img src="../../../assets/images/logo.png" width="180px">
+  <div fxShow="true" fxHide.lt-sm="true">
+    <div class="boxContainer">
+      <div class="box">
+        <h2 style="font-size:medium; margin-left: 20px">睡眠薬の被害実態と安全な減薬のやり方</h2>
+        <span class="fill-remaining-space"></span>
+        <img src="../../../assets/images/logo.png" width="180px" style="margin-left: 150px">
+      </div>
+    </div>
+  </div>
 
   <!--3本線のバーガーメニュー-->
     <mat-menu #menu="matMenu">
@@ -68,6 +73,7 @@
    <mat-toolbar-row 
     style="position:relative;left:0;height:fit-content;width: 100%; max-width:1024px; z-index: 2;"
         color="">
+        <div fxShow="true" fxHide.lt-sm="true">
             <div>
                 <button mat-button (click)="goHome()"><mat-icon>home</mat-icon></button>
                 <button mat-button [matMenuTriggerFor]="summary">ベンゾジアゼピン概略</button>
@@ -86,6 +92,7 @@
                 <button mat-button (click)="goMedias()">メディアの方へ</button>
                 <button mat-button (click)="goForum()"><span>質問フォーラム</span></button>
               </div>
+        </div>       
    </mat-toolbar-row>
 </mat-toolbar>
   
@@ -103,7 +110,7 @@
 <!--フッター-->
 <mat-toolbar
     color="primary"
-    style="position:fixed;bottom:0;left:0;height:20px;width: 100%; max-width:1024px; z-index: 2; justify-content: center"
+    style="position:fixed;bottom:0;left:0;height:fit-content;width: 100%; max-width:1024px; z-index: 2; justify-content: center"
 >
   <mat-toolbar-row>
       <table border="0">
@@ -111,16 +118,15 @@
             <tr>
               <td id="beforeTwitterSharebutton"></td>
               <!--ここにTwitterボタン.<td>タグもintroduction.component.ts内のスクリプトで作ります-->
-              <td valign="top">
-                <span id="footer">
-                問い合わせはツイッターの方へご連絡ください
-                </span>
+              <td>
               </td>
             </tr>
           </tbody>
         </table>
-    <span class="example-spacer"></span>
-    <span id="footer">Copyright © benzoinfojapan</span>
+   <div fxShow="true" fxHide.lt-sm="true">        
+    <span id="footer">お問い合わせはツイッターの方へご連絡ください</span>   
+    <span id="footer" style="margin-left: 100px">Copyright © benzoinfojapan</span>
+   </div>
   </mat-toolbar-row>
 </mat-toolbar>
 

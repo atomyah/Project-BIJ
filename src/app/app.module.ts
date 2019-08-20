@@ -16,6 +16,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore'; // 追加
 import { AngularFireAuthModule } from '@angular/fire/auth'; // 追加
 import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular'; // 追加.FirebaseUIのモジュール
 import { SeoService } from './service/seo.service'; //SEO対策
+import { FlexLayoutModule } from '@angular/flex-layout'; //Flex-layout用モジュール
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core'; // ページ内アンカーへスクロールジャンプさせるためインストールしたモジュール
+import { NgxPageScrollModule } from 'ngx-page-scroll'; // ngx-page-scroll-coreの簡易バージョン
 
 //Material2モジュールのインポート
 import {
@@ -144,6 +147,9 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AngularFirestoreModule,  // 追加.Firestore用モジュール
     AngularFireAuthModule,  // 追加.angularfireのAuth用モジュール
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),　// FirebaseUI用のモジュール
+    FlexLayoutModule, //Flex-layout用モジュール
+    NgxPageScrollCoreModule, // ページ内アンカーへスクロールジャンプさせるためインストールしたモジュール
+    NgxPageScrollModule,
   ],
 
   // 作成したコンポーネント 
@@ -169,7 +175,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MediasTopComponent,
     MediasArticlesComponent,
     ContentsCommentComponent,
-    EditDialogComponent,
+    EditDialogComponent,  
   ],
 
   // DIするサービス 
