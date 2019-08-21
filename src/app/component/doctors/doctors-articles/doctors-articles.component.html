@@ -1,19 +1,9 @@
-<!--コンテンツヘッダーを挿入-->
-<app-contents-header></app-contents-header>
-<!--コンテンツヘッダーのクラス"contents-container"の定義はすべてcontents-header.cssにある-->
-
-
 <body class="myContainerMain">
   <div *ngFor="let item of doctorsarticles | async">
-  <mat-card class="home-card">
-    <mat-card-header>
-      <div mat-card-avatar class="home-header-image"></div>
-      <mat-card-title><h1>{{ item.title }}</h1></mat-card-title>     
-      <mat-card-subtitle><h2 [innerHTML]="item.title_origin | safe: 'html'"></h2></mat-card-subtitle>
-      <mat-card-subtitle>著者：<span [innerHTML]="item.author"></span><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ item.date }}</span></mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content style="font-size:medium;">
-      <p [innerHTML]="item.content | safe: 'html'"></p><!--CSSを効かせるときサニタイズ解除必要-->
+      <h1>{{ item.title }}</h1>    
+      <h2 [innerHTML]="item.title_origin | safe: 'html'"></h2>
+      <span style="color:gray">著者：</span><span [innerHTML]="item.author" style="color:gray;"></span><span style="margin-left: 40px; color:gray">{{ item.date }}</span>
+      <p [innerHTML]="item.content | safe: 'html'"></p><!--CSSを効かせるときサニタイズ解除呪文（ | safe: 'html'）必要-->
       著者：<span [innerHTML]="item.author"></span>
       <p [innerHTML]="item.author_prof | safe: 'html'"></p>
       <br />
@@ -30,8 +20,6 @@
       <br />
       <br />
       <br />
-    </mat-card-content>
-  </mat-card>
   </div>
 
 </body>

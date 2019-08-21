@@ -1,0 +1,12 @@
+.box{
+    display: inline-block;
+    font-size: 1em;
+    margin:5px;
+  }
+  
+  .boxContainer{
+    font-size: 0;
+  }
+
+  .resizeimage img { width: 100%; }
+  
