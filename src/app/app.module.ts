@@ -69,6 +69,8 @@ import { MediasTopComponent } from './component/medias/medias-top/medias-top.com
 import { MediasArticlesComponent } from './component/medias/medias-articles/medias-articles.component';
 import { ContentsCommentComponent } from './component/contents-comment/contents-comment.component';
 import { EditDialogComponent } from './component/contents-comment/edit-dialog/edit-dialog.component';
+import { BenzolistEngComponent } from './component/basics/benzolist-eng/benzolist-eng.component';
+import { IntroductionEngComponent } from './component/introduction-eng/introduction-eng.component';
 
 
 
@@ -175,7 +177,9 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MediasTopComponent,
     MediasArticlesComponent,
     ContentsCommentComponent,
-    EditDialogComponent,  
+    EditDialogComponent,
+    BenzolistEngComponent,
+    IntroductionEngComponent,  
   ],
 
   // DIするサービス 

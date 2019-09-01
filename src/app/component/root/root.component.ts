@@ -26,15 +26,19 @@ export class RootComponent {
 //メソッド内で遷移する
     async goIntroduction() {
       await this.router.navigate(["/introduction"]);
-
     }
-
+    async goIntroductioneng() {
+      await this.router.navigate(["/introductioneng"]);
+    }
     async goBasics() {
       await this.router.navigate(["/basics"]);
     }
-    async goDiazepam() {
+    async goBenzolist() {
       await this.router.navigate(["/basics/benzolist"]);
-    }    
+    }
+    async goBenzolisteng() {
+      await this.router.navigate(["/basics/benzolisteng"]);
+    }      
     async goHistory() {
       await this.router.navigate(["/basics/benzohistory"]);
     }    

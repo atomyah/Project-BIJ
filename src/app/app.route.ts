@@ -23,6 +23,9 @@ import { AdminTopComponent } from './admin/admin-top/admin-top.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminGuard } from  './admin/admin.guard';
 import { ContentsCommentComponent } from './component/contents-comment/contents-comment.component';
+import { BenzolistEngComponent } from './component/basics/benzolist-eng/benzolist-eng.component';
+import { IntroductionEngComponent } from './component/introduction-eng/introduction-eng.component';
+
 
 
 //urlパスと表示するコンポーネントの関連づけ
@@ -46,4 +49,6 @@ export const AppRoutes: Routes = [
     {path: "admin/admin-top", component: AdminTopComponent, canActivate: [AdminGuard]},    
     {path: "admin", component: AdminLoginComponent},
     {path: "forum", component: ContentsCommentComponent},
+    {path: "basics/benzolisteng", component: BenzolistEngComponent},
+    {path: "introductioneng", component: IntroductionEngComponent},
 ];

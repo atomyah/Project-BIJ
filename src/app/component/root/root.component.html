@@ -76,13 +76,15 @@
         <div fxShow="true" fxHide.lt-sm="true">
             <div>
                 <button mat-button (click)="goHome()"><mat-icon>home</mat-icon></button>
-                <button mat-button [matMenuTriggerFor]="summary">ベンゾジアゼピン概略</button>
+                <button mat-button [matMenuTriggerFor]="summary">summary of benzodiazepine</button>
                 <mat-menu #summary="matMenu">
+                   <button mat-menu-item (click)="goIntroductioneng()">summary of benzodiazepine</button>                  
                    <button mat-menu-item (click)="goIntroduction()">ベンゾジアゼピン概略</button>
                    <button mat-menu-item [matMenuTriggerFor]="basics" (click)="goBasics()">ベンゾ一般知識</button>
                  </mat-menu>
                  <mat-menu #basics="matMenu">
-                  <button mat-menu-item (click)="goDiazepam()">ジアゼパム換算表</button>
+                  <button mat-menu-item (click)="goBenzolisteng()">Benzodiazepines List and Equivalents</button>
+                  <button mat-menu-item (click)="goBenzolist()">ジアゼパム換算表</button>                  
                   <button mat-menu-item (click)="goHistory()">ベンゾジアゼピン歴史</button>
                   <button mat-menu-item (click)="goWords()">用語集</button>
                 </mat-menu>
@@ -100,8 +102,8 @@
 
   
 
-<!--コンテンツ挿入場所。上ヘッダー部分80pxあける-->
-  <div style="position:absolute;top:80px;left:0px; width: 100%; max-width:1024px; ">
+<!--コンテンツ挿入場所。上ヘッダー部分100pxあける-->
+  <div style="position:absolute;top:100px;left:0px; width: 100%; max-width:1024px; ">
     <router-outlet class="myContainerMain"></router-outlet>
   </div>
 
