@@ -17,7 +17,7 @@ const LINE_ACCESS_TOKEN = 'TPLQOqDiwyeKswArXqLIo7G3nlGro1xOiXML6U5URZx';
 //       https://firebase.google.com/docs/functions/firestore-events?hl=ja
 export const lineNotify = functions.firestore
   .document(FIRESTORE_COLLECTION + '/{doc}')
-  .onCreate((snap, context) => {
+  .onCreate((_snap, _context) => {
 
   // line へ通知
   request({

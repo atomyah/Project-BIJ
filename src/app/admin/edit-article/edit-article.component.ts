@@ -5,6 +5,7 @@ import { Article } from '../../service/article';
 import { map } from "rxjs/operators"; // 追加
 import { FormBuilder,FormControl,FormGroup,Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { database } from 'firebase';
 
 
 @Component({
@@ -67,7 +68,7 @@ export class EditArticleComponent implements OnInit {
         });
       }));   
     console.log('articlesは、' + JSON.stringify(this.articles)); // うまくいってもarticlesは、{"_isScalar":false,"source":{"_isScalar":false},"operator":{}}というメッセージはでる
-    console.log('subscribeしたものは、' + this.articles.subscribe() );
+    console.log('subscribeしたものは、' + this.articles.subscribe() ); // [object Object]
   }
 
   ngOnInit() {

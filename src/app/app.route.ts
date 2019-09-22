@@ -25,6 +25,7 @@ import { AdminGuard } from  './admin/admin.guard';
 import { ContentsCommentComponent } from './component/contents-comment/contents-comment.component';
 import { BenzolistEngComponent } from './component/basics/benzolist-eng/benzolist-eng.component';
 import { IntroductionEngComponent } from './component/introduction-eng/introduction-eng.component';
+import { GcseResultComponent } from './component/gcse-result/gcse-result.component';
 
 
 
@@ -51,4 +52,5 @@ export const AppRoutes: Routes = [
     {path: "forum", component: ContentsCommentComponent},
     {path: "basics/benzolisteng", component: BenzolistEngComponent},
     {path: "introductioneng", component: IntroductionEngComponent},
+    {path: "gcs-result", component: GcseResultComponent}
 ];

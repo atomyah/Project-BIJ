@@ -36,7 +36,7 @@ AfterViewChecked, OnDestroy {
     // 現在のURLを取得（Twitterシェアボタン設置に使用）
     // this.currentURL = this.router.snapshot.url[0].path; // 'introduction'を返す
     this.currentURL = location.href; // 'http://localhost:4200/introduction'を返す
-    console.log('■■■■' + this.currentURL)   
+    console.log('■■■■' + this.currentURL)
    }
 
 

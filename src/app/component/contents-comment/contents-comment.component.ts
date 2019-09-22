@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, LOCALE_ID } from '@angular/core'; // Inject, LOCALE_IDは現在日付獲得用
+import { Component, OnInit, Inject, LOCALE_ID, ViewChild } from '@angular/core'; // Inject, LOCALE_IDは現在日付獲得用
 import { Router } from '@angular/router';
 import { ValueSharedService } from '../../service/value-shared.service';
 import { Post } from '../../class/faqpost';
@@ -10,6 +10,8 @@ import { formatDate } from '@angular/common'; // 現在日付獲得用
 import { map } from "rxjs/operators"; // 追加
 import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
+import {Meta} from '@angular/platform-browser';
+import {MatPaginator} from '@angular/material';
 
 @Component({
   selector: 'app-contents-comment',
@@ -28,6 +30,12 @@ export class ContentsCommentComponent implements OnInit {
 
   user: Observable<firebase.User>; // uidを獲得するためにuserオブジェクト変数
 
+  length: number; //ページネーションで使う全書き込み件数
+  pageIndex: number = 0; //ページネーションで使うページインデックス初期値
+  perPage: number = 50; //ページネーションで使うページ当たりのデータ数初期値
+  lowValue: number = 0; //ページネーションのsliceで使うbegin値初期値
+  highValue: number = 50;　//ページネーションのsliceで使うbegin+perPage値初期値
+
   constructor(
     public route: Router,
     private valueSharedService: ValueSharedService, 
@@ -35,6 +43,7 @@ export class ContentsCommentComponent implements OnInit {
     private afAuth: AngularFireAuth,
     @Inject(LOCALE_ID) private locale: string, // 現在日付獲得用
     public dialog: MatDialog,
+    private meta: Meta,
   ) { 
       // uidを獲得するためにauthStateからsubscribeでuserのuidを取ってくる
     // 参考：https://stackoverflow.com/questions/45829611/safest-way-to-get-user-id-in-angularfire2
@@ -47,11 +56,23 @@ export class ContentsCommentComponent implements OnInit {
           this.uid = null;
         }
       });
+
+      // ［2］メタ情報を追加      
+      this.meta.updateTag({name: 'title', content: '質問フォーラム'})
+      this.meta.updateTag({name: 'description',content: '薬事法違反になるため個人的な服薬指示・減薬指導にはお答えできません。事例やわたしのアイデアを紹介してもあくまで参考です。必ず自己責任で判断してください'})
+      this.meta.updateTag({name: 'keywords', content: 'ベンゾ,ベンゾジアゼピン,睡眠薬,抗不安薬,離脱症状,離脱症状,減薬,断薬,テーパリング,置換,ジアゼパム換算,アシュトンマニュアル,マイクロテーパリング,水溶液タイトレーション,再服薬,サプリメント,栄養'})
+      this.meta.updateTag({name: 'twitter:card', content: 'summary'})
+      this.meta.updateTag({name: 'twitter:site', content: '@benzoinfojapan'})
+      this.meta.updateTag({name: 'twitter:title', content: '質問フォーラム'})
+      this.meta.updateTag({name: 'twitter:description', content: '薬事法違反になるため個人的な服薬指示・減薬指導にはお答えできません。事例やわたしのアイデアを紹介してもあくまで参考です。必ず自己責任で判断してください'})
+      this.meta.updateTag({name: 'twitter:image', content: 'https://benzoinfojapan.org/assets/image/twitcard.jpg'})
+    
   }
 
  
   
   ngOnInit() {
+    this.getDataSize();
     this.getPosts();
     console.log('◆◆◆' + this.uid)
     this.title = '質問フォーラム';
@@ -89,7 +110,6 @@ export class ContentsCommentComponent implements OnInit {
     this.postsCollection = this.db.collection(
       'commentsfaqs', ref => ref.orderBy('created', 'asc')  // コレクションの参照・並べ替え
     );
-
   /* 簡単なやり方。posts: Observable<Post[]>;にObservableをつけない。posts: Post[];とする
     this.postsCollection.valueChanges().subscribe(data => { // データをvalueChanges()で監視、変更があったらsubscribe(data)でそれを取得
      this.posts = data;
@@ -106,6 +126,35 @@ export class ContentsCommentComponent implements OnInit {
       }));
       console.log('subscribeしたものは、' + this.posts.subscribe() );
   }
+
+
+/* ページネーションに使用する変数と関数 */
+  // Firestoreの全データ件数を獲得しlengthに保存
+  getDataSize() {
+    this.db.collection('commentsfaqs').valueChanges().subscribe( values => {
+      console.log('■データ数は、' + values.length);
+      this.length = values.length
+    })
+  }
+  // MatPaginator UI初期値（33行目より）
+    /*  
+    length = this.length;
+    pageIndex: number = 0; //ページネーションで使うページインデックス初期値
+    perPage: number = 50; //ページネーションで使うページ当たりのデータ数初期値
+    lowValue: number = 0; //ページネーションのsliceで使うbegin値初期値
+    highValue: number = 50;　//ページネーションのsliceで使うbegin+perPage値初期値
+    */
+
+  // MatPaginatorイベントをオブジェクト化
+    pageEvent: MatPaginator;
+
+  // Paginatorからのイベント発火関数
+    public getPaginatorData(event) {
+      this.lowValue = event.pageIndex * event.pageSize;
+      this.highValue = this.lowValue + event.pageSize;
+      return event;
+    }
+/* ページネーションに使用する変数と関数 ~ここまで */
 
 
   deletePost(post: Post) {
@@ -139,6 +188,5 @@ export class ContentsCommentComponent implements OnInit {
       disableClose: false
     });
   }
-
 
 }

@@ -14,6 +14,14 @@ export const BASICSDATA: Basics[] = [
     },
     {
         id: 2,
+        title: "Benzodiazepines List and Equivalents",
+        date: "2018-06-10",
+        url: "/basics/benzolisteng",
+        picture: "../../assets/images/Benzodiazepine200px.jpg",
+        feature: "In Japan, 34 types of benzodiazepines can be prescribed, and if including generics, you will not know what you are taking. Please check the benzodiazepine list page english version !!"
+    },
+    {
+        id: 3,
         title: "ベンゾジアゼピンの歴史",
         date: "2019-03-26",
         url: "/basics/benzohistory",
@@ -21,7 +29,7 @@ export const BASICSDATA: Basics[] = [
         feature: "ベンゾジアゼピン系薬は、製薬業界でトップクラスの売上を誇る処方薬です。 Xanaxとしても知られているアルプラゾラム（訳注：ソラナックスのこと）は、業界で最も売れている錠剤のひとつです。米国だけで、現在ベンゾジアゼピンの処方箋は9400万件であり、これは約3人にひとりが処方されている ..."          
     },
     {
-        id: 3,
+        id: 4,
         title: "用語集",
         date: "2019-03-26",
         url: "/basics/benzowords",

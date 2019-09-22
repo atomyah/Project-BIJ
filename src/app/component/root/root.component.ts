@@ -7,6 +7,11 @@
 import {Component, Input, OnInit, AfterViewInit} from '@angular/core';
 import {Router, RouterLinkActive} from '@angular/router';
 import {Title} from "@angular/platform-browser";
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { PatientsArticles } from './../../class/patients';  // Patientsデータタイプインターフェース
+import { DoctorsArticles } from './../../class/doctors';  // Doctorsデータタイプインターフェース
+import { MediasArticles } from './../../class/medias';  // Mediasデータタイプインターフェース
+import { Observable } from 'rxjs'; // 正式名称「Reactive Extensions for JavaScript」
 
 @Component({
     selector: 'app-root',
@@ -15,12 +20,38 @@ import {Title} from "@angular/platform-browser";
   })
 export class RootComponent {
 
+  patientsarticlesRef: AngularFirestoreCollection<PatientsArticles>;
+  patientsarticles: Observable<PatientsArticles[]>;
+
+  doctorsarticlesRef: AngularFirestoreCollection<DoctorsArticles>;
+  doctorsarticles: Observable<DoctorsArticles[]>;
+
+  mediasarticlesRef: AngularFirestoreCollection<MediasArticles>;
+  mediasarticles: Observable<MediasArticles[]>;
+
   //ルーター定義、および値を受け渡すValueSharedServiceサービスを定義
-   constructor(public router: Router,private title: Title) {
+   constructor(public router: Router, private title: Title, private db: AngularFirestore,) {
+    this.patientsarticlesRef = this.db.collection<PatientsArticles>('patientsarticles'); 
+    this.patientsarticles = this.patientsarticlesRef.valueChanges();
+
+    this.doctorsarticlesRef = this.db.collection<DoctorsArticles>('doctorsarticles'); 
+    this.doctorsarticles = this.doctorsarticlesRef.valueChanges();
+
+    this.mediasarticlesRef = this.db.collection<MediasArticles>('mediasarticles'); 
+    this.mediasarticles = this.mediasarticlesRef.valueChanges();     
    }
 
    ngOnInit() {
     this.title.setTitle('ベンゾジアゼピン情報センター')
+       
+      // 以下はグーグルカスタムサーチ用スクリプトタグ挿入
+      let cx = '002441034172234205663:svlaurhzgs9';
+      let gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+      let s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
    }
 
 //メソッド内で遷移する
@@ -67,7 +98,26 @@ export class RootComponent {
      await this.router.navigate(['/']);
     } 
 
+// 「患者（被害者）の方へ」の各ページに飛ばすメソッド
+//（HTMLの方でrouterLink="/patients-article/{{ item.num }}" だとURLは変わるけどページ遷移しない
+    async goPatAnother(item: PatientsArticles) {
+      await this.router.navigate(["/patients-article/" + item.num]);
+      location.reload();
+    }
 
+// 「ドクターの方へ」の各ページに飛ばすメソッド
+//（HTMLの方でrouterLink="/patients-article/{{ item.num }}" だとURLは変わるけどページ遷移しない
+    async goDocAnother(item: DoctorsArticles) {
+      await this.router.navigate(["/doctors-article/" + item.num]);
+      location.reload();
+    }
+
+// 「メディアの方へ」の各ページに飛ばすメソッド
+//（HTMLの方でrouterLink="/patients-article/{{ item.num }}" だとURLは変わるけどページ遷移しない
+    async goMedAnother(item: MediasArticles) {
+      await this.router.navigate(["/medias-article/" + item.num]);
+      location.reload();
+    }
 
 
  // twitterシェアボタンの置き方。以下の通りAfterViewInit()で後から
@@ -92,6 +142,7 @@ export class RootComponent {
     div.parentNode.insertBefore(td, div.nextSibling);//ボタンを置きたい場所にtdタグを追加
     div.parentNode.insertBefore(element,div.nextSibling);//ボタンを置きたい場所にaタグを追加
     div.parentNode.insertBefore(script,div.nextSibling);//scriptタグを追加してJSを実行し、aタグをボタンに変身させる
+  
   }
 
 }

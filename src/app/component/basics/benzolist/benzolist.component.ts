@@ -3,7 +3,7 @@ import { BASICSDATA } from '../../../class/basicschildren';
 import { Router, ActivatedRoute } from '@angular/router';
 // ValueSharedServiceをインポート
 import { ValueSharedService } from '../../../service/value-shared.service';
-import {Meta, Title} from '@angular/platform-browser';
+import {Meta} from '@angular/platform-browser';
 
 
 @Component({
@@ -24,18 +24,14 @@ export class BenzolistComponent implements OnInit {
     this.currentURL = location.href; // 'http://localhost:4200/introduction'を返す
     console.log('■■■■' + this.currentURL)
       // ［2］メタ情報を追加
-      this.meta.updateTag({
-        name: 'title',
-        content: 'ジアゼパム換算一覧表'
-      })
-      this.meta.updateTag({
-        name: 'description',
-        content: '睡眠薬、抗不安薬（ベンゾジアゼピン薬剤）すべてのジアゼパム換算一覧表です'
-      })
-      this.meta.updateTag({
-        name: 'keywords',
-        content: '睡眠薬,ジアゼパム換算'
-      })
+      this.meta.updateTag({name: 'title', content: 'ジアゼパム換算一覧表'})
+      this.meta.updateTag({name: 'description',content: '睡眠薬、抗不安薬（ベンゾジアゼピン薬剤）すべてのジアゼパム換算一覧表です'})
+      this.meta.updateTag({name: 'keywords', content: 'ベンゾ,ベンゾジアゼピン,睡眠薬,ジアゼパム換算,アルプラゾラム,ソラナックス,デパス,エチゾラム,リーゼ,クロチアゼパム,ジアゼパム,セルシン,ブロマゼパム,レキソタン,ロフラゼプ酸エチル,メイラックス,ロラゼパム,ワイパックス,エスタゾラム,ユーロジン,クアゼパム,ドラール,ゾルピデム,マイスリー,ニトラゼパム,ベンザリン,フルニトラゼパム,サイレース,ロヒプノール,ブロチゾラム,レンドルミン,ロルメタゼパム,エバミール,リボトリール,ランドセン'})
+	    this.meta.updateTag({name: 'twitter:card', content: 'summary'})
+	    this.meta.updateTag({name: 'twitter:site', content: '@benzoinfojapan'})
+	    this.meta.updateTag({name: 'twitter:title', content: 'ベンゾジアゼピン薬剤ジアゼパム換算一覧'})
+	    this.meta.updateTag({name: 'twitter:description', content: '日本における処方可能なベンゾジアゼピン系薬一覧およびジアゼパム換算値'})
+	    this.meta.updateTag({name: 'twitter:image', content: 'https://benzoinfojapan.org/assets/picts/mict2.jpg'})
   }
 
   ngOnInit() {

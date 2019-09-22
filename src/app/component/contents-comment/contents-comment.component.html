@@ -19,15 +19,26 @@
         ここで投稿された情報の利用に関し当サイトは一切の責任を放棄します。<span style="color:crimson">必ず自己責任で判断してください</span>。
       </li>
       <li>
-        薬事法違反になるため<span style="text-decoration: underline">個人的な服薬指示・減薬指導にはお答えできません</span>。事例やわたしのアイデアを紹介してもあくまで参考です。<strong>必ず自己責任で判断してください</strong>。
+        薬事法違反になるため<span style="text-decoration: underline">個人的な服薬指示・減薬指導にはお答えできません</span>。
+        また各自の症状や服薬歴などに対して推測や助言もできませんしわかりません。<span style="color:crimson">わたしの回答はあくまでベンゾに関する一般論での回答となります。</span>
+        ご自分にあてはまるかどうか、かならず自己責任のもとご判断ください。
       </li>
     </ul>
 </div>
   <br>
 
-  <a pageScroll href="#abc"><i class="material-icons">comment</i><span style="color:slateblue;text-decoration: underline;">投稿フォームへ</span></a>
+<mat-paginator [length]="length"
+              [pageSize]="perPage"
+              [pageSizeOptions]="[10, 50, 100]"
+              (page)="getPaginatorData($event)" 
+              [showFirstLastButtons]="true"
+              style="font-size: medium"
+>
+</mat-paginator>
 
-  <div style="display:inline-block; width: 90%" *ngFor="let post of posts | async">
+  <a pageScroll href="#abc"><i class="material-icons">comment</i><span style="color:slateblue;text-decoration: underline;">投稿フォームへ</span></a>
+  <br>
+  <div style="display:inline-block; width: 100%" *ngFor="let post of posts | async | slice: lowValue : highValue">
       <div *ngIf="post.uid !== 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
         <div class="user-box pre-wrap">
         <p>名前：{{ post.userName }}</p>
@@ -56,7 +67,6 @@
             </div>
           </div>
         </div>
-      <br>
   </div>
 
 <span id="abc" style="margin-bottom: 100px"></span>
@@ -72,7 +82,7 @@
        <br>
        <mat-form-field>
                <mat-label>コメント</mat-label>
-                 <textarea class="textarea" matInput cdkTextareaAutosize cdkAutosizeMaxRows="100" cdkAutosizeMinRows="10" width="100%" placeholder="コメント" name="message" required [(ngModel)]="message"></textarea>
+                 <textarea class="textarea" matInput cdkTextareaAutosize cdkAutosizeMaxRows="100" cdkAutosizeMinRows="10" width="100%" placeholder="※ 各自の症状や服薬歴などに対して推測や助言はできません。わたしの回答はあくまで一般論での回答となります。 ご自分にあてはまるかどうか必ず自己責任のもとご判断ください" name="message" required [(ngModel)]="message"></textarea>
        </mat-form-field>
             <button type="submit" mat-flat-button color="accent" [disabled]="!f.form.valid">投稿</button>
     </form>
@@ -95,30 +105,20 @@
 
 <br><br><hr><br>
 
-<mat-card class="introduction-card">
-    <mat-card-header>
-      <div mat-card-avatar class="introduction-header-image"></div>
-      <mat-card-title>投稿方法</mat-card-title>
-      <mat-card-subtitle>とても簡単な作業ですが投稿に必要なサインインの作業方法を説明します。
-        この作業は<strong>スパム投稿の防止と管理人の承認作業の省略</strong>のために導入しました。<br>
-      </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content style="font-size:medium">
-    <ul>
-      <li>
+<div class="post-box">
+      <h2>投稿方法</h2>
+      <p>とても簡単な作業ですが投稿に必要なサインインの作業方法を説明します。
+        この作業は<strong>スパム投稿の防止と管理人の承認作業の省略</strong>のために導入しました。</p>
         基本的にはContinue as guestという白いボタンをクリックするだけで投稿可能になります。何も入力する必要はありません。
         ゲスト認証と呼ばれます。
         <br><img src='../../../assets/images/Forum_button2.png' width="200px"><br>
         クリック後、以下のように投稿入力フォームが出現しますのでそのまま投稿してください。<br>
-        <br><img src='../../../assets/images/Forum_email3.png' width="400px">
+        <br><img src='../../../assets/images/Forum_email3.png' width="300px">
         <br>入力し[投稿]ボタンをクリックですぐに反映されます。終りましたら赤い[ログアウト]ボタンをクリックしてログアウト。
         <br><br>【おわり】
-        <br><br><br><br>
-      </li>
-    </ul>
-</mat-card-content>
-</mat-card>
-
+        <br>
+</div>
+  <br />
   <br />
   <br />
 </body>

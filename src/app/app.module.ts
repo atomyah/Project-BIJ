@@ -19,6 +19,7 @@ import { SeoService } from './service/seo.service'; //SEO対策
 import { FlexLayoutModule } from '@angular/flex-layout'; //Flex-layout用モジュール
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core'; // ページ内アンカーへスクロールジャンプさせるためインストールしたモジュール
 import { NgxPageScrollModule } from 'ngx-page-scroll'; // ngx-page-scroll-coreの簡易バージョン
+import { MatPaginatorIntlJa } from './class/mat-paginator-intl-ja'; // paginationの日本語化
 
 //Material2モジュールのインポート
 import {
@@ -33,6 +34,8 @@ import {
   MatInputModule,
   MatListModule,
   MatMenuModule,
+  MatPaginatorModule,
+  MatPaginatorIntl,
   MatSidenavModule,
   MatSliderModule,
   MatSnackBarModule,
@@ -71,6 +74,7 @@ import { ContentsCommentComponent } from './component/contents-comment/contents-
 import { EditDialogComponent } from './component/contents-comment/edit-dialog/edit-dialog.component';
 import { BenzolistEngComponent } from './component/basics/benzolist-eng/benzolist-eng.component';
 import { IntroductionEngComponent } from './component/introduction-eng/introduction-eng.component';
+import { GcseResultComponent } from './component/gcse-result/gcse-result.component';
 
 
 
@@ -136,6 +140,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatIconModule,
     MatToolbarModule,
     MatMenuModule,
+    MatPaginatorModule,
     MatSliderModule,
     MatSnackBarModule,
     MatSidenavModule,
@@ -179,13 +184,15 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     ContentsCommentComponent,
     EditDialogComponent,
     BenzolistEngComponent,
-    IntroductionEngComponent,  
+    IntroductionEngComponent,
+    GcseResultComponent,  
   ],
 
   // DIするサービス 
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},  // MatDialogに必要な記述
-    SeoService
+    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlJa },
+    SeoService,
   ],
 
   // MatDialogに必要な記述

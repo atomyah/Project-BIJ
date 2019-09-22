@@ -6,8 +6,9 @@
   font-weight: normal;
   font-display: auto;
   font-family: verdana, -apple-system, BlinkMacSystemFont, "Helvetica Neue", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
-  width: 100%;
-  margin: 5px;
+  width: 99%;
+  margin-right: 2px;
+  margin-left: 2px;
   padding: 5px;
   display: flex;
   flex-wrap: wrap;

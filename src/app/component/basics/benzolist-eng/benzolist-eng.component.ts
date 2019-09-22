@@ -3,7 +3,7 @@ import { BASICSDATA } from '../../../class/basicschildren';
 import { Router, ActivatedRoute } from '@angular/router';
 // ValueSharedServiceをインポート
 import { ValueSharedService } from '../../../service/value-shared.service';
-import {Meta, Title} from '@angular/platform-browser';
+import {Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-benzolist-eng',
@@ -23,18 +23,14 @@ export class BenzolistEngComponent implements OnInit {
     this.currentURL = location.href; // 'http://localhost:4200/introduction'を返す
     console.log('■■■■' + this.currentURL)
       // ［2］メタ情報を追加
-      this.meta.updateTag({
-        name: 'title',
-        content: 'Benzodiazepines List and Equivalents'
-      })
-      this.meta.updateTag({
-        name: 'description',
-        content: 'All benzodiazepines list available in Japan'
-      })
-      this.meta.updateTag({
-        name: 'keywords',
-        content: 'sleeping pill,hypnotics,anxiolytics,benzodiazepine,benzo'
-      })    
+      this.meta.updateTag({name: 'title', content: 'Benzodiazepines List and Equivalents'})
+      this.meta.updateTag({name: 'description',content: 'Benzodiazepines(hypnotics and anxiolytics) List and Equivalents'})
+      this.meta.updateTag({name: 'keywords', content: 'sleeping pill,hypnotics,anxiolytics,benzodiazepine,benzo,alprazolam,xanax,klonopin,diazepam,valium,flunitrazepam,lorazepam,ativan,temazepam,zolpidem,ambien'})
+      this.meta.updateTag({name: 'twitter:card', content: 'summary'})
+      this.meta.updateTag({name: 'twitter:site', content: '@benzoinfojapan'})
+      this.meta.updateTag({name: 'twitter:title', content: 'Benzodiazepines List and Equivalents'})
+      this.meta.updateTag({name: 'twitter:description', content: 'Benzodiazepines(hypnotics and anxiolytics) List and Equivalents'})
+      this.meta.updateTag({name: 'twitter:image', content: 'https://benzoinfojapan.org/assets/picts/mict2.jpg'})
   }
 
   ngOnInit() {

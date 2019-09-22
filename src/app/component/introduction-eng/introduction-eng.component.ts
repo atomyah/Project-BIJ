@@ -2,6 +2,7 @@ import { Component, AfterViewInit, OnInit } from '@angular/core';
 // ValueSharedServiceをインポート
 import { ValueSharedService } from '../../service/value-shared.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import {Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-introduction-eng',
@@ -12,11 +13,20 @@ export class IntroductionEngComponent implements AfterViewInit, OnInit {
   title: string;
   currentURL: string;
 
-  constructor(public router: ActivatedRoute, private valueSharedService: ValueSharedService) {
+  constructor(public router: ActivatedRoute, private valueSharedService: ValueSharedService,private meta: Meta) {
     // 現在のURLを取得（Twitterシェアボタン設置に使用）
     // this.currentURL = this.router.snapshot.url[0].path; // 'introduction'を返す
     this.currentURL = location.href; // 'http://localhost:4200/introduction'を返す
-    console.log('■■■■' + this.currentURL)     
+    console.log('■■■■' + this.currentURL)    
+    this.meta.updateTag({name: 'title', content: 'Summary of Benzodiazepine'})
+    this.meta.updateTag({name: 'description',content: 'Even if a small amount of benzo is used for a long time, it becomes very difficult to stop it. This is clearly not “addiction” but “central nervous system injury”'})
+    this.meta.updateTag({name: 'keywords', content: 'sleeping pill,hypnotics,anxiolytics,drug,addiction,withdraw,withdrawal symptoms,Ashton Manual,insomnia,anxiety,fibromyalgia,tapering,PWS,benzodiazepine,benzo,alprazolam,xanax,klonopin,diazepam,valium,flunitrazepam,lorazepam,ativan,temazepam,zolpidem,ambien'})
+    this.meta.updateTag({name: 'twitter:card', content: 'summary'})
+    this.meta.updateTag({name: 'twitter:site', content: '@benzoinfojapan'})
+    this.meta.updateTag({name: 'twitter:title', content: 'Summary of Benzodiazepine'})
+    this.meta.updateTag({name: 'twitter:description', content: 'Even if a small amount of benzo is used for a long time, it becomes very difficult to stop it. This is clearly not “addiction” but “central nervous system injury”'})
+    this.meta.updateTag({name: 'twitter:image', content: 'https://benzoinfojapan.org/assets/image/twitcard.jpg'})
+
   }
 
   // ngOnInit()の中でいいのかわからないがValueSharedService.childTitleにこのページのタイトルを渡す。  
