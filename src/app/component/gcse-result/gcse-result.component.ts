@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router, RouterLinkActive} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {DomSanitizer, SafeHtml, Title, Meta} from '@angular/platform-browser'; // DomSanitizerはグーグルカスタムサーチ用
 
 @Component({
@@ -9,7 +9,9 @@ import {DomSanitizer, SafeHtml, Title, Meta} from '@angular/platform-browser'; /
 })
 export class GcseResultComponent implements OnInit {
 
-  constructor(public router: Router, private title: Title) { }
+  constructor(public router: ActivatedRoute, private title: Title) {
+  }
+
 
   ngOnInit() {
     this.title.setTitle('検索結果')

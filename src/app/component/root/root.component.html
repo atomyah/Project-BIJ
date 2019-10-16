@@ -18,16 +18,13 @@
 
   <!--ヘッダータイトルとベンゾインフォジャパンの表示-->
   <!--1列のmat-toolbarで右寄りになってしまう文字列を適度な位置にする方法：class="fill-remaining-space"のCSSにはflex: 1 1 auto;とする-->
-  <span fxShow="true" fxHide.lt-sm="true">
+  
         <span>ベンゾジアゼピン情報センター</span>
-
+  <span fxShow="true" fxHide.lt-sm="true">
         <span style="font-size: medium; margin-left:30px; margin-right: 50px">睡眠薬の被害実態と安全な減薬方法</span>
         <span class="fill-remaining-space"></span>
+        <span style="font-size:small;margin-left:150px;">ベンゾインフォジャパン</span>
   </span>
-        <!--グーグルカスタムサーチ-->
-        <span style="margin-right: 5px; font-size: small;">サイト内検索</span>
-        <div class="gcse-searchbox-only" data-resultsUrl="http://benzoinfojapan.org/gcs-result" data-mobileLayout="enable" data-enableAutoComplete="true"></div>                
- 
 
 
   <!--3本線のバーガーメニュー-->
@@ -110,10 +107,10 @@
                   <button mat-menu-item *ngFor="let item of mediasarticles | async" (click)="goMedAnother(item)">{{ item.title }}</button>
                 </mat-menu>                
                 <button mat-button (click)="goForum()"><span>質問フォーラム</span></button>
-                <span style="font-size:x-small; margin-left: 50px">@ベンゾインフォジャパン</span>
               </div>
         </div>
-</mat-toolbar-row>           
+</mat-toolbar-row>   
+        
 </mat-toolbar>
   
 
@@ -121,8 +118,11 @@
   
 
 <!--コンテンツ挿入場所。上ヘッダー部分100pxあける-->
-  <div style="position:absolute;top:100px;left:0px; width: 100%; max-width:1024px; ">
-    <router-outlet class="myContainerMain"></router-outlet>
+  <div style="position:absolute;top:100px;left:0px; width: 100%; max-width:1024px;">
+    <!--↓グーグルカスタムサーチ検索ボックス-->
+    <app-gcse-search></app-gcse-search>
+    <!--↓メインコンテンツ-->
+    <router-outlet></router-outlet>
   </div>
 
 

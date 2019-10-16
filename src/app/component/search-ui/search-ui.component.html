@@ -1,0 +1,80 @@
+Aloglia Search
+<h1>My first search app</h1>
+
+
+<br>
+
+<ais-instantsearch [config]="searchConfig">
+<!--
+    <mat-form-field class="col-sm-10" (keydown)="keyDownFunction($event)">
+        <input matInput type="search" placeholder="サイト内検索:" name="search" [(ngModel)]="searchbox"
+          (keyup)="onQuery($event)" (ngModelChange)="updatedVal($event)">
+    </mat-form-field>
+-->
+<ais-search-box placeholder="質問フォーラム内検索" (change)="searchChanged($event)"></ais-search-box>
+<br>
+<ais-hits *ngIf="showResults">
+    <ng-template let-hits="hits">
+        <div *ngFor="let hit of hits">
+            <div *ngIf="hit.uid !== 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
+                <div class="user-box pre-wrap"> 
+                  投稿者：　<ais-highlight attribute="userName" [hit]="hit"></ais-highlight>
+                  <br>
+                  コメント：　<ais-highlight attribute="message" [hit]="hit"></ais-highlight>
+                  <br>
+                  日付：　<ais-highlight attribute="created" [hit]="hit"></ais-highlight>
+                </div>
+            </div>
+            <div *ngIf="hit.uid == 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
+                <div class="admin-box pre-wrap"> 
+                  投稿者：　<ais-highlight attribute="userName" [hit]="hit"></ais-highlight>
+                  <br>
+                  コメント：　<ais-highlight attribute="message" [hit]="hit"></ais-highlight>
+                  <br>
+                  日付：　<ais-highlight attribute="created" [hit]="hit"></ais-highlight>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</ais-hits>
+</ais-instantsearch>
+
+<br>
+
+<!--Angularで検索するとき…？-->
+<form #s="ngForm" (ngSubmit)="searchPosts(searchkey)" name="form">
+    <mat-form-field class="example-form-field">
+      <input matInput type="text" placeholder="フォーラム内検索" name="searchkey" required [(ngModel)]="searchkey">
+    </mat-form-field>
+      <button type="submit" mat-flat-button color="primary" [disabled]="!s.form.valid">検索</button>
+  </form>
+
+<br><br>
+<br><br>
+<br><br>
+<h1>My first search app</h1>
+<ais-instantsearch  [config]="searchConfig">
+<ais-search-box></ais-search-box>
+<ais-hits>
+  <ng-template let-hits="hits">
+    <div *ngFor="let hit of hits">
+      <hr>
+      Hit {{hit.objectID}}:
+      <ais-highlight attribute="name" [hit]="hit"></ais-highlight>
+      <ais-highlight attribute="message" [hit]="hit"></ais-highlight>
+      <hr>
+    </div>
+  </ng-template>
+</ais-hits>
+</ais-instantsearch>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+
+<h2>Firestoreのhogeコレクションのエクスポート</h2>
+<!--{{commentsfaqsJSON}}-->
+<br><br>
+<br><br>
+<br><br>
+<br><br>

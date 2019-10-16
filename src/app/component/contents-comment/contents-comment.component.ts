@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, LOCALE_ID, ViewChild } from '@angular/core'; // Inject, LOCALE_IDは現在日付獲得用
+import { Component, OnInit, Inject, forwardRef, LOCALE_ID, ViewChild } from '@angular/core'; // Inject, LOCALE_IDは現在日付獲得用
 import { Router } from '@angular/router';
 import { ValueSharedService } from '../../service/value-shared.service';
 import { Post } from '../../class/faqpost';
@@ -12,6 +12,8 @@ import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angula
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import {Meta} from '@angular/platform-browser';
 import {MatPaginator} from '@angular/material';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-contents-comment',
@@ -25,6 +27,12 @@ export class ContentsCommentComponent implements OnInit {
   uid: string;
   post: Post;
   posts: Observable<Post[]>;
+
+  showResults: boolean = false; // Algoliaサーチ用フラッグ
+
+  searchConfig = {              // Algolia APIキー設定
+    ...environment.algolia
+  };
 
   postsCollection: AngularFirestoreCollection<Post>; // 書きこみ用Firestoreの準備
 
@@ -107,9 +115,11 @@ export class ContentsCommentComponent implements OnInit {
   }
 
   getPosts() {
-    this.postsCollection = this.db.collection(
-      'commentsfaqs', ref => ref.orderBy('created', 'asc')  // コレクションの参照・並べ替え
-    );
+    this.postsCollection = this.db.collection<Post>(
+      'commentsfaqs', ref => ref
+        .orderBy('created', 'asc')
+        );       
+
   /* 簡単なやり方。posts: Observable<Post[]>;にObservableをつけない。posts: Post[];とする
     this.postsCollection.valueChanges().subscribe(data => { // データをvalueChanges()で監視、変更があったらsubscribe(data)でそれを取得
      this.posts = data;
@@ -127,6 +137,20 @@ export class ContentsCommentComponent implements OnInit {
       console.log('subscribeしたものは、' + this.posts.subscribe() );
   }
 
+  // Algoliaサーチ用関数
+  async searchChanged(query) {
+    if (query.length) {
+     this.showResults = true;
+    } else {
+     this.showResults = false;
+    }
+  }
+
+  // Algoliaサーチクリア関数
+  reset() {
+    this.showResults = false;
+    this.getPosts();
+  }
 
 /* ページネーションに使用する変数と関数 */
   // Firestoreの全データ件数を獲得しlengthに保存

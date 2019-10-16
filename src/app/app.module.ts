@@ -20,6 +20,8 @@ import { FlexLayoutModule } from '@angular/flex-layout'; //Flex-layout用モジ�
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core'; // ページ内アンカーへスクロールジャンプさせるためインストールしたモジュール
 import { NgxPageScrollModule } from 'ngx-page-scroll'; // ngx-page-scroll-coreの簡易バージョン
 import { MatPaginatorIntlJa } from './class/mat-paginator-intl-ja'; // paginationの日本語化
+import { NgAisModule } from 'angular-instantsearch'; //algolia instant search
+
 
 //Material2モジュールのインポート
 import {
@@ -75,7 +77,8 @@ import { EditDialogComponent } from './component/contents-comment/edit-dialog/ed
 import { BenzolistEngComponent } from './component/basics/benzolist-eng/benzolist-eng.component';
 import { IntroductionEngComponent } from './component/introduction-eng/introduction-eng.component';
 import { GcseResultComponent } from './component/gcse-result/gcse-result.component';
-
+import { SearchUiComponent } from './component/search-ui/search-ui.component';  // algoliaテスト用
+import { GcseSearchComponent } from './component/gcse-search/gcse-search.component';
 
 
 // FirebaseUI初期化コード
@@ -157,6 +160,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     FlexLayoutModule, //Flex-layout用モジュール
     NgxPageScrollCoreModule, // ページ内アンカーへスクロールジャンプさせるためインストールしたモジュール
     NgxPageScrollModule,
+    NgAisModule.forRoot(),
   ],
 
   // 作成したコンポーネント 
@@ -185,7 +189,9 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     EditDialogComponent,
     BenzolistEngComponent,
     IntroductionEngComponent,
-    GcseResultComponent,  
+    GcseResultComponent,
+    SearchUiComponent,// algoliaテスト用
+    GcseSearchComponent,
   ],
 
   // DIするサービス 

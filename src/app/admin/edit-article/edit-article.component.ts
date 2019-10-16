@@ -5,7 +5,7 @@ import { Article } from '../../service/article';
 import { map } from "rxjs/operators"; // 追加
 import { FormBuilder,FormControl,FormGroup,Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { database } from 'firebase';
+
 
 
 @Component({

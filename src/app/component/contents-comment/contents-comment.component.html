@@ -23,21 +23,68 @@
         また各自の症状や服薬歴などに対して推測や助言もできませんしわかりません。<span style="color:crimson">わたしの回答はあくまでベンゾに関する一般論での回答となります。</span>
         ご自分にあてはまるかどうか、かならず自己責任のもとご判断ください。
       </li>
+      <li>
+        減薬は必ず主治医の了解をとってから行ってください！
+      </li>      
     </ul>
 </div>
-  <br>
+<br>
 
-<mat-paginator [length]="length"
-              [pageSize]="perPage"
-              [pageSizeOptions]="[10, 50, 100]"
-              (page)="getPaginatorData($event)" 
-              [showFirstLastButtons]="true"
-              style="font-size: medium"
->
-</mat-paginator>
+<ais-instantsearch [config]="searchConfig">
+  <div class="boxContainer">
+    <div class="box">
+      <ais-search-box placeholder="質問フォーラム内検索" (change)="searchChanged($event)" style="font-size: small"></ais-search-box>
+    </div>
+    <div class="box">
+      <button type="submit" mat-stroked-button color="primary" (click)="reset()">表示リセット</button>
+    </div>
+  </div>
+   <br>
+    <ais-hits *ngIf="showResults">
+        <ng-template let-hits="hits">
+            <div *ngFor="let hit of hits">
+                <div *ngIf="hit.uid !== 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
+                    <div class="user-box pre-wrap"> 
+                      投稿者：　<ais-highlight attribute="userName" [hit]="hit"></ais-highlight>
+                      <br>
+                      コメント：　<ais-highlight attribute="message" [hit]="hit"></ais-highlight>
+                      <br>
+                      日付：　<ais-highlight attribute="created" [hit]="hit"></ais-highlight>
+                    </div>
+                </div>
+                <div *ngIf="hit.uid == 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
+                    <div class="admin-box pre-wrap"> 
+                      投稿者：　<ais-highlight attribute="userName" [hit]="hit"></ais-highlight>
+                      <br>
+                      コメント：　<ais-highlight attribute="message" [hit]="hit"></ais-highlight>
+                      <br>
+                      日付：　<ais-highlight attribute="created" [hit]="hit"></ais-highlight>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </ais-hits>
+</ais-instantsearch>
 
-  <a pageScroll href="#abc"><i class="material-icons">comment</i><span style="color:slateblue;text-decoration: underline;">投稿フォームへ</span></a>
-  <br>
+<div *ngIf="!showResults"><!--*ngIf="!showResults"：Algoliaサーチボックスに何も検索ワードが入っていなかったら以下表示-->
+
+<div class="boxContainer">
+  <div class="box">
+      <!--ページネーション↓-->
+  <mat-paginator [length]="length"
+  [pageSize]="perPage"
+  [pageSizeOptions]="[10, 50, 100]"
+  (page)="getPaginatorData($event)" 
+  [showFirstLastButtons]="true"
+  style="font-size: small;"
+  >
+  </mat-paginator>
+  </div>
+  <div class="box">
+    <a pageScroll href="#abc"><i class="material-icons">comment</i><span style="color:slateblue;text-decoration: underline;">投稿フォームへ</span></a>
+  </div>
+</div>
+
   <div style="display:inline-block; width: 100%" *ngFor="let post of posts | async | slice: lowValue : highValue">
       <div *ngIf="post.uid !== 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
         <div class="user-box pre-wrap">
@@ -68,6 +115,7 @@
           </div>
         </div>
   </div>
+</div><!--*ngIf="!showResults"：Algoliaサーチボックスに何も検索ワードが入っていなかったら以下表示、ここまで-->
 
 <span id="abc" style="margin-bottom: 100px"></span>
 <i class="material-icons">comment</i>投稿フォーム

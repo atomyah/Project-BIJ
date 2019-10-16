@@ -4,14 +4,15 @@
 //　　ヘッダー、メニュー、画面関連イベント検知
 //====================
 
-import {Component, Input, OnInit, AfterViewInit} from '@angular/core';
-import {Router, RouterLinkActive} from '@angular/router';
-import {Title} from "@angular/platform-browser";
+import {Component, Input, OnInit} from '@angular/core';
+import {Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import {Title, Meta} from "@angular/platform-browser";
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { PatientsArticles } from './../../class/patients';  // Patientsデータタイプインターフェース
 import { DoctorsArticles } from './../../class/doctors';  // Doctorsデータタイプインターフェース
 import { MediasArticles } from './../../class/medias';  // Mediasデータタイプインターフェース
 import { Observable } from 'rxjs'; // 正式名称「Reactive Extensions for JavaScript」
+import { filter, map, mergeMap } from 'rxjs/operators'; // metaタグ動的アップデートに使う
 
 @Component({
     selector: 'app-root',
@@ -30,7 +31,7 @@ export class RootComponent {
   mediasarticles: Observable<MediasArticles[]>;
 
   //ルーター定義、および値を受け渡すValueSharedServiceサービスを定義
-   constructor(public router: Router, private title: Title, private db: AngularFirestore,) {
+   constructor(public router: Router, private route: ActivatedRoute, private titleService: Title, private meta: Meta, private db: AngularFirestore,) {
     this.patientsarticlesRef = this.db.collection<PatientsArticles>('patientsarticles'); 
     this.patientsarticles = this.patientsarticlesRef.valueChanges();
 
@@ -42,7 +43,7 @@ export class RootComponent {
    }
 
    ngOnInit() {
-    this.title.setTitle('ベンゾジアゼピン情報センター')
+    this.titleService.setTitle('ベンゾジアゼピン情報センター')
        
       // 以下はグーグルカスタムサーチ用スクリプトタグ挿入
       let cx = '002441034172234205663:svlaurhzgs9';
@@ -51,7 +52,35 @@ export class RootComponent {
       gcse.async = true;
       gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
       let s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(gcse, s);
+      s.parentNode.insertBefore(gcse, s); 
+
+      //app.route.tsからmeta tagデータを引っ張り出してくるメソッド
+      this.router.events.pipe(
+        filter((event) => event instanceof NavigationEnd),
+        map(() => this.route),
+        map((route) => {
+          while (route.firstChild) route = route.firstChild;
+          return route;
+        }),
+        filter((route) => route.outlet === 'primary'),
+        mergeMap((route) => route.data)).subscribe((event) => {
+          this.updateDescription(event['description'], event['keywords'], event['title'], event['twittercard'], event['twittersite'], event['twitterimage'], event['url']);
+        });
+   }
+
+   // metaタグをアップデートするメソッド
+   updateDescription(desc: string, keywords: string, title: string, twittercard: string, twittersite: string, twitterimage: string, url: string) {
+    this.titleService.setTitle(title);
+    this.meta.updateTag({ name: 'description', content: desc })
+    this.meta.updateTag({ name: 'keywords', content: keywords })
+    this.meta.updateTag({ name: 'twitter:card', content: twittercard })
+    this.meta.updateTag({ name: 'twitter:site', content: twittersite })
+    this.meta.updateTag({ property: 'og:url', content: url })
+    this.meta.updateTag({ property: 'og:title', content: title })
+    this.meta.updateTag({ property: 'og:description', content: desc })
+    this.meta.updateTag({ property: 'og:image', content: twitterimage })
+
+
    }
 
 //メソッド内で遷移する

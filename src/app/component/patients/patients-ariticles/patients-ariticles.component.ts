@@ -6,6 +6,8 @@ import { ValueSharedService } from '../../../service/value-shared.service';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { PatientsArticles } from '../../../class/patients';  // Patientsデータタイプインターフェース
 import { Observable } from 'rxjs'; // 正式名称「Reactive Extensions for JavaScript」
+import { map } from "rxjs/operators"; // 追加
+import { SeoService } from '../../../service/seo.service';
 
 
 
@@ -27,11 +29,22 @@ AfterViewChecked, OnDestroy {
 
 
   // 現在ユーザーが表示しているURLやそのパラメータを参照するにはActivatedRouteが必要
-  constructor(public route: Router, public router: ActivatedRoute, private valueSharedService: ValueSharedService, private db: AngularFirestore) {
+  constructor(public route: Router, public router: ActivatedRoute, private valueSharedService: ValueSharedService, private db: AngularFirestore, private seo: SeoService) {
     this.articlenum = this.router.snapshot.paramMap.get('num');
     this.patientsarticlesRef = this.db.collection<PatientsArticles>('patientsarticles', ref =>  // where検索文
     ref.where('num', '==', this.articlenum));
-    this.patientsarticles = this.patientsarticlesRef.valueChanges();
+    this.patientsarticles = this.patientsarticlesRef.snapshotChanges().pipe
+    (map(actions => {
+      return actions.map(action => {
+        const data = action.payload.doc.data() as PatientsArticles;
+        const id = action.payload.doc.id;
+        const num = action.payload.doc.data().num;
+        this.title = data.title;        // Firestoreから記事のタイトルを取ってきてngOnInitでtitleタグ設定
+        return { id,num,  ...data };
+        });
+      }));   
+    console.log('patientsarticlesは、' + JSON.stringify(this.patientsarticles)); // うまくいってもarticlesは、{"_isScalar":false,"source":{"_isScalar":false},"operator":{}}というメッセージはでる
+    console.log('subscribeしたものは、' + this.patientsarticles.subscribe() ); // [object Object]
 
     // 現在のURLを取得（Twitterシェアボタン設置に使用）
     // this.currentURL = this.router.snapshot.url[0].path; // 'introduction'を返す
@@ -40,9 +53,9 @@ AfterViewChecked, OnDestroy {
    }
 
 
-  ngOnInit() {    
-    this.title = '患者(被害者)の方へ';
-    this.valueSharedService.currentTitle = this.title;
+  ngOnInit() { 
+    this.seo.titleService.setTitle(this.title);
+    this.seo.generateTagsPatientsArticles(this.articlenum);
   }
 
  // twitterシェアボタンの置き方。以下の通りAfterViewInit()で後から
