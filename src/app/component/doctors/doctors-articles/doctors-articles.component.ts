@@ -24,7 +24,7 @@ export class DoctorsArticlesComponent implements OnInit, AfterViewInit {
   articlenum: string; // articleのid番号をarticleid変数に格納
 
   // 現在ユーザーが表示しているURLやそのパラメータを参照するにはActivatedRouteが必要
-  constructor(private route: Router, public router: ActivatedRoute, private valueSharedService: ValueSharedService, private db: AngularFirestore,  private seo: SeoService) {
+  constructor(private route: Router, public router: ActivatedRoute, private valueSharedService: ValueSharedService, private db: AngularFirestore, private seo: SeoService) {
     this.articlenum = this.router.snapshot.paramMap.get('num');
     this.doctorsarticlesRef = this.db.collection<DoctorsArticles>('doctorsarticles', ref =>  // where検索文
     ref.where('num', '==', this.articlenum));

@@ -6,6 +6,8 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
  import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
  import { MediasArticles } from '../../../class/medias';  // Patientsデータタイプインターフェース
  import { Observable } from 'rxjs'; // 正式名称「Reactive Extensions for JavaScript」
+ import { map } from "rxjs/operators"; // 追加
+ import { SeoService } from '../../../service/seo.service';
 
 @Component({
   selector: 'app-medias-articles',
@@ -21,21 +23,30 @@ export class MediasArticlesComponent implements OnInit, AfterViewInit {
   currentURL: string; // Twitterシェアボタン設置に使用
   articlenum: string; // articleのid番号をarticleid変数に格納
 
-  constructor(private route: Router, public router: ActivatedRoute, private valueSharedService: ValueSharedService, private db: AngularFirestore) {
+  constructor(private route: Router, public router: ActivatedRoute, private valueSharedService: ValueSharedService, private db: AngularFirestore, private seo: SeoService) {
     this.articlenum = this.router.snapshot.paramMap.get('num');
     this.mediasarticlesRef = this.db.collection<MediasArticles>('mediasarticles', ref =>  // where検索文
     ref.where('num', '==', this.articlenum));
-    this.mediasarticles = this.mediasarticlesRef.valueChanges();
-
+    this.mediasarticles = this.mediasarticlesRef.snapshotChanges().pipe
+    (map(actions => {
+      return actions.map(action => {
+        const data = action.payload.doc.data() as MediasArticles;
+        const id = action.payload.doc.id;
+        const num = action.payload.doc.data().num;
+        this.title = data.title;        // Firestoreから記事のタイトルを取ってきてngOnInitでtitleタグ設定
+        return { id,num,  ...data };
+        });
+      }));   
+  
     // 現在のURLを取得（Twitterシェアボタン設置に使用）
     // this.currentURL = this.router.snapshot.url[0].path; // 'introduction'を返す
     this.currentURL = location.href; // 'http://localhost:4200/introduction'を返す
-    console.log('■■■■' + this.currentURL) 
+    console.log('■■■■' + this.currentURL)  
    }
 
   ngOnInit() {
-    this.title = 'メディアの方へ';
-    this.valueSharedService.currentTitle = this.title;
+    this.seo.titleService.setTitle(this.title);
+    this.seo.generateTagsMediasArticles(this.articlenum);
   }
   
 // twitterシェアボタンの置き方。以下の通りAfterViewInit()で後から
