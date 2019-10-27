@@ -22,16 +22,16 @@ export class BenzolistComponent implements OnInit {
     // 現在のURLを取得（Twitterシェアボタン設置に使用）
     // this.currentURL = this.router.snapshot.url[0].path; // 'introduction'を返す
     this.currentURL = location.href; // 'http://localhost:4200/introduction'を返す
-    console.log('■■■■' + this.currentURL)
-      // ［2］メタ情報を追加
-      this.meta.updateTag({name: 'title', content: 'ジアゼパム換算一覧表'})
-      this.meta.updateTag({name: 'description',content: '睡眠薬、抗不安薬（ベンゾジアゼピン薬剤）すべてのジアゼパム換算一覧表です'})
-      this.meta.updateTag({name: 'keywords', content: 'ベンゾ,ベンゾジアゼピン,睡眠薬,ジアゼパム換算,アルプラゾラム,ソラナックス,デパス,エチゾラム,リーゼ,クロチアゼパム,ジアゼパム,セルシン,ブロマゼパム,レキソタン,ロフラゼプ酸エチル,メイラックス,ロラゼパム,ワイパックス,エスタゾラム,ユーロジン,クアゼパム,ドラール,ゾルピデム,マイスリー,ニトラゼパム,ベンザリン,フルニトラゼパム,サイレース,ロヒプノール,ブロチゾラム,レンドルミン,ロルメタゼパム,エバミール,リボトリール,ランドセン'})
-	    this.meta.updateTag({name: 'twitter:card', content: 'summary'})
-	    this.meta.updateTag({name: 'twitter:site', content: '@benzoinfojapan'})
-	    this.meta.updateTag({name: 'twitter:title', content: 'ベンゾジアゼピン薬剤ジアゼパム換算一覧'})
-	    this.meta.updateTag({name: 'twitter:description', content: '日本における処方可能なベンゾジアゼピン系薬一覧およびジアゼパム換算値'})
-	    this.meta.updateTag({name: 'twitter:image', content: 'https://benzoinfojapan.org/assets/picts/mict2.jpg'})
+    console.log('■■■■' + this.currentURL)  
+    this.meta.updateTag({name: 'title', content: 'ベンゾジアゼピン薬剤一覧 - ジアゼパム換算表'})
+    this.meta.updateTag({name: 'description',content: '日本で処方可能なベンゾジアゼピン薬剤一覧です。諸外国よりかなり多い34種類あります。 - そしてジアゼパム換算表です。置換の際に必須となるデータです'})
+    this.meta.updateTag({name: 'keywords', content: 'ジアゼパム換算,置換,アルプラゾラム,ソラナックス,コンスタン,デパス,エチゾラム,リーゼ,クロチアゼパム,ジアゼパム,セルシン,ブロマゼパム,レキソタン,セニラン,ロフラゼプ酸エチル,メイラックス,ロラゼパム,ワイパックス,エスタゾラム,ユーロジン,クアゼパム,ドラール,ゾルピデム,マイスリー,ゾピクロン,アモバン,ニトラゼパム,ベンザリン,ネルボン,フルニトラゼパム,サイレース,ロヒプノール,ブロチゾラム,レンドルミン,ロルメタゼパム,エバミール,クロナゼパム,リボトリール,ランドセン,トフィソパム,グランダキシン,トリアゾラム,ハルシオン,クロキサゾラム,セパゾン,クロラゼプ酸,メンドン,クロルジアゼポキシド,コントール,バランス,タンドスピロン,セディール,フルジアゼパム,エリスパン,フルタゾラム,コレミナール,フルトプラゼパム,レスタス,メキサゾラム,メレックス,メダゼパム,レスミット,エスゾピクロン,ルネスタ,ニメタゼパム,エリミン,ハロキサゾラム,ソメリン,クアゼパム,ドラール,フルラゼパム,ダルメート,ベノジール,リルマザホン,リスミー,ロルメタゼパム,エバミール,ロラメット,クロバザム,マイスタン'})
+    this.meta.updateTag({name: 'twitter:card', content: 'summary'})
+    this.meta.updateTag({name: 'twitter:site', content: '@benzoinfojapan'})
+    this.meta.updateTag({property: 'og:url', content: 'https://benzoinfojapan.org/basics/benzolist'})
+    this.meta.updateTag({property: 'og:title', content: 'ベンゾジアゼピン薬剤一覧 - ジアゼパム換算表'})
+    this.meta.updateTag({property: 'og:description', content: '日本で処方可能なベンゾジアゼピン薬剤一覧です。諸外国よりかなり多い34種類あります。 - そしてジアゼパム換算表です。置換の際に必須となるデータです'})
+    this.meta.updateTag({property: 'og:image', content: 'https://benzoinfojapan.org/assets/images/twitcard.png'}) 
   }
 
   ngOnInit() {

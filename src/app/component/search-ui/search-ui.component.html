@@ -47,11 +47,45 @@ Aloglia Search
       <input matInput type="text" placeholder="フォーラム内検索" name="searchkey" required [(ngModel)]="searchkey">
     </mat-form-field>
       <button type="submit" mat-flat-button color="primary" [disabled]="!s.form.valid">検索</button>
-  </form>
+</form>
+<br><br>
+<div style="display:inline-block; width: 100%" *ngFor="let post of posts | async">
+  <div *ngIf="post.uid !== 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
+    <div class="user-box pre-wrap">
+    <p>名前：{{ post.userName }}</p>
+    <p [innerHTML]="post.message | safe: 'html'"></p> <!--safe.pipe効かない…？？？-->
+    <p style="text-align:right; font-size: smaller">投稿No.{{ post.id }}</p>
+    <p style="text-align:right; font-size: smaller">投稿日時：{{ post.created }}</p>
+    <p style="text-align:right; font-size: smaller; visibility:hidden">UID: {{post.uid}}</p> <!--visiblity:hiddenを外せば表示される-->
+        <div *ngIf="(user | async) || {} as user">
+          <p *ngIf="user.uid == 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
+              <button mat-raised-button (click)="openDialog(post)">編集</button>
+          </p>
+        </div>
+    </div>
+  </div>
+  <div *ngIf="post.uid == 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
+      <div class="admin-box pre-wrap">
+      <p>名前：{{ post.userName }}</p>
+      <p [innerHTML]="post.message | safe: 'html'"></p> <!--safe.pipe効かない…？？？-->
+      <p style="text-align:right; font-size: smaller">投稿No.{{ post.id }}</p>
+      <p style="text-align:right; font-size: smaller">投稿日時：{{ post.created }}</p>
+      <p style="text-align:right; font-size: smaller; visibility:hidden">UID: {{post.uid}}</p>
+        <div *ngIf="(user | async) || {} as user">
+          <p *ngIf="user.uid == 'IvUOuDzmWNTBuicD0XhsQqzfAFY2'">
+              <button mat-raised-button (click)="openDialog(post)">編集</button>
+          </p>
+        </div>
+      </div>
+    </div>
+</div>
+<!--ここまで…Angularで検索するとき…？-->
 
 <br><br>
 <br><br>
 <br><br>
+<!--Algoliaで検索するとき…-->
+<!--
 <h1>My first search app</h1>
 <ais-instantsearch  [config]="searchConfig">
 <ais-search-box></ais-search-box>
@@ -67,6 +101,8 @@ Aloglia Search
   </ng-template>
 </ais-hits>
 </ais-instantsearch>
+-->
+<!--ここまで…Algoliaで検索するとき…-->
 <br><br>
 <br><br>
 <br><br>

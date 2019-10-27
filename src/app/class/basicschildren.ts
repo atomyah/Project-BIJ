@@ -35,5 +35,13 @@ export const BASICSDATA: Basics[] = [
         url: "/basics/benzowords",
         picture: "",
         feature: "ベンゾジアゼピン関連用語集　非ベンゾ　ベンゾジアゼピン系薬はGABA受容体のサブユニットα1とγに作用します。 従って催眠作用、抗不安作用、そして筋弛緩作用が期待できます。いっぽうで非ベンゾ（非ベンゾジアゼピン系薬。英語でもanti-benzodiazepineと言います）は、α1のほうのみに選択的に作用するので催眠作用だけを期待したい睡眠薬としては通常のベンゾジアゼピン系睡眠薬よりも利点が ..."        
+    },
+    {
+        id: 5,
+        title: "ベンゾ離脱症状一覧",
+        date: "2019-03-26",
+        url: "/basics/withdrawalsymptoms",
+        picture: "../../assets/images/benzoberry.jpg",
+        feature: "ベンゾジアゼピン離脱症状一覧になります。ひとによりどの症状を発症するかは異なります。左の写真は「ベンゾベリー」と呼ばれるベンゾ離脱症状特有の腹部膨満症状です ..."        
     }
 ]

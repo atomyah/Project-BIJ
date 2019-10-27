@@ -21,16 +21,16 @@ export class BenzolistEngComponent implements OnInit {
     // 現在のURLを取得（Twitterシェアボタン設置に使用）
     // this.currentURL = this.router.snapshot.url[0].path; // 'introduction'を返す
     this.currentURL = location.href; // 'http://localhost:4200/introduction'を返す
-    console.log('■■■■' + this.currentURL)
-      // ［2］メタ情報を追加
-      this.meta.updateTag({name: 'title', content: 'Benzodiazepines List and Equivalents'})
-      this.meta.updateTag({name: 'description',content: 'Benzodiazepines(hypnotics and anxiolytics) List and Equivalents'})
-      this.meta.updateTag({name: 'keywords', content: 'sleeping pill,hypnotics,anxiolytics,benzodiazepine,benzo,alprazolam,xanax,klonopin,diazepam,valium,flunitrazepam,lorazepam,ativan,temazepam,zolpidem,ambien'})
-      this.meta.updateTag({name: 'twitter:card', content: 'summary'})
-      this.meta.updateTag({name: 'twitter:site', content: '@benzoinfojapan'})
-      this.meta.updateTag({name: 'twitter:title', content: 'Benzodiazepines List and Equivalents'})
-      this.meta.updateTag({name: 'twitter:description', content: 'Benzodiazepines(hypnotics and anxiolytics) List and Equivalents'})
-      this.meta.updateTag({name: 'twitter:image', content: 'https://benzoinfojapan.org/assets/picts/mict2.jpg'})
+    console.log('■■■■' + this.currentURL)  
+    this.meta.updateTag({name: 'title', content: 'Benzodiazepines List and Equivalents'})
+    this.meta.updateTag({name: 'description',content: 'Benzodiazepines(hypnotics and anxiolytics) List and Equivalents'})
+    this.meta.updateTag({name: 'keywords', content: 'sleeping pill,hypnotics,anxiolytics,benzodiazepine,benzo,alprazolam,xanax,klonopin,diazepam,valium,flunitrazepam,lorazepam,ativan,temazepam,zolpidem,ambien'})
+    this.meta.updateTag({name: 'twitter:card', content: 'summary'})
+    this.meta.updateTag({name: 'twitter:site', content: '@benzoinfojapan'})
+    this.meta.updateTag({property: 'og:url', content: 'https://benzoinfojapan.org/benzolisteng'})
+    this.meta.updateTag({property: 'og:title', content: 'Benzodiazepines List and Equivalents'})
+    this.meta.updateTag({property: 'og:description', content: 'Benzodiazepines(hypnotics and anxiolytics) List and Equivalents'})
+    this.meta.updateTag({property: 'og:image', content: 'https://benzoinfojapan.org/assets/images/twitcard.jpg'}) 
   }
 
   ngOnInit() {

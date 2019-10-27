@@ -21,6 +21,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['../../common.css', './contents-comment.component.css']
 })
 export class ContentsCommentComponent implements OnInit {
+  currentURL: string; 
   title: string;
   message: string;
   userName: string;
@@ -66,14 +67,19 @@ export class ContentsCommentComponent implements OnInit {
       });
 
       // ［2］メタ情報を追加      
-      this.meta.updateTag({name: 'title', content: '質問フォーラム'})
-      this.meta.updateTag({name: 'description',content: '薬事法違反になるため個人的な服薬指示・減薬指導にはお答えできません。事例やわたしのアイデアを紹介してもあくまで参考です。必ず自己責任で判断してください'})
-      this.meta.updateTag({name: 'keywords', content: 'ベンゾ,ベンゾジアゼピン,睡眠薬,抗不安薬,離脱症状,離脱症状,減薬,断薬,テーパリング,置換,ジアゼパム換算,アシュトンマニュアル,マイクロテーパリング,水溶液タイトレーション,再服薬,サプリメント,栄養'})
-      this.meta.updateTag({name: 'twitter:card', content: 'summary'})
-      this.meta.updateTag({name: 'twitter:site', content: '@benzoinfojapan'})
-      this.meta.updateTag({name: 'twitter:title', content: '質問フォーラム'})
-      this.meta.updateTag({name: 'twitter:description', content: '薬事法違反になるため個人的な服薬指示・減薬指導にはお答えできません。事例やわたしのアイデアを紹介してもあくまで参考です。必ず自己責任で判断してください'})
-      this.meta.updateTag({name: 'twitter:image', content: 'https://benzoinfojapan.org/assets/image/twitcard.jpg'})
+    // 現在のURLを取得（Twitterシェアボタン設置に使用）
+    // this.currentURL = this.router.snapshot.url[0].path; // 'introduction'を返す
+    this.currentURL = location.href; // 'http://localhost:4200/introduction'を返す
+    console.log('■■■■' + this.currentURL)  
+    this.meta.updateTag({name: 'title', content: '質問フォーラム'})
+    this.meta.updateTag({name: 'description',content: '薬事法違反になるため個人的な服薬指示・減薬指導にはお答えできません。事例やわたしのアイデアを紹介してもあくまで参考です。必ず自己責任で判断してください'})
+    this.meta.updateTag({name: 'keywords', content: '減薬,断薬,ジアゼパム換算,置換,アルプラゾラム,ソラナックス,コンスタン,デパス,エチゾラム,リーゼ,クロチアゼパム,ジアゼパム,セルシン,ブロマゼパム,レキソタン,セニラン,ロフラゼプ酸エチル,メイラックス,ロラゼパム,ワイパックス,エスタゾラム,ユーロジン,クアゼパム,ドラール,ゾルピデム,マイスリー,ゾピクロン,アモバン,ニトラゼパム,ベンザリン,ネルボン,フルニトラゼパム,サイレース,ロヒプノール,ブロチゾラム,レンドルミン,ロルメタゼパム,エバミール,クロナゼパム,リボトリール,ランドセン,トフィソパム,グランダキシン,トリアゾラム,ハルシオン,クロキサゾラム,セパゾン,クロラゼプ酸,メンドン,クロルジアゼポキシド,コントール,バランス,タンドスピロン,セディール,フルジアゼパム,エリスパン,フルタゾラム,コレミナール,フルトプラゼパム,レスタス,メキサゾラム,メレックス,メダゼパム,レスミット,エスゾピクロン,ルネスタ,ニメタゼパム,エリミン,ハロキサゾラム,ソメリン,クアゼパム,ドラール,フルラゼパム,ダルメート,ベノジール,リルマザホン,リスミー,ロルメタゼパム,エバミール,ロラメット,クロバザム,マイスタン'})
+    this.meta.updateTag({name: 'twitter:card', content: 'summary'})
+    this.meta.updateTag({name: 'twitter:site', content: '@benzoinfojapan'})
+    this.meta.updateTag({property: 'og:url', content: 'https://benzoinfojapan.org/forum'})
+    this.meta.updateTag({property: 'og:title', content: '質問フォーラム'})
+    this.meta.updateTag({property: 'og:description', content: '薬事法違反になるため個人的な服薬指示・減薬指導にはお答えできません。事例やわたしのアイデアを紹介してもあくまで参考です。必ず自己責任で判断してください'})
+    this.meta.updateTag({property: 'og:image', content: 'https://benzoinfojapan.org/assets/images/flower-avatar.jpg'})  
     
   }
 

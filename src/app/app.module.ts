@@ -42,6 +42,7 @@ import {
   MatSliderModule,
   MatSnackBarModule,
   MatSelectModule,
+  MatTableModule,
   MatToolbarModule,
 } from '@angular/material';
 
@@ -59,7 +60,7 @@ import { BenzolistComponent } from './component/basics/benzolist/benzolist.compo
 import { HomeComponent } from './component/home/home.component';
 import { BenzohistoryComponent } from './component/basics/benzohistory/benzohistory.component';
 import { BenzowordsComponent } from './component/basics/benzowords/benzowords.component';
-import { ContentsHeaderComponent } from './component/contents-header/contents-header.component';
+import { WithdrawalsymptomsComponent } from './component/basics/withdrawalsymptoms/withdrawalsymptoms.component';
 import { PatientsTopComponent } from './component/patients/patients-top/patients-top.component';
 import { PatientsAriticlesComponent } from './component/patients/patients-ariticles/patients-ariticles.component';
 import { SafePipe } from './service/safe.pipe';
@@ -79,7 +80,6 @@ import { IntroductionEngComponent } from './component/introduction-eng/introduct
 import { GcseResultComponent } from './component/gcse-result/gcse-result.component';
 import { SearchUiComponent } from './component/search-ui/search-ui.component';  // algoliaテスト用
 import { GcseSearchComponent } from './component/gcse-search/gcse-search.component';
-
 
 // FirebaseUI初期化コード
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
@@ -148,6 +148,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatSnackBarModule,
     MatSidenavModule,
     MatSelectModule,
+    MatTableModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     //ルーターの定義
@@ -169,10 +170,10 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     IntroductionComponent,
     BasicsComponent,
     BenzolistComponent,
+    WithdrawalsymptomsComponent,
     HomeComponent,
     BenzohistoryComponent,
     BenzowordsComponent,
-    ContentsHeaderComponent,
     PatientsTopComponent,
     PatientsAriticlesComponent,
     SafePipe,

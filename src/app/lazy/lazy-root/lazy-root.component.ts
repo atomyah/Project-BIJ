@@ -1,10 +1,4 @@
-//====================
-// ルートコンポーネント
-//　・コンポーネント共通の処理
-//　　ヘッダー、メニュー、画面関連イベント検知
-//====================
-
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import {Title, Meta} from "@angular/platform-browser";
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
@@ -13,12 +7,13 @@ import { DoctorsArticles } from './../../class/doctors';  // Doctorsデータタ
 import { MediasArticles } from './../../class/medias';  // Mediasデータタイプインターフェース
 import { Observable } from 'rxjs'; // 正式名称「Reactive Extensions for JavaScript」
 
+
 @Component({
-    selector: 'app-root',
-    templateUrl: './root.component.html',
-    styleUrls: ['../../common.css', './root.component.css']
-  })
-export class RootComponent {
+  selector: 'app-lazy-root',
+  templateUrl: './lazy-root.component.html',
+  styleUrls: ['../../common.css','./lazy-root.component.css']
+})
+export class LazyRootComponent implements OnInit {
 
   patientsarticlesRef: AngularFirestoreCollection<PatientsArticles>;
   patientsarticles: Observable<PatientsArticles[]>;
@@ -29,8 +24,7 @@ export class RootComponent {
   mediasarticlesRef: AngularFirestoreCollection<MediasArticles>;
   mediasarticles: Observable<MediasArticles[]>;
 
-  //ルーター定義、および値を受け渡すValueSharedServiceサービスを定義
-   constructor(public router: Router, private route: ActivatedRoute, private titleService: Title, private meta: Meta, private db: AngularFirestore,) {
+  constructor(public router: Router, private route: ActivatedRoute, private titleService: Title, private meta: Meta, private db: AngularFirestore) {
     this.patientsarticlesRef = this.db.collection<PatientsArticles>('patientsarticles'); 
     this.patientsarticles = this.patientsarticlesRef.valueChanges();
 
@@ -41,7 +35,7 @@ export class RootComponent {
     this.mediasarticles = this.mediasarticlesRef.valueChanges();     
    }
 
-   ngOnInit() {
+  ngOnInit() {
     this.titleService.setTitle('ベンゾジアゼピン情報センター')
        
       // 以下はグーグルカスタムサーチ用スクリプトタグ挿入
@@ -51,8 +45,8 @@ export class RootComponent {
       gcse.async = true;
       gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
       let s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(gcse, s); 
-   }
+      s.parentNode.insertBefore(gcse, s);     
+  }
 
 
 //メソッド内で遷移する
@@ -102,6 +96,7 @@ export class RootComponent {
      await this.router.navigate(['/lazy/lazyhome']);
     } 
 
+
 // 「患者（被害者）の方へ」の各ページに飛ばすメソッド
 //（HTMLの方でrouterLink="/patients-article/{{ item.num }}" だとURLは変わるけどページ遷移しない
     async goPatAnother(item: PatientsArticles) {
@@ -147,7 +142,5 @@ export class RootComponent {
     div.parentNode.insertBefore(element,div.nextSibling);//ボタンを置きたい場所にaタグを追加
     div.parentNode.insertBefore(script,div.nextSibling);//scriptタグを追加してJSを実行し、aタグをボタンに変身させる
   
-  }
-
+  }    
 }
-

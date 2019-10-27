@@ -24,10 +24,10 @@ export class IntroductionComponent implements AfterViewInit, OnInit {
     this.meta.updateTag({name: 'keywords', content: 'ベンゾ,ベンゾジアゼピン,睡眠薬,抗不安薬,離脱症状,テーパリング,ジアゼパム換算,アシュトンマニュアル,離脱症状,依存症,アルコール依存症,覚せい剤,麻薬,神経'})
     this.meta.updateTag({name: 'twitter:card', content: 'summary'})
     this.meta.updateTag({name: 'twitter:site', content: '@benzoinfojapan'})
-    this.meta.updateTag({name: 'og:url', content: 'https://benzoinfojapan.org/introduction'})
-    this.meta.updateTag({name: 'og:title', content: 'ベンゾジアゼピン(睡眠薬、抗不安薬)概要'})
-    this.meta.updateTag({name: 'og:description', content: 'ベンゾ被害は日本だけでなく世界中で同様です。詳細のデータをもとにこれを人類史上最悪の薬害と位置づけました。米・欧・オセアニア・アジア・・中東・インド・南米、国境を越えて対峙していきましょう'})
-    this.meta.updateTag({name: 'og:image', content: 'https://benzoinfojapan.org/assets/images/twitcard_introduction.png'})    
+    this.meta.updateTag({property: 'og:url', content: 'https://benzoinfojapan.org/introduction'})
+    this.meta.updateTag({property: 'og:title', content: 'ベンゾジアゼピン(睡眠薬、抗不安薬)概要'})
+    this.meta.updateTag({property: 'og:description', content: 'ベンゾ被害は日本だけでなく世界中で同様です。詳細のデータをもとにこれを人類史上最悪の薬害と位置づけました。米・欧・オセアニア・アジア・・中東・インド・南米、国境を越えて対峙していきましょう'})
+    this.meta.updateTag({property: 'og:image', content: 'https://benzoinfojapan.org/assets/images/twitcard_introduction.png'})    
    }
   
 
