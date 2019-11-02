@@ -321,6 +321,18 @@ export class SeoService {
         this.meta.updateTag({ property: 'og:description', content: '自身もベンゾ依存に陥った神経学者Perseveranceによる記事です。内容もさることながら、あまたの引用文献の専門性から十分論文として通用するものですが匿名では公式発表できないのでベンゾバディに投稿しているようです' });
         this.meta.updateTag({ property: 'og:image', content: 'https://benzoinfojapan.org/assets/picts/dict18.png' });
         break;
+      case '19':
+        console.log('◆◆◆◆◆generateTagsPatientsArticles()の引数articlenumは、' + this.doctorsarticlenum)
+        this.meta.updateTag({ name: 'title', content: '線維筋痛症の痛み ― グルタミン酸およびヒスタミンとの関連性'});
+        this.meta.updateTag({ name: 'description', content: '神経性難病は、筋肉とその周辺組織の機能不全と考えられていました。しかしながら近年の研究によりこれは中枢神経系疾患ととらえらるようになりました。つまり脳内で痛みを感知するプロセスに障害があり、結果として“中作感作（central sensitization)”と呼ばれるものによって痛みが増幅されてしまうのです'});
+        this.meta.updateTag({ name: 'keywords', content: '線維筋痛症,慢性疲労症候群,CFS,fiblo,過敏性腸症候群,頻尿,偏頭痛,悪心,ブレインフォグ,不安障害,不眠症,視覚過敏,聴覚過敏,うつ,化学物質過敏症,むずむず脚症候群,坐骨神経痛,痴呆,無気力,インポテンツ,記憶喪失,筋肉痛,関節痛,睡眠障害,睡眠薬,離脱症状,ベンゾジアゼピン,耳鳴り' });
+        this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
+        this.meta.updateTag({ name: 'twitter:site', content: '@benzoinfojapan' });
+        this.meta.updateTag({ property: 'og:url', content: 'https://benzoinfojapan.org/doctors-article/19' })
+        this.meta.updateTag({ property: 'og:title', content: '線維筋痛症の痛み ― グルタミン酸およびヒスタミンとの関連性' });
+        this.meta.updateTag({ property: 'og:description', content: '神経性難病は、筋肉とその周辺組織の機能不全と考えられていました。しかしながら近年の研究によりこれは中枢神経系疾患ととらえらるようになりました。つまり脳内で痛みを感知するプロセスに障害があり、結果として“中作感作（central sensitization)”と呼ばれるものによって痛みが増幅されてしまうのです' });
+        this.meta.updateTag({ property: 'og:image', content: 'https://benzoinfojapan.org/assets/picts/dict19.png' });
+        break;
     }
   }
 

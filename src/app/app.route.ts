@@ -31,8 +31,9 @@ import { SearchUiComponent } from './component/search-ui/search-ui.component';
 
 //urlパスと表示するコンポーネントの関連づけ
 export const AppRoutes: Routes = [
-    {path: "", redirectTo: "home", pathMatch: 'full'},
+//    {path: "", redirectTo: "home", pathMatch: 'full'},
 //    {path: "lazy", loadChildren:  "./lazy/lazy.module#LazyModule"},
+    {path: "", component: HomeComponent},    
     {path: "home", component: HomeComponent},
     {path: "introduction", component: IntroductionComponent},
     {path: "basics", component: BasicsComponent},

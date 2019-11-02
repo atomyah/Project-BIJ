@@ -99,7 +99,7 @@ export class RootComponent {
 
 //トップページへ戻る
     async goHome() {
-     await this.router.navigate(['/lazy/lazyhome']);
+     await this.router.navigate(['/']);
     } 
 
 // 「患者（被害者）の方へ」の各ページに飛ばすメソッド
