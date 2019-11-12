@@ -108,7 +108,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   //    requireDisplayName: false,
   //    provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
   // },
- 
+
   //  firebase.auth.PhoneAuthProvider.PROVIDER_ID,
   　firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
   ],
@@ -122,6 +122,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   */
 
 };
+
 
 
 //アプリで使用するモジュール定義
