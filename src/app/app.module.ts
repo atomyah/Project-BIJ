@@ -24,27 +24,25 @@ import { NgAisModule } from 'angular-instantsearch'; //algolia instant search
 
 
 //Material2モジュールのインポート
-import {
-  MatButtonModule,
-  MatBadgeModule,
-  MatCardModule,
-  MatDialogModule,
-  MAT_DIALOG_DEFAULT_OPTIONS,  // MatDialogに必要な記述
-  MatExpansionModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatPaginatorModule,
-  MatPaginatorIntl,
-  MatSidenavModule,
-  MatSliderModule,
-  MatSnackBarModule,
-  MatSelectModule,
-  MatTableModule,
-  MatToolbarModule,
-} from '@angular/material';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { // MatDialogに必要な記述
+MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 // 作成したコンポーネントのインポート
 import {RootComponent} from './component/root/root.component';

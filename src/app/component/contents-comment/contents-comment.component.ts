@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, forwardRef, LOCALE_ID, ViewChild } from '@angular/core'; // Inject, LOCALE_IDは現在日付獲得用
+import { Component, OnInit, Inject, forwardRef, LOCALE_ID } from '@angular/core'; // Inject, LOCALE_IDは現在日付獲得用
 import { Router } from '@angular/router';
 import { ValueSharedService } from '../../service/value-shared.service';
 import { Post } from '../../class/faqpost';
@@ -8,10 +8,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import { formatDate } from '@angular/common'; // 現在日付獲得用
 import { map } from "rxjs/operators"; // 追加
-import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import {Meta} from '@angular/platform-browser';
-import {MatPaginator} from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
 import { environment } from 'src/environments/environment';
 
 

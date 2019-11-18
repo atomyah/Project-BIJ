@@ -4,14 +4,15 @@
 //　　ヘッダー、メニュー、画面関連イベント検知
 //====================
 
-import {Component, Input, OnInit} from '@angular/core';
-import {Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import {Title, Meta} from "@angular/platform-browser";
+import {Component, ChangeDetectorRef} from '@angular/core';
+import {Router } from '@angular/router';
+import {Title} from "@angular/platform-browser";
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { PatientsArticles } from './../../class/patients';  // Patientsデータタイプインターフェース
 import { DoctorsArticles } from './../../class/doctors';  // Doctorsデータタイプインターフェース
 import { MediasArticles } from './../../class/medias';  // Mediasデータタイプインターフェース
-import { Observable } from 'rxjs'; // 正式名称「Reactive Extensions for JavaScript」
+//import { Observable } from 'rxjs'; // 正式名称「Reactive Extensions for JavaScript」
+import {MediaMatcher} from '@angular/cdk/layout'; //sidenav用
 
 @Component({
     selector: 'app-root',
@@ -19,7 +20,10 @@ import { Observable } from 'rxjs'; // 正式名称「Reactive Extensions for Jav
     styleUrls: ['../../common.css', './root.component.css']
   })
 export class RootComponent {
+  mobileQuery: MediaQueryList;  //sidenav用 
+  private _mobileQueryListener: () => void; //sidenav用 
 
+/*
   patientsarticlesRef: AngularFirestoreCollection<PatientsArticles>;
   patientsarticles: Observable<PatientsArticles[]>;
 
@@ -28,9 +32,15 @@ export class RootComponent {
 
   mediasarticlesRef: AngularFirestoreCollection<MediasArticles>;
   mediasarticles: Observable<MediasArticles[]>;
+*/
 
   //ルーター定義、および値を受け渡すValueSharedServiceサービスを定義
-   constructor(public router: Router, private route: ActivatedRoute, private titleService: Title, private meta: Meta, private db: AngularFirestore,) {
+   constructor(public router: Router, private titleService: Title, private db: AngularFirestore, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  　//sidenav用 
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+/*
     this.patientsarticlesRef = this.db.collection<PatientsArticles>('patientsarticles'); 
     this.patientsarticles = this.patientsarticlesRef.valueChanges();
 
@@ -38,8 +48,12 @@ export class RootComponent {
     this.doctorsarticles = this.doctorsarticlesRef.valueChanges();
 
     this.mediasarticlesRef = this.db.collection<MediasArticles>('mediasarticles'); 
-    this.mediasarticles = this.mediasarticlesRef.valueChanges();     
+    this.mediasarticles = this.mediasarticlesRef.valueChanges();  
+*/   
    }
+
+
+
 
    ngOnInit() {
     this.titleService.setTitle('ベンゾジアゼピン情報センター')
@@ -148,6 +162,8 @@ export class RootComponent {
     div.parentNode.insertBefore(script,div.nextSibling);//scriptタグを追加してJSを実行し、aタグをボタンに変身させる
   
   }
+
+
 
 }
 

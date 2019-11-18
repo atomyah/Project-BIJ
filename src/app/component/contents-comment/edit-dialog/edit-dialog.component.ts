@@ -2,7 +2,7 @@
 // 事実上、違反投稿に「この投稿は削除しました」と管理者権限で書き込むために作った機能
 
 import { Component, OnInit, Inject} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Post } from 'src/app/class/faqpost';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 
