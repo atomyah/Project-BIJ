@@ -2,6 +2,7 @@
 <!--それをBASICSDATAとしてエキスポートしbasics.component.tsにてbasicsdata = BASICSDATA;でオブジェクト化した-->
 <!--表示はmaterial2のmat-cardを利用している--> 
 <body class="myContainerMain">
+<div class="container">  
   <h1>ベンゾ一般知識</h1>
 <div class="box-Container">
   <div class="box" style="display:inline-flex; margin: 2px;" *ngFor="let basics of basicsdata">
@@ -23,5 +24,6 @@
   </mat-card>
   </div>
 </div>
-  <br /> <br /> <br /> <br />
+  <br /> <br /> <br />
+</div>
 </body>

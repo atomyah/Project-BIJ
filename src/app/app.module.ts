@@ -9,33 +9,26 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { environment } from '../environments/environment';  // 追加
 import { AngularFireModule } from '@angular/fire';  // 追加
 import { AngularFirestoreModule } from '@angular/fire/firestore'; // 追加
 import { AngularFireAuthModule } from '@angular/fire/auth'; // 追加
-import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular'; // 追加.FirebaseUIのモジュール
 import { SeoService } from './service/seo.service'; //SEO対策
 import { FlexLayoutModule } from '@angular/flex-layout'; //Flex-layout用モジュール
-import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core'; // ページ内アンカーへスクロールジャンプさせるためインストールしたモジュール
-import { NgxPageScrollModule } from 'ngx-page-scroll'; // ngx-page-scroll-coreの簡易バージョン
-import { MatPaginatorIntlJa } from './class/mat-paginator-intl-ja'; // paginationの日本語化
-import { NgAisModule } from 'angular-instantsearch'; //algolia instant search
+
 
 
 //Material2モジュールのインポート
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import { // MatDialogに必要な記述
-MatExpansionModule } from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
@@ -71,55 +64,10 @@ import { DoctorsTopComponent } from './component/doctors/doctors-top/doctors-top
 import { DoctorsArticlesComponent } from './component/doctors/doctors-articles/doctors-articles.component';
 import { MediasTopComponent } from './component/medias/medias-top/medias-top.component';
 import { MediasArticlesComponent } from './component/medias/medias-articles/medias-articles.component';
-import { ContentsCommentComponent } from './component/contents-comment/contents-comment.component';
-import { EditDialogComponent } from './component/contents-comment/edit-dialog/edit-dialog.component';
 import { BenzolistEngComponent } from './component/basics/benzolist-eng/benzolist-eng.component';
 import { IntroductionEngComponent } from './component/introduction-eng/introduction-eng.component';
 import { GcseResultComponent } from './component/gcse-result/gcse-result.component';
-import { SearchUiComponent } from './component/search-ui/search-ui.component';  // algoliaテスト用
 import { GcseSearchComponent } from './component/gcse-search/gcse-search.component';
-
-// FirebaseUI初期化コード
-const firebaseUiAuthConfig: firebaseui.auth.Config = {
-  autoUpgradeAnonymousUsers: false, // 匿名認証ユーザー自動アップグレード
-  signInFlow: 'popup', // redirect or popup
-  signInOptions: [
-  // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-  /*  
-    {
-      scopes: [
-        'public_profile',
-        'email',
-        'user_likes',
-        'user_friends'
-      ],
-      customParameters: {
-        'auth_type': 'reauthenticate'
-      },
-      provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID
-    },
-  */
-
-  //  firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-  //  firebase.auth.GithubAuthProvider.PROVIDER_ID,
-  // {
-  //    requireDisplayName: false,
-  //    provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
-  // },
-
-  //  firebase.auth.PhoneAuthProvider.PROVIDER_ID,
-  　firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
-  ],
-
-  /*
-  tosUrl: 'http://localhost:6200/TOS', // 'Team Of Serviceのリンク先URL'
-  privacyPolicyUrl: 'プライバシーポリシーのURL',
-  signInSuccessUrl: 'http://localhost:6200/home',
-  credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM,
-  siteName: 'benzoinfojapan', 
-  */
-
-};
 
 
 
@@ -137,12 +85,10 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatDialogModule,
     MatListModule,
     MatIconModule,
     MatToolbarModule,
     MatMenuModule,
-    MatPaginatorModule,
     MatSliderModule,
     MatSnackBarModule,
     MatSidenavModule,
@@ -156,11 +102,11 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AngularFireModule.initializeApp(environment.firebase), // 追加
     AngularFirestoreModule,  // 追加.Firestore用モジュール
     AngularFireAuthModule,  // 追加.angularfireのAuth用モジュール
-    FirebaseUIModule.forRoot(firebaseUiAuthConfig),　// FirebaseUI用のモジュール
+//    FirebaseUIModule.forRoot(firebaseUiAuthConfig),　// FirebaseUI用のモジュール
     FlexLayoutModule, //Flex-layout用モジュール
-    NgxPageScrollCoreModule, // ページ内アンカーへスクロールジャンプさせるためインストールしたモジュール
-    NgxPageScrollModule,
-    NgAisModule.forRoot(),
+//    NgxPageScrollCoreModule, // ページ内アンカーへスクロールジャンプさせるためインストールしたモジュール
+//    NgxPageScrollModule,
+//    NgAisModule.forRoot(),
   ],
 
   // 作成したコンポーネント 
@@ -185,25 +131,16 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     DoctorsArticlesComponent,
     MediasTopComponent,
     MediasArticlesComponent,
-    ContentsCommentComponent,
-    EditDialogComponent,
     BenzolistEngComponent,
     IntroductionEngComponent,
     GcseResultComponent,
-    SearchUiComponent,// algoliaテスト用
     GcseSearchComponent,
   ],
 
   // DIするサービス 
   providers: [
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},  // MatDialogに必要な記述
-    { provide: MatPaginatorIntl, useClass: MatPaginatorIntlJa },
     SeoService,
   ],
-
-  // MatDialogに必要な記述
-  entryComponents: [EditDialogComponent],
-
     // 初めに呼び出すコンポーネント
   bootstrap: [RootComponent]
 })

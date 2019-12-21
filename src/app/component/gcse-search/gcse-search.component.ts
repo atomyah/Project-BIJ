@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-gcse-search',
   templateUrl: './gcse-search.component.html',
-  styleUrls: ['./gcse-search.component.css']
+  styleUrls: ['../../common.css','./gcse-search.component.css']
 })
 export class GcseSearchComponent implements OnInit {
 

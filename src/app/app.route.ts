@@ -22,17 +22,13 @@ import { AddArticleComponent } from './admin/add-article/add-article.component';
 import { AdminTopComponent } from './admin/admin-top/admin-top.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminGuard } from  './admin/admin.guard';
-import { ContentsCommentComponent } from './component/contents-comment/contents-comment.component';
 import { BenzolistEngComponent } from './component/basics/benzolist-eng/benzolist-eng.component';
 import { IntroductionEngComponent } from './component/introduction-eng/introduction-eng.component';
 import { GcseResultComponent } from './component/gcse-result/gcse-result.component';
-import { SearchUiComponent } from './component/search-ui/search-ui.component';
 
 
 //urlパスと表示するコンポーネントの関連づけ
 export const AppRoutes: Routes = [
-//    {path: "", redirectTo: "home", pathMatch: 'full'},
-//    {path: "lazy", loadChildren:  "./lazy/lazy.module#LazyModule"},
     {path: "", component: HomeComponent},    
     {path: "home", component: HomeComponent},
     {path: "introduction", component: IntroductionComponent},
@@ -52,10 +48,8 @@ export const AppRoutes: Routes = [
     {path: "admin/add-article", component: AddArticleComponent, canActivate: [AdminGuard]},
     {path: "admin/admin-top", component: AdminTopComponent, canActivate: [AdminGuard]},    
     {path: "admin", component: AdminLoginComponent},
-    {path: "forum", component: ContentsCommentComponent},
     {path: "basics/benzolisteng", component: BenzolistEngComponent},
     {path: "introductioneng", component: IntroductionEngComponent},
     {path: "gcs-result", component: GcseResultComponent},
     {path: "gcs-result/:query", component: GcseResultComponent},
-    {path: "algoliasearch", component: SearchUiComponent},// algoliaテスト用
 ];
