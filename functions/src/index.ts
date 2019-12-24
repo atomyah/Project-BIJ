@@ -1,6 +1,3 @@
-// 試し
 import * as functions from 'firebase-functions';
-
-exports.helloWorld = functions.https.onRequest((req, res) => {
-    res.send("Hello from Firebase!");
-  });
+const universal = require(`${process.cwd()}/dist/server`).app;
+export const ssr = functions.https.onRequest(universal);

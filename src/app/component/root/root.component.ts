@@ -11,7 +11,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { PatientsArticles } from './../../class/patients';  // Patientsデータタイプインターフェース
 import { DoctorsArticles } from './../../class/doctors';  // Doctorsデータタイプインターフェース
 import { MediasArticles } from './../../class/medias';  // Mediasデータタイプインターフェース
-//import { Observable } from 'rxjs'; // 正式名称「Reactive Extensions for JavaScript」
+import { Observable } from 'rxjs'; // 正式名称「Reactive Extensions for JavaScript」
 import {MediaMatcher} from '@angular/cdk/layout'; //sidenav用
 
 @Component({
@@ -23,16 +23,18 @@ export class RootComponent {
   mobileQuery: MediaQueryList;  //sidenav用 
   private _mobileQueryListener: () => void; //sidenav用 
 
-/*
+
   patientsarticlesRef: AngularFirestoreCollection<PatientsArticles>;
   patientsarticles: Observable<PatientsArticles[]>;
+
 
   doctorsarticlesRef: AngularFirestoreCollection<DoctorsArticles>;
   doctorsarticles: Observable<DoctorsArticles[]>;
 
+
   mediasarticlesRef: AngularFirestoreCollection<MediasArticles>;
   mediasarticles: Observable<MediasArticles[]>;
-*/
+
 
   //ルーター定義、および値を受け渡すValueSharedServiceサービスを定義
    constructor(public router: Router, private titleService: Title, private db: AngularFirestore, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
@@ -40,16 +42,16 @@ export class RootComponent {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
-/*
+
     this.patientsarticlesRef = this.db.collection<PatientsArticles>('patientsarticles'); 
     this.patientsarticles = this.patientsarticlesRef.valueChanges();
 
     this.doctorsarticlesRef = this.db.collection<DoctorsArticles>('doctorsarticles'); 
     this.doctorsarticles = this.doctorsarticlesRef.valueChanges();
-
+ 
     this.mediasarticlesRef = this.db.collection<MediasArticles>('mediasarticles'); 
     this.mediasarticles = this.mediasarticlesRef.valueChanges();  
-*/   
+  
    }
 
 
@@ -58,6 +60,7 @@ export class RootComponent {
    ngOnInit() {
     this.titleService.setTitle('ベンゾジアゼピン情報センター')
        
+    
       // 以下はグーグルカスタムサーチ用スクリプトタグ挿入
       let cx = '002441034172234205663:svlaurhzgs9';
       let gcse = document.createElement('script');
@@ -66,6 +69,7 @@ export class RootComponent {
       gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
       let s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(gcse, s); 
+    
    }
 
 

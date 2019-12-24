@@ -75,7 +75,7 @@ import { GcseSearchComponent } from './component/gcse-search/gcse-search.compone
 @NgModule({
    //モジュール
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
