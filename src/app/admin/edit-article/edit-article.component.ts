@@ -19,7 +19,7 @@ export class EditArticleComponent implements OnInit {
 
   //親コンポーネントから受け取るプロパティ
   // @Input() collectionNameValue: string;
-  //admin-topのセレクトボタンの切り替えでコレクション名を獲得するため、Firestoreへの接続はコードｈ
+  //admin-topのセレクトボタンの切り替えでコレクション名を獲得するため、Firestoreへの接続コードは
   //すべてngOnInit()からngOnChanges()へ移した。すなわち作業の最初の作業は必ずセレクトボタンの切り替え
   //から始めるということ。  
 
@@ -67,7 +67,7 @@ export class EditArticleComponent implements OnInit {
         return { id,num,  ...data };
         });
       }));   
-    console.log('articlesは、' + JSON.stringify(this.articles)); // うまくいってもarticlesは、{"_isScalar":false,"source":{"_isScalar":false},"operator":{}}というメッセージはでる
+    console.log('articlesは、' + JSON.stringify(this.articles)); // articlesは、{"_isScalar":false,"source":{"_isScalar":false},"operator":{}}
     console.log('subscribeしたものは、' + this.articles.subscribe() ); // [object Object]
   }
 

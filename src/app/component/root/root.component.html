@@ -128,20 +128,29 @@
     style="position:fixed;bottom:0;left:0;height:fit-content;width: 100%; z-index: 2; justify-content: center"
 >
   <mat-toolbar-row>
-      <table border="0">
+      <table border="0" width="40px">
           <tbody>    
             <tr>
               <td id="beforeTwitterSharebutton"></td>
               <!--ここにTwitterボタン.<td>タグもintroduction.component.ts内のスクリプトで作ります-->
               <td>
+                <a href="https://twitter.com/benzoinfojapan" target="_blank" alt="twitter">           
+                  <img src="../../../assets/images/icons8-twitter-30x40.png" alt="睡眠薬は魔薬Twitterアイコン"> 
+                </a>              
               </td>
             </tr>
           </tbody>
         </table>
-   <div fxShow="true" fxHide.lt-sm="true">        
-    <span id="footerfont">お問い合わせはツイッターの方へご連絡ください</span>
-    <span id="footerfont" style="margin-left: 80px">Copyright 2019 © benzoinfojapan</span>
-   </div>
+       
+    <span id="footerfont" style="margin-left: 5px;">
+      <span fxShow="true" fxHide.lt-sm="true">
+        <a href="https://twitter.com/benzoinfojapan" target="_blank" alt="睡眠薬は魔薬">
+          @benzoinfojapan
+        </a>
+      </span>
+        ☜ お問い合わせはツイッターへ<i class="material-icons">chat_bubble_outline</i>
+    </span>
+      <span fxShow="true" fxHide.lt-sm="true" id="footerfont" style="margin-left: 300px">Copyright 2019 © benzoinfojapan</span>
   </mat-toolbar-row>
 </mat-toolbar>
 

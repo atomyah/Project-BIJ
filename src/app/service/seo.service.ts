@@ -12,6 +12,7 @@ export class SeoService {
 
   constructor(public meta: Meta, public titleService: Title) { }
 
+
   generateTagsPatientsArticles(e: any) {
     this.patinentsarticlenum = e;
     switch(this.patinentsarticlenum) {
@@ -333,6 +334,18 @@ export class SeoService {
         this.meta.updateTag({ property: 'og:description', content: '神経性難病は、筋肉とその周辺組織の機能不全と考えられていました。しかしながら近年の研究によりこれは中枢神経系疾患ととらえらるようになりました。つまり脳内で痛みを感知するプロセスに障害があり、結果として“中作感作（central sensitization)”と呼ばれるものによって痛みが増幅されてしまうのです' });
         this.meta.updateTag({ property: 'og:image', content: 'https://benzoinfojapan.org/assets/picts/dict19.png' });
         break;
+      case '20':
+        console.log('◆◆◆◆◆generateTagsPatientsArticles()の引数articlenumは、' + this.doctorsarticlenum)
+        this.meta.updateTag({ name: 'title', content: 'ベンゾ遷延性離脱症候群の発生メカニズム'});
+        this.meta.updateTag({ name: 'description', content: '議論されるトピックとしては、GABA A受容体（GABAARs）の神経恒常性変化、グルタミン酸システムの非恒常性変化、海馬で起こるような長期増強（Long Term Potential, LTP）の形成と運用について'});
+        this.meta.updateTag({ name: 'keywords', content: '睡眠薬,離脱症状,ベンゾジアゼピン,長期増強,LTP,Long Term Potentiation,NMDA,AMPA,グルタミン酸受容体,ダウンレギュレーション,リン酸,脱リン酸化,神経適応,海馬,Benzo,Hypnotics,遷延性離脱症候群,神経恒常性,mRNA,前頭皮質,小脳,PKMζ,遺伝子,シナプス活性化,カルシウムチャネル,受容体,エンドサイトーシス,リソソーム分解,フルラゼパム,グルタメート,染色体,サブユニット'});
+        this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
+        this.meta.updateTag({ name: 'twitter:site', content: '@benzoinfojapan' });
+        this.meta.updateTag({ property: 'og:url', content: 'https://benzoinfojapan.org/doctors-article/20' })
+        this.meta.updateTag({ property: 'og:title', content: 'ベンゾ遷延性離脱症候群の発生メカニズム' });
+        this.meta.updateTag({ property: 'og:description', content: '議論されるトピックとしては、GABA A受容体（GABAARs）の神経恒常性変化、グルタミン酸システムの非恒常性変化、海馬で起こるような長期増強（Long Term Potential, LTP）の形成と運用について' });
+        this.meta.updateTag({ property: 'og:image', content: 'https://benzoinfojapan.org/assets/picts/dict18.png' });
+        break;
     }
   }
 
@@ -441,6 +454,9 @@ export class SeoService {
           this.meta.updateTag({ property: 'og:image', content: 'https://benzoinfojapan.org/assets/picts/pict1.png' });
     }
   }
+
+
+
 }
 
 

@@ -8,13 +8,16 @@
    </mat-form-field>
  
    <mat-form-field>
-     <input matInput placeholder="Password" #userPassword required>
+     <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" #userPassword required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
    </mat-form-field>
  
  
-   <mat-form-field>
+
      <button mat-flat-button color="accent" (click)="authService.login(userEmail.value, userPassword.value)">Login</button>
-   </mat-form-field>
+ 
  
   </div>
  

@@ -7,7 +7,8 @@ import { AuthService } from  '../../service/auth.service';
   styleUrls: ['../../common.css', './admin-login.component.css']
 })
 export class AdminLoginComponent implements OnInit {
-
+  hide = true;
+  
   constructor(public authService: AuthService) { }
 
   ngOnInit() {

@@ -1,5 +1,5 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, DoCheck, OnChanges, OnDestroy, Component, OnInit } from '@angular/core';
-import { FormBuilder,FormControl,FormGroup,Validators } from '@angular/forms';
+import { Component, OnInit, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, DoCheck, OnChanges, OnDestroy } from '@angular/core';
+import { FormBuilder,FormGroup } from '@angular/forms';
 import {Title} from "@angular/platform-browser";
 import {Router} from "@angular/router";
 import { AuthService } from  '../../service/auth.service';
@@ -9,9 +9,18 @@ import { AuthService } from  '../../service/auth.service';
   templateUrl: './admin-top.component.html',
   styleUrls: ['../../common.css','./admin-top.component.css']
 })
-export class AdminTopComponent implements OnChanges, OnInit,
-DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit,
-AfterViewChecked, OnDestroy {
+export class AdminTopComponent implements 
+  OnInit
+/*
+  OnChanges, 
+  DoCheck, 
+  AfterContentInit, 
+  AfterContentChecked, 
+  AfterViewInit,
+  AfterViewChecked, 
+  OnDestroy 
+*/
+{
   
   selected = 'patientsarticles';
 
@@ -46,6 +55,7 @@ AfterViewChecked, OnDestroy {
   }
 
    //以降はイベント履歴の記録用
+  /*
   ngOnChanges() {
     console.log("@@@ngOnChanges");
   }
@@ -74,4 +84,5 @@ AfterViewChecked, OnDestroy {
   ngOnDestroy() {
     console.log("@@@ngOnDestroy");
   }
+  */
 }

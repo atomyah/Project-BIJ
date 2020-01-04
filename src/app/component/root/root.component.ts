@@ -145,6 +145,7 @@ export class RootComponent {
  // twitterシェアボタンの置き方。以下の通りAfterViewInit()で後から
  // 以下のようなタグを作ってインサートする。
  //<a href="https://twitter.com/benzoinfojapan?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @benzoinfojapan</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+/*
  ngAfterViewInit(){
   var element = document.createElement('a');//aタグを作ります
   element.setAttribute('href',"https://twitter.com/benzoinfojapan?ref_src=twsrc%5Etfw");
@@ -164,9 +165,8 @@ export class RootComponent {
     div.parentNode.insertBefore(td, div.nextSibling);//ボタンを置きたい場所にtdタグを追加
     div.parentNode.insertBefore(element,div.nextSibling);//ボタンを置きたい場所にaタグを追加
     div.parentNode.insertBefore(script,div.nextSibling);//scriptタグを追加してJSを実行し、aタグをボタンに変身させる
-  
   }
-
+*/
 
 
 }

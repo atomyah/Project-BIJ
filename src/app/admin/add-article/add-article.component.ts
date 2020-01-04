@@ -1,4 +1,4 @@
-import { Input, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, DoCheck, OnChanges, OnDestroy, Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Article } from '../../service/article';
@@ -113,27 +113,4 @@ get feature() {
         }));   
     }
 
-    ngDoCheck() {
-      console.log("@@@ngDoCheck");
-    }
-  
-    ngAfterContentInit() {
-      console.log("@@@ngAfterContentInit");
-    }
-  
-    ngAfterContentChecked() {
-      console.log("@@@ngAfterContentChecked");
-    }
-  
-    ngAfterViewInit() {
-      console.log("@@@ngAfterViewInit");
-    }
-  
-    ngAfterViewChecked() {
-      console.log("@@@ngAfterViewChecked");
-    }
-  
-    ngOnDestroy() {
-      console.log("@@@ngOnDestroy");
-    }
 }

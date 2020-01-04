@@ -1,5 +1,5 @@
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Input, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, DoCheck, OnChanges, OnDestroy, Component, OnInit } from '@angular/core';
+import { Input, OnChanges, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Article } from '../../service/article';
 import { Observable } from 'rxjs';
@@ -67,31 +67,6 @@ export class ArticleListComponent implements OnInit, OnChanges {
         return { id,num,  ...data };
         });
       })); 
-  }
-
-     //以降はイベント履歴の記録用
-  ngDoCheck() {
-    console.log("@@@ngDoCheck");
-  }
-
-  ngAfterContentInit() {
-    console.log("@@@ngAfterContentInit");
-  }
-
-  ngAfterContentChecked() {
-    console.log("@@@ngAfterContentChecked");
-  }
-
-  ngAfterViewInit() {
-    console.log("@@@ngAfterViewInit");
-  }
-
-  ngAfterViewChecked() {
-    console.log("@@@ngAfterViewChecked");
-  }
-
-  ngOnDestroy() {
-    console.log("@@@ngOnDestroy");
   }
 
 }

@@ -102,11 +102,7 @@ import { GcseSearchComponent } from './component/gcse-search/gcse-search.compone
     AngularFireModule.initializeApp(environment.firebase), // 追加
     AngularFirestoreModule,  // 追加.Firestore用モジュール
     AngularFireAuthModule,  // 追加.angularfireのAuth用モジュール
-//    FirebaseUIModule.forRoot(firebaseUiAuthConfig),　// FirebaseUI用のモジュール
     FlexLayoutModule, //Flex-layout用モジュール
-//    NgxPageScrollCoreModule, // ページ内アンカーへスクロールジャンプさせるためインストールしたモジュール
-//    NgxPageScrollModule,
-//    NgAisModule.forRoot(),
   ],
 
   // 作成したコンポーネント 
