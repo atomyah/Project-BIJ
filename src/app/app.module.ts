@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ServiceWorkerModule } from '@angular/service-worker';
+//import { ServiceWorkerModule } from '@angular/service-worker';
 import { HttpClientModule} from '@angular/common/http';
 import { environment } from '../environments/environment';  // 追加
 import { AngularFireModule } from '@angular/fire';  // 追加
@@ -95,7 +95,7 @@ import { GcseSearchComponent } from './component/gcse-search/gcse-search.compone
     MatSelectModule,
     MatTableModule,
     HttpClientModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    //ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     //ルーターの定義
     RouterModule.forRoot(AppRoutes),
     //Firebaseの定義
