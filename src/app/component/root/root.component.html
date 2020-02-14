@@ -9,19 +9,16 @@
 <!--PC用1段目toolba-row-->
   <!-- div fxShow="true" fxHide.lt-sm="true" -->
     <mat-toolbar-row class="mat-toolbar-row-word-wrap" color=""><!--mat-toolbar-row-word-wrapのCSSはroot.component.cssを参照。コンテンツを自動で枠内で折り返す-->
+
+      <!--3本線のバーガーメニュー-->
       <button mat-icon-button [matMenuTriggerFor]="menu" color="accent"><mat-icon>menu</mat-icon></button>
 
-  <!--ヘッダータイトルとベンゾインフォジャパンの表示-->
-  <!--1列のmat-toolbarで右寄りになってしまう文字列を適度な位置にする方法：class="fill-remaining-space"のCSSにはflex: 1 1 auto;とする-->
   
-          <span>ベンゾジアゼピン情報センター</span>
+          <h1>ベンゾジアゼピン情報センター</h1>
     <span fxShow="true" fxHide.lt-sm="true">
-          <span style="font-size: medium; margin-left:30px; margin-right: 50px">睡眠薬の被害実態と安全な減薬方法</span>
-          <span class="fill-remaining-space"></span>
-          <span style="font-size:small;margin-left:150px;">ベンゾインフォジャパン</span>
+          <h2 style="font-size: medium; margin-left:30px; margin-right: 50px">睡眠薬の被害実態と安全な減薬方法</h2>
     </span>
 
-  <!--3本線のバーガーメニュー-->
     <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="goHome()">Home</button>
 
@@ -42,19 +39,19 @@
         <button mat-menu-item [matMenuTriggerFor]="patients">患者(被害者)の方へ</button>
           <mat-menu #patients="matMenu">
             <button mat-menu-item (click)="goPatients()">●患者(被害者)の方へ － トップ</button>
-            <button mat-menu-item *ngFor="let item of patientsarticles | async" (click)="goPatAnother(item)">{{ item.title }}</button>
+            <!-- button mat-menu-item *ngFor="let item of patientsarticles | async" (click)="goPatAnother(item)">{{ item.title }}<button> -->
           </mat-menu>
 
         <button mat-menu-item [matMenuTriggerFor]="doctors">ドクターの方へ</button>
           <mat-menu #doctors="matMenu">
             <button mat-menu-item (click)="goDoctors()">●ドクターの方へ － トップ</button>
-            <button mat-menu-item *ngFor="let item of doctorsarticles | async" (click)="goDocAnother(item)">{{ item.title }}</button>
+            <!-- button mat-menu-item *ngFor="let item of doctorsarticles | async" (click)="goDocAnother(item)">{{ item.title }}</button> -->
           </mat-menu>
 
         <button mat-menu-item [matMenuTriggerFor]="medias">メディアの方へ</button>
           <mat-menu #medias="matMenu">
             <button mat-menu-item (click)="goMedias()">●メディアの方へ － トップ</button>
-            <button mat-menu-item *ngFor="let item of mediasarticles | async" (click)="goMedAnother(item)">{{ item.title }}</button>
+            <!-- button mat-menu-item *ngFor="let item of mediasarticles | async" (click)="goMedAnother(item)">{{ item.title }}</!-- button> -->
           </mat-menu>
 
           <a href="https://benzofaq.com/" target="_blank"><button mat-menu-item>質問フォーラム</button></a>
@@ -68,8 +65,28 @@
 
    <mat-toolbar-row 
     style="position:relative;left:0;height:fit-content;width: 100%; max-width:1024px; z-index: 2;" color="">
-      <div fxShow="true" fxHide.lt-sm="true">    
-            <div>
+      <div fxShow="true" fxHide.lt-sm="true">
+        <button mat-button (click)="goHome()"><mat-icon>home</mat-icon></button>
+        <button mat-button [matMenuTriggerFor]="summary">summary of benzodiazepine</button>
+        <mat-menu #summary="matMenu">
+           <button mat-menu-item (click)="goIntroductioneng()">summary of benzodiazepine</button>                  
+           <button mat-menu-item (click)="goIntroduction()">ベンゾジアゼピン概略</button>
+           <button mat-menu-item [matMenuTriggerFor]="basics" (click)="goBasics()">ベンゾ一般知識</button>
+         </mat-menu>
+         <mat-menu #basics="matMenu">
+          <button mat-menu-item (click)="goBasics()">●ベンゾ一般知識 － トップ</button>
+          <button mat-menu-item (click)="goBenzolist()">ジアゼパム換算表</button>
+          <button mat-menu-item (click)="goBenzolisteng()">Benzodiazepines List and Equivalents</button>                 
+          <button mat-menu-item (click)="goHistory()">ベンゾジアゼピン歴史</button>
+          <button mat-menu-item (click)="goWords()">用語集</button>
+          <button mat-menu-item (click)="goWithdrawalsymptoms()">離脱症状一覧 (BWS List)</button>
+        </mat-menu>
+        <button  mat-button (click)="goPatients()">患者(被害者)の方へ</button>
+        <button  mat-button (click)="goDoctors()">ドクターの方へ</button>
+        <button  mat-button (click)="goMedias()">メディアの方へ</button>
+        <a href="https://benzofaq.com" target="_blank"><button mat-button><span style="color: white;">質問フォーラム</span></button></a>
+
+              <!--
                 <button mat-button (click)="goHome()"><mat-icon>home</mat-icon></button>
                 <button mat-button [matMenuTriggerFor]="summary">summary of benzodiazepine</button>
                 <mat-menu #summary="matMenu">
@@ -102,7 +119,7 @@
                   <button mat-menu-item *ngFor="let item of mediasarticles | async" (click)="goMedAnother(item)">{{ item.title }}</button>
                 </mat-menu>                
                 <a href="https://benzofaq.com" target="_blank"><button mat-button><span style="color: white;">質問フォーラム</span></button></a>
-              </div>
+              -->
           </div>
     </mat-toolbar-row>   
 
@@ -150,7 +167,7 @@
       </span>
         ☜ お問い合わせはツイッターへ<i class="material-icons">chat_bubble_outline</i>
     </span>
-      <span fxShow="true" fxHide.lt-sm="true" id="footerfont" style="margin-left: 300px">Copyright 2020 © benzoinfojapan</span>
+      <span fxShow="true" fxHide.lt-sm="true" id="footerfont" style="margin-left: 300px">Copyright 2020 © ベンゾインフォジャパン</span>
   </mat-toolbar-row>
 </mat-toolbar>
 

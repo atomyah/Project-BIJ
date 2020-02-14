@@ -99,7 +99,19 @@ export class SeoService {
         this.meta.updateTag({ property: 'og:title', content: 'ベンゾ減薬FAQ' });
         this.meta.updateTag({ property: 'og:description', content: '減薬の相談をいくつか受けてきたなかで、代表的なご質問と管理人であるわたしなりの考えを掲載したものです【免責事項：ここで申し上げることはすべて身体的依存に陥っている被害者に対してであり、中毒やアディクションの兆候を示す方に対してではありません】' });
         this.meta.updateTag({ property: 'og:image', content: 'https://benzoinfojapan.org/assets/images/flower-avatar.jpg' });
-        break;        
+        break;
+      case '8':
+        console.log('◆◆◆◆◆generateTagsPatientsArticles()の引数articlenumは、' + this.patinentsarticlenum)
+        this.meta.updateTag({ name: 'title', content: '管理人のベンゾ減薬記録'});
+        this.meta.updateTag({ name: 'description', content: '管理人のベンゾ減薬記録になります。あくまでご参考に'});
+        this.meta.updateTag({ name: 'keywords', content: 'ベンゾ減薬,ベンゾ断薬,マイクロテーパリング,ベンゾ,テーパリング,置換,水溶液タイトレーション,フルニトラゼパム,ジアゼパム換算,サイレース,ロヒプノール,ジアゼパム,再服薬' });
+        this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
+        this.meta.updateTag({ name: 'twitter:site', content: '@benzoinfojapan' });
+        this.meta.updateTag({ property: 'og:url', content: 'https://benzoinfojapan.org/patients-article/8' })
+        this.meta.updateTag({ property: 'og:title', content: '管理人のベンゾ減薬記録' });
+        this.meta.updateTag({ property: 'og:description', content: '管理人のベンゾ減薬記録になります。あくまでご参考に' });
+        this.meta.updateTag({ property: 'og:image', content: 'https://benzoinfojapan.org/assets/picts/pict8.png' });
+        break;           
     }
   }
 
@@ -452,6 +464,16 @@ export class SeoService {
           this.meta.updateTag({ property: 'og:title', content: 'ベンゾジアゼピン ― その氷山の一角' });
           this.meta.updateTag({ property: 'og:description', content: '2010年依存専門施設で致死的な一気断薬をさせられ、重篤な長期に渡る離脱症状を経験した医師補助プログラムの修士号をもつニコル．Lによる記事です。Benzodiazepine Information Coalitionのアドバイザリーボードとして啓蒙活動を行う中でのベンゾ問題の難しさを指摘しています' });
           this.meta.updateTag({ property: 'og:image', content: 'https://benzoinfojapan.org/assets/picts/pict1.png' });
+      case '10':
+          console.log('◆◆◆◆◆generateTagsPatientsArticles()の引数articlenumは、' + this.mediasarticlenum)
+          this.meta.updateTag({ name: 'title', content: '元NASA分析官が苦しむ遷延性ロラゼパム傷害'});
+          this.meta.updateTag({ name: 'description', content: '元NASA分析官アーノルド・ヌーセンはバイク事故をきっかけに神経科医によってロラゼパムを処方され、そのあと急減薬を経た中止によって非常に厳しい遷延性離脱症候群になりました。シプコ博士は遷延性離脱症状を“薬物神経毒性症状(drug neurotoxicity)”と呼んでいます。'});
+          this.meta.updateTag({ name: 'keywords', content: '離脱症状,ベンゾジアゼピン,減薬,断薬,心臓発作,耳鳴り,神経科医,パニック発作,睡眠障害,Benzo,Hypnotics,NASA,インフォームドコンセント,ホスピタリスト,抗不安薬,3分心療,カリフォルニア,Zドラッグ,ワイパックス,ロラゼパム,ジアゼパム,Valium,Xanax,アルプラゾラム,ソラナックス,クロナゼパム,klonopin,リボトリール,ランドセン' });
+          this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
+          this.meta.updateTag({ name: 'twitter:site', content: '@benzoinfojapan' });
+          this.meta.updateTag({ property: 'og:url', content: 'https://benzoinfojapan.org/medias-article/10' })
+          this.meta.updateTag({ property: 'og:title', content: '元NASA分析官が苦しむ遷延性ロラゼパム傷害' });
+          this.meta.updateTag({ property: 'og:description', content: '元NASA分析官アーノルド・ヌーセンはバイク事故をきっかけに神経科医によってロラゼパムを処方され、そのあと急減薬を経た中止によって非常に厳しい遷延性離脱症候群になりました。シプコ博士は遷延性離脱症状を“薬物神経毒性症状(drug neurotoxicity)”と呼んでいます。' });
     }
   }
 

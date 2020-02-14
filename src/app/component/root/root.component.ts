@@ -20,9 +20,6 @@ import {MediaMatcher} from '@angular/cdk/layout'; //sidenav用
     styleUrls: ['../../common.css', './root.component.css']
   })
 export class RootComponent {
-  mobileQuery: MediaQueryList;  //sidenav用 
-  private _mobileQueryListener: () => void; //sidenav用 
-
 
   patientsarticlesRef: AngularFirestoreCollection<PatientsArticles>;
   patientsarticles: Observable<PatientsArticles[]>;
@@ -38,10 +35,6 @@ export class RootComponent {
 
   //ルーター定義、および値を受け渡すValueSharedServiceサービスを定義
    constructor(public router: Router, private titleService: Title, private db: AngularFirestore, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-  　//sidenav用 
-    this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    this.mobileQuery.addListener(this._mobileQueryListener);
 
     this.patientsarticlesRef = this.db.collection<PatientsArticles>('patientsarticles'); 
     this.patientsarticles = this.patientsarticlesRef.valueChanges();

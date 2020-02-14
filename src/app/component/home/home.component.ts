@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     console.log('■■■■' + this.currentURL)  
     this.meta.updateTag({name: 'title', content: 'ベンゾジアゼピン情報センター ー ホーム'})
     this.meta.updateTag({name: 'description',content: 'ベンゾジアゼピンは長期連用すると処方量依存といってやめるのが非常に難しくなります。依存症(addiction)ではなく薬剤性神経システム傷害(Injury)です。それゆえ覚せい剤やヘロインなどの麻薬とは同じ土俵で対処してはいけません'})
-    this.meta.updateTag({name: 'keywords', content: 'ベンゾ,ベンゾジアゼピン,睡眠薬,抗不安薬,離脱症状,減薬,断薬,テーパリング,ジアゼパム換算,アシュトンマニュアル,離脱症状,依存症,麻薬,神経'})
+    this.meta.updateTag({name: 'keywords', content: 'ベンゾ情報,ベンゾジアゼピン,睡眠薬,抗不安薬,離脱症状,減薬,断薬,テーパリング,ジアゼパム換算,アシュトンマニュアル,離脱症状,依存症,麻薬,神経'})
     this.meta.updateTag({name: 'twitter:card', content: 'summary'})
     this.meta.updateTag({name: 'twitter:site', content: '@benzoinfojapan'})
     this.meta.updateTag({property: 'og:url', content: 'https://benzoinfojapan.org/home'})
