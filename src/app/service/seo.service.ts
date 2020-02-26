@@ -111,6 +111,18 @@ export class SeoService {
         this.meta.updateTag({ property: 'og:title', content: '管理人のベンゾ減薬記録' });
         this.meta.updateTag({ property: 'og:description', content: '管理人のベンゾ減薬記録になります。あくまでご参考に' });
         this.meta.updateTag({ property: 'og:image', content: 'https://benzoinfojapan.org/assets/picts/pict8.png' });
+        break;   
+      case '9':
+        console.log('◆◆◆◆◆generateTagsPatientsArticles()の引数articlenumは、' + this.patinentsarticlenum)
+        this.meta.updateTag({ name: 'title', content: 'ドライカット(細粉法)での減薬方法'});
+        this.meta.updateTag({ name: 'description', content: '管理人であるわたしが実際に行ったマイクロテーパリング減薬方法のひとつであるドライカット(細粉法)での減薬方法について、そのやり方を図解したものです'});
+        this.meta.updateTag({ name: 'keywords', content: 'ベンゾ減薬,ベンゾ断薬,マイクロテーパリング,ベンゾ,テーパリング,置換,ドライカット,細粉法,水溶液タイトレーション,フルニトラゼパム,ジアゼパム換算,サイレース,ロヒプノール,ジアゼパム,再服薬' });
+        this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
+        this.meta.updateTag({ name: 'twitter:site', content: '@benzoinfojapan' });
+        this.meta.updateTag({ property: 'og:url', content: 'https://benzoinfojapan.org/patients-article/9' })
+        this.meta.updateTag({ property: 'og:title', content: 'ドライカット(細粉法)での減薬方法' });
+        this.meta.updateTag({ property: 'og:description', content: '管理人であるわたしが実際に行ったマイクロテーパリング減薬方法のひとつであるドライカット(細粉法)での減薬方法について、そのやり方を図解したものです' });
+        this.meta.updateTag({ property: 'og:image', content: 'https://benzoinfojapan.org/assets/picts/pict9.png' });
         break;           
     }
   }

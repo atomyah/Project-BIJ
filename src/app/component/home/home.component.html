@@ -12,6 +12,9 @@
       <div fxFlex.gt-xs="50" fxLayout.xs="column" fxFlex.xs="100" fxFlexFill style="padding: 10px;">
         <div fxLayout="column" fxFlexFill>
           <h2>新着・更新情報</h2>
+            <div style="margin: 2px" matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">
+              <a routerLink="patients-article/9" alt="ドライカット(細粉法)での減薬方法">患者向け記事「ドライカット（細粉法）での減薬方法」</a>を追加しました。
+            </div> 
             <div style="margin: 2px" matBadge="更" matBadgeColor="primary" matBadgePosition="above before" matBadgeOverlap="true">
               <a routerLink="patients-article/7" alt="ベンゾ減薬">患者向け記事「ベンゾ減薬FAQ」</a>を更新しました。
             </div> 
@@ -21,9 +24,6 @@
             <div style="margin: 2px" matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">
               <a routerLink="medias-article/10" alt="元NASA分析官が苦しむ遷延性ロラゼパム傷害">メディア向け記事「元NASA分析官が苦しむ遷延性ロラゼパム傷害」</a>を追加しました。
             </div> 
-            <div style="margin: 2px" matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">
-              <a routerLink="doctors-article/20" alt="ベンゾ遷延性離脱症候群の発生メカニズム">ドクター向け記事「ベンゾ遷延性離脱症候群の発生メカニズム」</a>を追加しました。
-            </div>
             <br>
         </div>
         <div fxLayout="column" fxFlexFill>
@@ -31,7 +31,15 @@
             <div style="margin: 2px" matBadge="新" matBadgeColor="accent" matBadgePosition="above before" matBadgeOverlap="true">
               <a href="https://medical.jiji.com/topics/1495" alt="睡眠薬の中止で離脱症状" target="_blank">「睡眠薬や抗不安薬の中止で離脱症状」（メディカルトリビューン＝時事）</a>
             </div>
-            <strong style="font-size: small; color:crimson;">週刊誌等でベンゾの危険性についての記事が多くなっています。それらを読んでけしてすぐに止めたり減薬を急がないでください。充分に学べば不安になることはありません。</strong>
+            <span style="font-size: small; color:crimson;">週刊誌等でベンゾの危険性についての記事が多くなっています。それらを読んでけしてすぐに止めたり減薬を急がないでください。充分に学べば不安になることはありません。</span>
+            <br>
+        </div>
+        <div fxLayout="column" fxFlexFill>
+          <h2>ブログリンク</h2>
+          <span style="font-size: small; color:gray;">コンテンツの質および減薬記録実例・参考例のあるものを厳選しています。</span>
+            <div style="margin: 2px" matBadge="" matBadgeColor="warn" matBadgePosition="above before" matBadgeOverlap="true">          
+              <a href="http://furuhata7.blog68.fc2.com/" alt="ワイパックスさん" target="_blank">ワイパックス 水溶液減薬・断薬（ワイパックスさん）</a>
+            </div>
         </div>
       </div>
       <div fxFlex.gt-xs="50" fxLayout.xs="column" fxFlex.xs="100" fxFlexFill style="padding: 5px;">
@@ -48,11 +56,11 @@
         <br>
         字幕：管理人</span>
         -->
-        <a href="https://youtu.be/nHDjjwMKRCY" alt="ベンゾクライシス" target="_blank">リサ・リンの「これが人生」－ ベンゾクライシス （前半）</a>
+        <a href="https://youtu.be/nHDjjwMKRCY" alt="ベンゾクライシス" target="_blank">リサ・リンのこれが人生ーベンゾクライシス （前半）22分</a>
         <br>
-        <a href="https://youtu.be/X4VwnA3qsas" alt="ベンゾクライシス" target="_blank">リサ・リンの「これが人生」－ ベンゾクライシス （後半）</a>
+        <a href="https://youtu.be/X4VwnA3qsas" alt="ベンゾクライシス" target="_blank">リサ・リンのこれが人生ーベンゾクライシス （後半）19分</a>
         <br>
-        <span style="font-size: small;">2019年10月6日放映</span>
+        <span style="font-size: small;">This Is Life with Lisa Ling 2019年10月6日放映</span>
         <a href="https://youtu.be/nHDjjwMKRCY" alt="ベンゾクライシス" target="_blank"><img src="../../../assets/images/home_04.png" alt="ベンゾ動画" width="100%"></a>
         <br>
         <span style="font-size: small;">出典：<a href="https://edition.cnn.com/shows/this-is-life-with-lisa-ling" target="_blank">CNN, This Is Life with Lisa Ling</a>      
@@ -68,21 +76,21 @@
     <h2>このサイトの目的</h2>
     <p>
       睡眠薬、抗不安薬のほとんどはベンゾジゼアピン系薬剤に分類されます。ベンゾジアゼピンは決められた処方用量を守って飲み続けても重篤な傷害を引き起こします。日本だけでなく世界中で蔓延処方され約10人にひとりが服用し
-      1ヶ月連用すると約半数が身体依存形成されます。急にやめると離脱症状が生じ重症の場合は拷問と言っていいほどの苦痛で
-      自死に至ったり、何年もの間苦しむケースもあります。<br /> 
+      <a routerLink="doctors-article/11" alt="Treatment of Benzodiazepine Dependence" target="_blank">1ヶ月連用で約半数が傷害形成されます</a>（何年服用していても問題ない人も多くいます）。短期間の減薬では離脱症状が拷問と言っていいほどの苦痛で
+      最悪自死に至ります。<br /> 
       <br />「<a routerLink="patients-article/8">ベンゾの減薬は数年</a>かけてください！」
-      <br />「服薬中でも不安になる必要はまったくありません。必ず<a routerLink="doctors-article/15">回復します</a>」<br /> 
+      <br />「服薬中でも不安になる必要はありません。<a routerLink="doctors-article/15">回復します</a>。いきなりやめないように！」<br /> 
       <br /> アルコール依存症や薬物依存とは同じ“依存”という言葉を使用するもののそれらとは異質なものです。
       <span style="color:red">ベンゾ依存はアルコール依存症やギャンブル依存症といった依存症ではなく「薬物性神経機能傷害」</span>と言えます。
      英語ですと<strong>addiction</strong>（アディクション・精神依存・嗜癖）ではなく<strong>dependency</strong>（身体依存）, <strong>injury</strong>（傷害）となります。
      <span style="color:gray">(<a href="http://www.stuartshipko.com/" target="_blank">スチュアート・シプコ博士</a>による提言：『医療界は遷延性離脱症状のような事態を想定しておらず、
      通常は離脱＜Withdrawal＞というと数週間で消えていくものと思われてしまう。私は<span style="color:red">薬物神経毒性症状＜drug neurotoxicity＞</span>と呼んでいる』）</span>
      <br />
-     しかしベンゾジアゼピン系薬剤は半世紀前から様々な症状に対して処方されつづけ、製薬会社はこの危険性について医療提供者に対し情報提供することを控えてきました。
+     しかしベンゾジアゼピン系薬剤は半世紀前から様々な症状に対して気軽に処方されつづけ、医療界ではその安全な離脱方法について無知であり続けました。
      より詳しくは<a routerLink="introduction">ベンゾジアゼピン概略</a>のページをご覧ください。
      <br />
-     <br>このサイトはわたしの実体験をもとに、米国NPO団体<a href="https://www.benzoinfo.com">Benzodiazepine Information Coallition（以下BIC)</a>の記事および<a href="http://www.benzobuddies.org/forum/index.php">ベンゾバディ</a>という世界最大の
-              ベンゾ情報交換フォーラムの投稿を中心に、情報提供を目的に作成しました。引用・転載フリーです。必ず「出典：<a href="https://benzoinfojapan.org">ベンゾ情報センター</a>」を追記してください（BICの記事には著作権があります。許可をいただいて翻訳しています）。
+     <br>このサイトはわたしの実体験と米国NPO団体<a href="https://www.benzoinfo.com">Benzodiazepine Information Coallition（以下BIC)</a>の記事および<a href="http://www.benzobuddies.org/forum/index.php">ベンゾバディ</a>という世界最大の
+              ベンゾ情報フォーラムの投稿を中心に、情報提供を目的に作成しました。引用・転載フリーです。必ず「出典：<a href="https://benzoinfojapan.org">ベンゾ情報センター</a>」を追記してください（BICの記事には著作権があります。許可をいただいて翻訳しています）。
     </p>
     </div>
 
