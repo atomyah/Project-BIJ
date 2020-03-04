@@ -68,6 +68,7 @@ import { BenzolistEngComponent } from './component/basics/benzolist-eng/benzolis
 import { IntroductionEngComponent } from './component/introduction-eng/introduction-eng.component';
 import { GcseResultComponent } from './component/gcse-result/gcse-result.component';
 import { GcseSearchComponent } from './component/gcse-search/gcse-search.component';
+import { BingComponent } from './component/bing/bing.component';
 
 
 
@@ -131,6 +132,7 @@ import { GcseSearchComponent } from './component/gcse-search/gcse-search.compone
     IntroductionEngComponent,
     GcseResultComponent,
     GcseSearchComponent,
+    BingComponent,
   ],
 
   // DIするサービス 

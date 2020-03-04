@@ -45,7 +45,6 @@ export class MediasArticlesComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.seo.titleService.setTitle(this.title);
     this.seo.generateTagsMediasArticles(this.articlenum);
   }
   

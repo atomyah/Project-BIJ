@@ -46,7 +46,6 @@ export class DoctorsArticlesComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.seo.titleService.setTitle(this.title);
     this.seo.generateTagsDoctorsArticles(this.articlenum);
   }
 

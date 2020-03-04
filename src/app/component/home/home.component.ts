@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 // ValueSharedServiceをインポート
 import { ValueSharedService } from '../../service/value-shared.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import {Meta} from '@angular/platform-browser';
+import {Meta,Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -14,11 +14,12 @@ export class HomeComponent implements OnInit {
   currentURL: string;
 
   // コンストラクタでValueSharedServiceを呼び出す
-  constructor(public router: ActivatedRoute, private valueSharedService: ValueSharedService,private meta: Meta) {
+  constructor(public router: ActivatedRoute, private valueSharedService: ValueSharedService,private meta: Meta,public titleService: Title) {
     // 現在のURLを取得（Twitterシェアボタン設置に使用）
     // this.currentURL = this.router.snapshot.url[0].path; // 'introduction'を返す
     this.currentURL = location.href; // 'http://localhost:4200/introduction'を返す
-    console.log('■■■■' + this.currentURL)  
+    console.log('■■■■' + this.currentURL)
+    this.titleService.setTitle('ベンゾジアゼピン情報センター ー ホーム');
     this.meta.updateTag({name: 'title', content: 'ベンゾジアゼピン情報センター ー ホーム'})
     this.meta.updateTag({name: 'description',content: 'ベンゾジアゼピンは長期連用すると処方量依存といってやめるのが非常に難しくなります。依存症(addiction)ではなく薬剤性神経システム傷害(Injury)です。それゆえ覚せい剤やヘロインなどの麻薬とは同じ土俵で対処してはいけません'})
     this.meta.updateTag({name: 'keywords', content: 'ベンゾ情報,ベンゾジアゼピン,睡眠薬,抗不安薬,離脱症状,減薬,断薬,テーパリング,ジアゼパム換算,アシュトンマニュアル,離脱症状,依存症,麻薬,神経'})

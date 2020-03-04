@@ -3,7 +3,7 @@ import { BASICSDATA } from '../../../class/basicschildren';
 import { Router, ActivatedRoute } from '@angular/router';
 // ValueSharedServiceをインポート
 import { ValueSharedService } from '../../../service/value-shared.service';
-import {Meta} from '@angular/platform-browser';
+import {Meta,Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-benzolist-eng',
@@ -17,11 +17,12 @@ export class BenzolistEngComponent implements OnInit {
   currentURL: string;  
 
   // コンストラクタでValueSharedServiceを呼び出す
-  constructor(public router: Router, private valueSharedService: ValueSharedService,private meta: Meta) {
+  constructor(public router: Router, private valueSharedService: ValueSharedService,private meta: Meta,public titleService: Title) {
     // 現在のURLを取得（Twitterシェアボタン設置に使用）
     // this.currentURL = this.router.snapshot.url[0].path; // 'introduction'を返す
     this.currentURL = location.href; // 'http://localhost:4200/introduction'を返す
-    console.log('■■■■' + this.currentURL)  
+    console.log('■■■■' + this.currentURL)
+    this.titleService.setTitle('Benzodiazepines List and Equivalents');
     this.meta.updateTag({name: 'title', content: 'Benzodiazepines List and Equivalents'})
     this.meta.updateTag({name: 'description',content: 'Benzodiazepines(hypnotics and anxiolytics) List and Equivalents'})
     this.meta.updateTag({name: 'keywords', content: 'sleeping pill,hypnotics,anxiolytics,benzodiazepine,benzo,alprazolam,xanax,klonopin,diazepam,valium,flunitrazepam,lorazepam,ativan,temazepam,zolpidem,ambien'})

@@ -51,18 +51,6 @@ export class RootComponent {
 
 
    ngOnInit() {
-    this.titleService.setTitle('ベンゾジアゼピン情報センター')
-       
-    
-      // 以下はグーグルカスタムサーチ用スクリプトタグ挿入
-      let cx = '002441034172234205663:svlaurhzgs9';
-      let gcse = document.createElement('script');
-      gcse.type = 'text/javascript';
-      gcse.async = true;
-      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-      let s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(gcse, s); 
-    
    }
 
 

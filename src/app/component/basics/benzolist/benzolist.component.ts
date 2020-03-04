@@ -3,7 +3,7 @@ import { BASICSDATA } from '../../../class/basicschildren';
 import { Router, ActivatedRoute } from '@angular/router';
 // ValueSharedServiceをインポート
 import { ValueSharedService } from '../../../service/value-shared.service';
-import {Meta} from '@angular/platform-browser';
+import {Meta,Title} from '@angular/platform-browser';
 
 
 @Component({
@@ -18,11 +18,12 @@ export class BenzolistComponent implements OnInit {
   currentURL: string;  
 
   // コンストラクタでValueSharedServiceを呼び出す
-  constructor(public router: Router, private valueSharedService: ValueSharedService,private meta: Meta) { 
+  constructor(public router: Router, private valueSharedService: ValueSharedService,private meta: Meta,public titleService: Title) { 
     // 現在のURLを取得（Twitterシェアボタン設置に使用）
     // this.currentURL = this.router.snapshot.url[0].path; // 'introduction'を返す
     this.currentURL = location.href; // 'http://localhost:4200/introduction'を返す
-    console.log('■■■■' + this.currentURL)  
+    console.log('■■■■' + this.currentURL)
+    this.titleService.setTitle('ベンゾジアゼピン薬剤一覧 - ジアゼパム換算表');
     this.meta.updateTag({name: 'title', content: 'ベンゾジアゼピン薬剤一覧 - ジアゼパム換算表'})
     this.meta.updateTag({name: 'description',content: '日本で処方可能なベンゾジアゼピン薬剤一覧です。諸外国よりかなり多い34種類あります。 - そしてジアゼパム換算表です。置換の際に必須となるデータです'})
     this.meta.updateTag({name: 'keywords', content: 'ジアゼパム換算,置換,アルプラゾラム,ソラナックス,コンスタン,デパス,エチゾラム,リーゼ,クロチアゼパム,ジアゼパム,セルシン,ブロマゼパム,レキソタン,セニラン,ロフラゼプ酸エチル,メイラックス,ロラゼパム,ワイパックス,エスタゾラム,ユーロジン,クアゼパム,ドラール,ゾルピデム,マイスリー,ゾピクロン,アモバン,ニトラゼパム,ベンザリン,ネルボン,フルニトラゼパム,サイレース,ロヒプノール,ブロチゾラム,レンドルミン,ロルメタゼパム,エバミール,クロナゼパム,リボトリール,ランドセン,トフィソパム,グランダキシン,トリアゾラム,ハルシオン,クロキサゾラム,セパゾン,クロラゼプ酸,メンドン,クロルジアゼポキシド,コントール,バランス,タンドスピロン,セディール,フルジアゼパム,エリスパン,フルタゾラム,コレミナール,フルトプラゼパム,レスタス,メキサゾラム,メレックス,メダゼパム,レスミット,エスゾピクロン,ルネスタ,ニメタゼパム,エリミン,ハロキサゾラム,ソメリン,クアゼパム,ドラール,フルラゼパム,ダルメート,ベノジール,リルマザホン,リスミー,ロルメタゼパム,エバミール,ロラメット,クロバザム,マイスタン'})

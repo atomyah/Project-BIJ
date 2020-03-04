@@ -4,7 +4,7 @@ import { BASICSDATA } from '../../class/basicschildren';
 import {Router,ActivatedRoute} from '@angular/router';
 // ValueSharedServiceをインポート
 import { ValueSharedService } from '../../service/value-shared.service';
-import {Meta} from '@angular/platform-browser';
+import {Meta,Title} from '@angular/platform-browser';
 
 
 @Component({
@@ -33,11 +33,12 @@ class/basicschildren.tsを見るように.
     
 
 // コンストラクタでValueSharedServiceを呼び出す
-  constructor(public router: ActivatedRoute, private valueSharedService: ValueSharedService,private meta: Meta) {
+  constructor(public router: ActivatedRoute, private valueSharedService: ValueSharedService,private meta: Meta,public titleService: Title) {
     // 現在のURLを取得（Twitterシェアボタン設置に使用）
     // this.currentURL = this.router.snapshot.url[0].path; // 'introduction'を返す
     this.currentURL = location.href; // 'http://localhost:4200/introduction'を返す
-    console.log('■■■■' + this.currentURL)  
+    console.log('■■■■' + this.currentURL)
+    this.titleService.setTitle('ベンゾ一般知識');
     this.meta.updateTag({name: 'title', content: 'ベンゾ一般知識'})
     this.meta.updateTag({name: 'description',content: 'ベンゾジアゼピン（睡眠薬、抗不安薬）に関する一般的なナレッジです'})
     this.meta.updateTag({name: 'keywords', content: 'ベンゾ,ベンゾジアゼピン,睡眠薬,抗不安薬,離脱症状,テーパリング,ジアゼパム換算,アシュトンマニュアル,離脱症状,依存症,アルコール依存症,覚せい剤,麻薬,神経'})

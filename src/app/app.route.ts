@@ -25,6 +25,7 @@ import { AdminGuard } from  './admin/admin.guard';
 import { BenzolistEngComponent } from './component/basics/benzolist-eng/benzolist-eng.component';
 import { IntroductionEngComponent } from './component/introduction-eng/introduction-eng.component';
 import { GcseResultComponent } from './component/gcse-result/gcse-result.component';
+import { BingComponent } from './component/bing/bing.component';
 
 
 //urlパスと表示するコンポーネントの関連づけ
@@ -52,4 +53,5 @@ export const AppRoutes: Routes = [
     {path: "introductioneng", component: IntroductionEngComponent},
     {path: "gcs-result", component: GcseResultComponent},
     {path: "gcs-result/:query", component: GcseResultComponent},
+    {path: "bing", component: BingComponent},
 ];
