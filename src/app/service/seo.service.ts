@@ -132,7 +132,20 @@ export class SeoService {
         this.meta.updateTag({ property: 'og:title', content: 'ドライカット(細粉法)での減薬方法' });
         this.meta.updateTag({ property: 'og:description', content: '管理人であるわたしが実際に行ったマイクロテーパリング減薬方法のひとつであるドライカット(細粉法)での減薬方法について、そのやり方を図解したものです' });
         this.meta.updateTag({ property: 'og:image', content: 'https://benzoinfojapan.org/assets/picts/pict9.png' });
-        break;           
+        break;
+      case '10':
+        console.log('◆◆◆◆◆generateTagsPatientsArticles()の引数articlenumは、' + this.patinentsarticlenum)
+        this.titleService.setTitle('my tapering log');
+        this.meta.updateTag({ name: 'title', content: 'my tapering log'});
+        this.meta.updateTag({ name: 'description', content: 'benzoinfojapan administrator tapering log, flunitrazepam done.'});
+        this.meta.updateTag({ name: 'keywords', content: 'benzo, benzodiazepine, micro-tapering, tapering, liquid, flunitrazepam, Japan, withdraw, diazepam' });
+        this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
+        this.meta.updateTag({ name: 'twitter:site', content: '@benzoinfojapan' });
+        this.meta.updateTag({ property: 'og:url', content: 'https://benzoinfojapan.org/patients-article/10' })
+        this.meta.updateTag({ property: 'og:title', content: 'my tapering log' });
+        this.meta.updateTag({ property: 'og:description', content: 'benzoinfojapan administrator tapering log, flunitrazepam done.' });
+        this.meta.updateTag({ property: 'og:image', content: 'https://benzoinfojapan.org/assets/picts/pict9.png' });
+        break;                
     }
   }
 
